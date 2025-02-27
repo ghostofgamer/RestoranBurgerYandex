@@ -15,14 +15,14 @@ public static class Vibrator
 
     public static void Vibrate(long milliseconds = 250)
     {
-        if (IsAndroid())
+        /*if (IsAndroid())
         {
             vibrator.Call("vibrate", milliseconds);
         }
         else
         {
             Handheld.Vibrate();
-        }
+        }*/
     }
 
     public static bool IsAndroid()
