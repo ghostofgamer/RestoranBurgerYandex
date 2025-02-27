@@ -134,32 +134,32 @@ MonoBehaviour:
     canMultiply: 0
     loop: 0
   musicDatas:
-  - clip: {fileID: 8300000, guid: 0b7bf99acc86e44da8252a18a2aca5ca, type: 3}
+  - clip: {fileID: 8300000, guid: 621101d6f8f175a488e64ce80339da83, type: 3}
     type: 0
     volume: 0.25
     loop: 0
     name: 
-  - clip: {fileID: 8300000, guid: da67c9cbc26ab47eaae4b12b919dcf7a, type: 3}
+  - clip: {fileID: 8300000, guid: 4de7c077226c3e946a2e9925d843f478, type: 3}
     type: 1
     volume: 0.3
     loop: 0
     name: 
-  - clip: {fileID: 8300000, guid: 56ec4b58af41e42ec86add541b930311, type: 3}
+  - clip: {fileID: 8300000, guid: b74f88d04a28a5d4ca94397edd72ee5f, type: 3}
     type: 2
     volume: 0.3
     loop: 0
     name: 
-  - clip: {fileID: 8300000, guid: a81ff2c7e5de4474188921c9e090ed44, type: 3}
+  - clip: {fileID: 8300000, guid: d34290a36fe9a2249a7aac695b1b0ebf, type: 3}
     type: 3
     volume: 0.3
     loop: 0
     name: 
-  - clip: {fileID: 8300000, guid: 242de4aeee89a4b128f4950184ceb0e5, type: 3}
+  - clip: {fileID: 8300000, guid: bc3466eda792f3c4daf3d245f15795bf, type: 3}
     type: 4
     volume: 0.5
     loop: 0
     name: 
-  - clip: {fileID: 8300000, guid: e7d95f663f0a341a0b89d52b04786b11, type: 3}
+  - clip: {fileID: 8300000, guid: c7481eeb6d420cb4a92e46aed974504a, type: 3}
     type: 5
     volume: 0.25
     loop: 0
