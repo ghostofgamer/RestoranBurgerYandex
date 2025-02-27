@@ -4,7 +4,49 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02332a16-073c-444b-8fc8-7e2f7e70d71c" name="Changes" comment="" />
+    <list default="true" id="02332a16-073c-444b-8fc8-7e2f7e70d71c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.RestoranBurgerYandex/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RestoranBurgerYandex/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Brick Project Studio/Fast Food Restaurant Kit/Common/Textures/FFK_POS_Display_02.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Brick Project Studio/Fast Food Restaurant Kit/Common/Textures/FFK_POS_Display_02.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Brick Project Studio/Fast Food Restaurant Kit/Common/Textures/Lemon_soda.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Brick Project Studio/Fast Food Restaurant Kit/Common/Textures/Lemon_soda.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Brick Project Studio/Fast Food Restaurant Kit/Common/Textures/barberry_ыщвф.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Brick Project Studio/Fast Food Restaurant Kit/Common/Textures/barberry_ыщвф.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Brick Project Studio/Fast Food Restaurant Kit/Common/Textures/orange_soda.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Brick Project Studio/Fast Food Restaurant Kit/Common/Textures/orange_soda.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Brick Project Studio/Fast Food Restaurant Kit/Common/Textures/plum-cola_soda.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Brick Project Studio/Fast Food Restaurant Kit/Common/Textures/plum-cola_soda.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Citizens PRO/Models/People 1.0/Female/Textures/Girl_66.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Citizens PRO/Models/People 1.0/Female/Textures/Girl_66.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Citizens PRO/Models/People 1.0/Male/Textures/Man_33.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Citizens PRO/Models/People 1.0/Male/Textures/Man_33.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Citizens PRO/Models/People 2.0/Female/used_casual22_f+/casual22_f_25.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Citizens PRO/Models/People 2.0/Female/used_casual22_f+/casual22_f_25.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Citizens PRO/Models/People 2.0/Female/used_casual22_f+/casual22_f_25_hair.tga.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Citizens PRO/Models/People 2.0/Female/used_casual22_f+/casual22_f_25_hair.tga.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Citizens PRO/Models/People 2.0/Female/used_sportive05_f/sportive05_f_25.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Citizens PRO/Models/People 2.0/Female/used_sportive05_f/sportive05_f_25.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Citizens PRO/Models/People 2.0/Female/used_sportive05_f/sportive05_f_25_hair.tga.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Citizens PRO/Models/People 2.0/Female/used_sportive05_f/sportive05_f_25_hair.tga.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Citizens PRO/Models/People 2.0/Male/used_sportive01_m/sportive01_m_20.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Citizens PRO/Models/People 2.0/Male/used_sportive01_m/sportive01_m_20.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Citizens PRO/Models/People 2.0/Male/used_sportive04_m/sportive04_m_25.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Citizens PRO/Models/People 2.0/Male/used_sportive04_m/sportive04_m_25.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fast_food/Textures/fastfood_burned.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fast_food/Textures/fastfood_burned.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fast_food/Textures/fastfood_medium_WellDone.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fast_food/Textures/fastfood_medium_WellDone.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fast_food/Textures/fastfood_rare.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fast_food/Textures/fastfood_rare.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Ornamental Flower Set/Resources/Furniture01/Furniture_foliageplant_11_LOD0.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Ornamental Flower Set/Resources/Furniture01/Furniture_foliageplant_11_LOD0.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Ornamental Flower Set/Resources/Furniture01/Textures/Furniture_flowerstand_02_c.tif.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Ornamental Flower Set/Resources/Furniture01/Textures/Furniture_flowerstand_02_c.tif.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Ornamental Flower Set/Resources/Furniture01/Textures/Furniture_foliageplant_12_c.tif.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Ornamental Flower Set/Resources/Furniture01/Textures/Furniture_foliageplant_12_c.tif.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/World/Items/For_loc_fastfood/6771476269.jpg.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/World/Items/For_loc_fastfood/6771476269.jpg.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/World/Items/For_loc_fastfood/8659-v1.jpg.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/World/Items/For_loc_fastfood/8659-v1.jpg.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/World/Items/For_loc_fastfood/assets/4-tomatos-as-low-poly-set/textures/mat_tomatos_Normal.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/World/Items/For_loc_fastfood/assets/4-tomatos-as-low-poly-set/textures/mat_tomatos_Normal.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/World/Items/For_loc_fastfood/assets/commercial-kitchen-props/source/1.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/World/Items/For_loc_fastfood/assets/commercial-kitchen-props/source/1.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/World/Items/For_loc_fastfood/assets/steel-table/textures/internal_ground_ao_texture.jpeg.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/World/Items/For_loc_fastfood/assets/steel-table/textures/internal_ground_ao_texture.jpeg.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/World/Items/For_loc_fastfood/assets/storage-tray/textures/internal_ground_ao_texture.jpeg.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/World/Items/For_loc_fastfood/assets/storage-tray/textures/internal_ground_ao_texture.jpeg.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/World/Items/For_loc_fastfood/assets/water-bottle/source/bottle.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/World/Items/For_loc_fastfood/assets/water-bottle/source/bottle.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/World/Items/For_locations/New Folder/belgian-waffle/textures/internal_ground_ao_texture.jpeg.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/World/Items/For_locations/New Folder/belgian-waffle/textures/internal_ground_ao_texture.jpeg.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/World/Location/Buyers.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/World/Location/Buyers.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TENKOKU - DYNAMIC SKY/RESOURCES/textures/tex_distortion.psd.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TENKOKU - DYNAMIC SKY/RESOURCES/textures/tex_distortion.psd.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Sprites/DropCap Numbers.psd.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Sprites/DropCap Numbers.psd.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Textures/Floor Cement.jpg.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Textures/Floor Cement.jpg.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Town Constructor 3/ModularKits/Props/StreePhone.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Town Constructor 3/ModularKits/Props/StreePhone.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Town Constructor 3/ModularKits/Props/StreetLight3.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Town Constructor 3/ModularKits/Props/StreetLight3.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build/47925d676a3c4bf5be7d96ab086e3e41.loader.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build/6004c21f71ebd1545281377da0ce4322.wasm.unityweb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build/76d2cc84b11f3ac744ac9db9a1306ad7.data.unityweb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build/fc76a17cee19868ec0c18edd6db04c76.framework.js.unityweb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/StreamingAssets.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/StreamingAssets/UnityServicesProjectConfiguration.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/index.html" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -82,7 +124,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1740643962031</updated>
-      <workItem from="1740643963440" duration="3954000" />
+      <workItem from="1740643963440" duration="7226000" />
     </task>
     <servers />
   </component>
