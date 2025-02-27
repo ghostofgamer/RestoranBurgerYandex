@@ -1,0 +1,23 @@
+# ninja log v5
+1	2960	1738068027503149097	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	9a405eeaa637d59b
+1	2399	1738068026938146973	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	a80fcb657b711d7
+2	2712	1738068027253812958	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	a094180d9c7d287d
+6	2277	1738068026818442786	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	9d9fc0fedcffc6c2
+2960	3040	1738068027577679877	/Users/Home/Projects/AKD/Fast Food Sim/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/5g6z6m19/obj/armeabi-v7a/libgame.so	40cc594f8e858ca5
+5	2141	1738068026673645148	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	b3de622b93233f9
+3	1999	1738068026543084634	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	6cbf2c56b03a6134
+1	2090	1738068026633098865	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	cdfa58fb958e054b
+2	1992	1738068026534726035	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	d718eb04f409fb32
+332	430	1738068024971185800	/Users/Home/Projects/AKD/Fast Food Sim/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/5g6z6m19/obj/armeabi-v7a/libswappywrapper.so	713a86e11c5cfed9
+8	331	1738068024879864501	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	4687e234facd7fd
+6	250	1738068219886306584	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	4687e234facd7fd
+250	345	1738068219976060362	/Users/Home/Projects/AKD/Fast Food Sim/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/5g6z6m19/obj/armeabi-v7a/libswappywrapper.so	713a86e11c5cfed9
+3	1442	1738068221071969125	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	d718eb04f409fb32
+4	1443	1738068221074017446	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	6cbf2c56b03a6134
+3	1490	1738068221121765191	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	cdfa58fb958e054b
+4	1520	1738068221152959457	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	b3de622b93233f9
+5	1612	1738068221243045151	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	9d9fc0fedcffc6c2
+3	1698	1738068221331389484	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	a80fcb657b711d7
+4	1907	1738068221539100486	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	a094180d9c7d287d
+2	2094	1738068221724005781	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	9a405eeaa637d59b
+2094	2199	1738068221830790228	/Users/Home/Projects/AKD/Fast Food Sim/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/5g6z6m19/obj/armeabi-v7a/libgame.so	40cc594f8e858ca5
