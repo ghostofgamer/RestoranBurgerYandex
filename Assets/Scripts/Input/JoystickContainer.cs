@@ -36,6 +36,9 @@ namespace TheSTAR.Input
         private void Start()
         {
             joystickCanvasGroup.alpha = InactiveJoystickAlpha;
+            
+            if(!Application.isMobilePlatform)
+                gameObject.SetActive(false);
         }
 
         private void FixedUpdate()

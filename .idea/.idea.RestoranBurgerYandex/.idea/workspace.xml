@@ -6,11 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="02332a16-073c-444b-8fc8-7e2f7e70d71c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RestoranBurgerYandex/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RestoranBurgerYandex/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ReputationContent/Reputation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ReputationContent/Reputation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/World/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/World/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/World/PlayerSteps.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/World/PlayerSteps.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/KeyboardInputPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/PlayerMovePC.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/KeyboardInputPlayer.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/PlayerMovePC.cs.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +18,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Input/PlayerInput.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem/InputSystem/Plugins/UI/InputSystemUIInputModule.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
