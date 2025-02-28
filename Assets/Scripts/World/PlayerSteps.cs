@@ -19,10 +19,9 @@ public class PlayerSteps : MonoBehaviour
 
     public void AddValue(float oneStepProgress)
     {
-        Debug.Log("STEPS " + oneStepProgress);
-        
         stepProgress += oneStepProgress;
-
+// Debug.Log("STEPS"+ stepProgress );
+        
         if (stepProgress >= 1)
         {
             stepProgress = 0;

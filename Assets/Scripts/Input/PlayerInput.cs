@@ -7,7 +7,7 @@ public class PlayerInput : MonoBehaviour
     private const string Horizontal = "Horizontal";
     private const string Vertical = "Vertical";
 
-    // [SerializeField] private LookMouse _lookMouse;
+    [SerializeField] private LookMouse _lookMouse;
 
     private PlayerMovePC _playerMovement;
     private float _mouseX;
@@ -29,23 +29,9 @@ public class PlayerInput : MonoBehaviour
     {
         if (Time.timeScale > 0)
         {
-            /*if (Input.GetKeyDown(KeyCode.R))
-                RKeyPressed?.Invoke();
-
-            if (Input.GetMouseButtonDown(0))
-                MouseZeroKeyPressed?.Invoke();
-
-            if (Input.GetMouseButton(0))
-                MouseZeroKeyHoldDown?.Invoke();
-
-            if (Input.GetButtonDown(Jump))
-                _playerMovement.Jump();*/
-
             _mouseX = Input.GetAxis(MouseX);
             _mouseY = Input.GetAxis(MouseY);
-            // _lookMouse.Rotate(_mouseX, _mouseY);
-            /*IsRunning = Input.GetKey(KeyCode.LeftShift);
-            IsCrouching = Input.GetKey(KeyCode.LeftControl);*/
+            _lookMouse.Rotate(_mouseX, _mouseY);
             X = Input.GetAxis(Horizontal);
             Z = Input.GetAxis(Vertical);
         }

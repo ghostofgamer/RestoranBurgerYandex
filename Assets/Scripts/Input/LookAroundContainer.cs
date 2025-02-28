@@ -25,6 +25,12 @@ public class LookAroundContainer : GuiUniversalElement
             OnUp);
     }
 
+    private void Start()
+    {
+        if(!Application.isMobilePlatform)
+            gameObject.SetActive(false);
+    }
+
     private void OnDown(PointerEventData pointerEventData)
     {
         startTouchPos = pointerEventData.position;
