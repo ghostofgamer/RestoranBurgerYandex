@@ -19,14 +19,14 @@ public class KeyboardInputPlayer : MonoBehaviour
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
-        Vector2 input = new Vector2(-moveHorizontal, -moveVertical);
+        Vector2 input = new Vector2(moveHorizontal, moveVertical);
         KeyboardInputMethod(input);
     }
 
     private void KeyboardInputMethod(Vector2 input)
     {
-        Debug.Log("INPUT " + input);
-        var velocity = new Vector3(input.x * _speed, _rb.linearVelocity.y, input.y * _speed);
+        Vector3 desiredMove = transform.TransformDirection(new Vector3(input.x, 0, input.y));
+        var velocity = new Vector3(desiredMove.x * _speed, _rb.linearVelocity.y, desiredMove.z * _speed);
         _rb.linearVelocity = velocity;
         _steps.AddValue(input.magnitude * 0.08f);
     }
