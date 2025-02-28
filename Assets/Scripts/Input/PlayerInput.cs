@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 public class PlayerInput : MonoBehaviour
 {
@@ -17,6 +18,16 @@ public class PlayerInput : MonoBehaviour
 
     public float Z { get; private set; }
 
+    private CameraController _camera; 
+    
+    [Inject]
+    private void Constuct(CameraController camera)
+    {
+        _camera = camera;
+        _camera.ChangeCameraPosition += SetValue;
+
+    }
+    
     private void Start()
     {
         _playerMovement = GetComponent<PlayerMovePC>();
@@ -37,4 +48,8 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
+    private void SetValue(bool value)
+    {
+        enabled = value;
+    }
 }

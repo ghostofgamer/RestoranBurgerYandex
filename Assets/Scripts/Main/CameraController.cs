@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using DG.Tweening;
 
@@ -5,7 +6,8 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField] private Camera main;
     [SerializeField] private RayVision rayVision;
-
+    [SerializeField] private PlayerInput _playerInput;
+    
     private int currentMultiplierIndex = 0;
     public int CurrentMultiplierIndex => currentMultiplierIndex;
     public float CurrentCameraAngleY => main.transform.eulerAngles.y;
@@ -20,6 +22,8 @@ public class CameraController : MonoBehaviour
 
     private const float MoveDuration = 0.25f;
     private readonly Ease MoveEase = Ease.OutCubic;
+
+    public event Action<bool> ChangeCameraPosition;
 
     /// <summary>
     /// Задать объект, за которым камера будет постоянно следить
@@ -42,6 +46,9 @@ public class CameraController : MonoBehaviour
 
         if (focus == null)
         {
+            ChangeCameraPosition?.Invoke(true);
+            // _playerInput.enabled = true;
+            Debug.Log("111");
             moveDraggableTweener =
             main.transform.DOLocalMove(Vector3.zero, MoveDuration).SetEase(MoveEase);
 
@@ -50,6 +57,9 @@ public class CameraController : MonoBehaviour
         }
         else
         {
+            ChangeCameraPosition?.Invoke(false);
+            // _playerInput.enabled = false;
+            Debug.Log("333");
             moveDraggableTweener =
             main.transform.DOMove(focus.FocusTransform.position, MoveDuration).SetEase(MoveEase);
 

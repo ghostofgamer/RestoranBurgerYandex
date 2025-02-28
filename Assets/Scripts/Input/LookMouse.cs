@@ -20,12 +20,15 @@ public class LookMouse : MonoBehaviour
     private TutorialController _tutorialController;
     private GameScreen _gameScreen;
     private bool _firstLook = false;
+    private CameraController _camera; 
+    
     public event Action FirstLookChanged;
     
     [Inject]
-    private void Constuct(TutorialController tutor)
+    private void Constuct(TutorialController tutor,CameraController camera)
     {
         _tutorialController = tutor;
+        _camera = camera;
     }
     
     private void Start()
@@ -34,11 +37,6 @@ public class LookMouse : MonoBehaviour
         
         // Cursor.lockState = CursorLockMode.Locked;
     }
-
-    /*public void Init(GameWorld gameWorld)
-    {
-        
-    }*/
 
     public void SetValue(bool value)
     {
