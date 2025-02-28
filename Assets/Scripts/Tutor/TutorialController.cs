@@ -85,6 +85,23 @@ public class TutorialController : MonoBehaviour
         checkInFovDelegate ??= (c) => true;
     }
 
+    private void Start()
+    {
+        // Debug.Log("CURRENT TUTORIAL " + _currentTutorial);
+    }
+
+    private void FixedUpdate()
+    {
+        if (CurrentTutorial.HasValue)
+        {
+            Debug.Log("Current Tutorial: " + CurrentTutorial.Value);
+        }
+        else
+        {
+            Debug.Log("No current tutorial set.");
+        }
+    }
+
     [Inject]
     private void Constuct(DataController data, AnalyticsManager analytics)
     {

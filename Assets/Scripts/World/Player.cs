@@ -3,6 +3,7 @@ using UnityEngine;
 using DG.Tweening;
 using TheSTAR.Utility;
 using System;
+using UnityEditor;
 
 public class Player : MonoBehaviour, IJoystickControlled, ICameraFocusable
 {
@@ -14,6 +15,13 @@ public class Player : MonoBehaviour, IJoystickControlled, ICameraFocusable
     [SerializeField] private Transform cameraPos;
     [SerializeField] private Transform draggerItemOffset; // смещение перетаскиваемого предмета в зависимости от типа предмета
     [SerializeField] private PlayerSteps steps;
+    [SerializeField] private LookMouse _lookMouse;
+    [SerializeField] private PlayerMovePC _playerMovePC;
+    
+    public LookMouse LookMouse =>_lookMouse;
+
+    public PlayerMovePC PlayerMovePC => _playerMovePC;
+    
 
     private const float DefaultSpeed = 3.5f;
     public const int MaxValueInPlayerStorage = 1;
@@ -74,6 +82,11 @@ public class Player : MonoBehaviour, IJoystickControlled, ICameraFocusable
 
         defaultDragger.OnEndDragEvent += (dragger, draggable) => OnEndDrag(draggable);
         itemsSplitter.OnEndDragEvent += OnEndDrag;
+    }
+
+    public void InitGameWorld()
+    {
+        
     }
 
     private void OnStartDrag(Dragger dragger, Draggable draggable)

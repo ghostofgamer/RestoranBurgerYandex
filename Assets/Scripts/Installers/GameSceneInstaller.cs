@@ -76,7 +76,13 @@ public class GameSceneInstaller : MonoInstaller
         {
             if(screenGui.TryGetComponent<TopUiContainer>(out TopUiContainer topUiContainer))
                 gui.InitTopUIContainer(topUiContainer);
-        }
+        } 
+        
+        foreach (var screenGui in createdScreens)
+        {
+            if(screenGui.TryGetComponent<GameScreen>(out GameScreen gameScreen))
+                gui.InitGameScreen(gameScreen);
+        } 
         Debug.Log("создание GUI 3");
     }
 }

@@ -1040,6 +1040,8 @@ MonoBehaviour:
   cameraPos: {fileID: 5783911634233976913}
   draggerItemOffset: {fileID: 6046112724050750584}
   steps: {fileID: 2131458083911674314}
+  _lookMouse: {fileID: 5115885820059352774}
+  _playerMovePC: {fileID: -2048906239661782932}
 --- !u!54 &8656963064539494356
 Rigidbody:
   m_ObjectHideFlags: 0

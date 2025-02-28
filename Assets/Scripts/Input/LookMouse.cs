@@ -1,4 +1,8 @@
+using System;
+using TheSTAR.Data;
+using TheSTAR.GUI;
 using UnityEngine;
+using Zenject;
 
 public class LookMouse : MonoBehaviour
 {
@@ -11,15 +15,50 @@ public class LookMouse : MonoBehaviour
     private float _xOffset = 0;
     private float _yOffset = 0;
     private float _angleRotation = 90f;
-    private PlayerInput _playerInput;
-
+    private bool _islookedLock = true;
+    
+    private TutorialController _tutorialController;
+    private GameScreen _gameScreen;
+    private bool _firstLook = false;
+    public event Action FirstLookChanged;
+    
+    [Inject]
+    private void Constuct(TutorialController tutor)
+    {
+        _tutorialController = tutor;
+    }
+    
     private void Start()
     {
+        // _tutorialController = FindObjectOfType<TutorialController>();
+        
         // Cursor.lockState = CursorLockMode.Locked;
     }
 
+    /*public void Init(GameWorld gameWorld)
+    {
+        
+    }*/
+
+    public void SetValue(bool value)
+    {
+        _islookedLock = value;
+    }
+    
     public void Rotate(float mouseX, float mouseY)
     {
+        if (_islookedLock) return;
+        
+        // FirstLookChanged?.Invoke();
+        
+        if (!_firstLook&&(mouseX>0||mouseY>0))
+        {
+            Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+            FirstLookChanged?.Invoke();
+            // _tutorialController.CompleteTutorial(TutorialType.LookAround);
+            _firstLook = true;
+        }
+        
         _mouseX = mouseX * _sensivity * Time.deltaTime + _xOffset * Time.deltaTime;
         _mouseY = mouseY * _sensivity * Time.deltaTime + _yOffset * Time.deltaTime;
         _xOffset = 0f;

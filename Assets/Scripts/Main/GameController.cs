@@ -210,7 +210,7 @@ public class GameController : MonoBehaviour
 
         xp.Load();
         delivery.Load();
-
+        gui.GameScreen.InitPlayer(createdPlayer);
         Debug.Log("Load world completed");
 
         // currency.AddCurrency(CurrencyType.Soft, new(10000, 0), true);
@@ -282,10 +282,13 @@ public class GameController : MonoBehaviour
         buyersController.StartSimulate();
         townSimulation.StartSimulate();
 
+
         if (!tutorial.IsCompleted(TutorialType.Congratulations))
         {
+            createdPlayer.LookMouse.SetValue(true);
+            createdPlayer.PlayerMovePC.enabled = false;
+            
             Debug.Log("Welcome tutor");
-
             var dialogScreen = gui.FindScreen<DialogScreen>();
             dialogScreen.Init(() =>
             {
@@ -295,7 +298,12 @@ public class GameController : MonoBehaviour
             gui.Show(dialogScreen);
             return;
         }
-        else gui.Show<GameScreen>();
+        else
+        {
+            createdPlayer.LookMouse.SetValue(false);
+            createdPlayer.PlayerMovePC.enabled = true;
+            gui.Show<GameScreen>();
+        }
 
         currency.StartSimulateIncomeOffer();
     }

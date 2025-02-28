@@ -12,41 +12,42 @@ namespace TheSTAR.GUI
     public class GameScreen : TutorialScreen
     {
         [SerializeField] private JoystickContainer joystickContainer;
+        [SerializeField] private GameObject _PcButtonsContainer;
+        [SerializeField] private GameObject _actionPCButton;
+        [SerializeField] private GameObject _throwPCButton;
+        [SerializeField] private GameObject _openPCButton;
+        [SerializeField] private GameObject _closePCButton;
 
-        [Header("Interaction")]
-        [SerializeField] private PointerButton mainInteractionButton;
+        [Header("Interaction")] [SerializeField]
+        private PointerButton mainInteractionButton;
+
         [SerializeField] private GameObject mainInteractionOutline;
         [SerializeField] private PointerButton placeButton;
         [SerializeField] private PointerButton openButton;
         [SerializeField] private PointerButton closeButton;
         [SerializeField] private PointerButton throwButton;
 
-        [Space]
-        [SerializeField] private DeliveryInfoUi deliveryInfoUi;
+        [Space] [SerializeField] private DeliveryInfoUi deliveryInfoUi;
         [SerializeField] private GameObject hideWhileDeliveryObject;
         [SerializeField] private TaskUI taskUI;
         //[SerializeField] private GameObject firstAssemblyHint;
 
-        [Space]
-        [SerializeField] private GameObject interactionUiContainer;
+        [Space] [SerializeField] private GameObject interactionUiContainer;
         [SerializeField] private GameObject lookAroundTutorObject;
         [SerializeField] private GameObject moveTutorObject;
 
-        [Space]
-        [SerializeField] private PointerButton openCloseOrdersButton;
+        [Space] [SerializeField] private PointerButton openCloseOrdersButton;
         [SerializeField] private TextMeshProUGUI journalTitle;
 
-        [Space]
-        [SerializeField] private AssemblyHintContainer assemblyHintContainer;
+        [Space] [SerializeField] private AssemblyHintContainer assemblyHintContainer;
         [SerializeField] private Animator orderAlertAnim;
         //[SerializeField] private OrdersNote ordersNote;
 
-        [Header("Income X2")]
-        [SerializeField] private PointerButton increaseIncomeBtn;
+        [Header("Income X2")] [SerializeField] private PointerButton increaseIncomeBtn;
         [SerializeField] private TextMeshProUGUI increaseIncomeEffectTimer;
         [SerializeField] private Animator incomeX2_animator;
         [SerializeField] private GameObject adTitleObject;
- 
+
         public JoystickContainer JoystickContainer => joystickContainer;
 
         public event Action MainInteractionClickEvent;
@@ -66,6 +67,7 @@ namespace TheSTAR.GUI
         private Delivery delivery;
         private AdsManager ads;
         private CurrencyController currency;
+        private Player _player;
 
         public PointerButton OpenButton => openButton;
         public PointerButton ThrowButton => throwButton;
@@ -91,6 +93,11 @@ namespace TheSTAR.GUI
             this.currency = currency;
         }
 
+        private void Start()
+        {
+            _PcButtonsContainer.SetActive(!Application.isMobilePlatform);
+        }
+
         // Init for game
         public override void Init()
         {
@@ -99,16 +106,13 @@ namespace TheSTAR.GUI
             joystickContainer.Init();
             joystickContainer.OnStartJoystickInteractEvent += OnStartMove;
 
-            mainInteractionButton.Init(() =>
-            {
-                MainInteractionClickEvent?.Invoke();
-            });
+            mainInteractionButton.Init(() => { MainInteractionClickEvent?.Invoke(); });
             placeButton.Init(() => OnPlaceClickEvent?.Invoke());
             openButton.Init(() =>
             {
                 OnOpenClickEvent?.Invoke();
                 /*
-                if (tutorial.InTutorial && 
+                if (tutorial.InTutorial &&
                     (tutorial.CurrentTutorialID == TutorialController.TutorID_PlaceCoffeeBeans || tutorial.CurrentTutorialID == TutorialController.TutorID_PlaceDessert))
                 {
                     TriggerTutorial();
@@ -119,7 +123,7 @@ namespace TheSTAR.GUI
             {
                 OnCloseClickEvent?.Invoke();
                 /*
-                if (tutorial.InTutorial && 
+                if (tutorial.InTutorial &&
                     (tutorial.CurrentTutorialID == TutorialController.TutorID_PlaceCoffeeBeans || tutorial.CurrentTutorialID == TutorialController.TutorID_PlaceDessert))
                 {
                     TriggerTutorial();
@@ -128,13 +132,7 @@ namespace TheSTAR.GUI
             });
             throwButton.Init(() => OnThrowClickEvent?.Invoke());
 
-            deliveryInfoUi.Init(() =>
-            {
-                delivery.TrySkipForAd();
-            }, () =>
-            {
-                delivery.SkipForFree();
-            });
+            deliveryInfoUi.Init(() => { delivery.TrySkipForAd(); }, () => { delivery.SkipForFree(); });
 
             taskUI.Init();
 
@@ -166,11 +164,11 @@ namespace TheSTAR.GUI
                 hideWhileDeliveryObject.SetActive(true);
                 TriggerTutorial();
             };
-        
+
             //ordersManager.OnOrderAcceptedEvent += ForceUpdateOrdersNote;
             //ordersManager.OnOrderChangeEvent += SoftUpdateOrdersNote;
             /*
-            ordersManager.OnOrderCompletedEvent += (b) => 
+            ordersManager.OnOrderCompletedEvent += (b) =>
             {
                 //if (ordersNote.CurrentOrderData == null) return;
 
@@ -185,7 +183,7 @@ namespace TheSTAR.GUI
                 taskUI.ClearTask();
                 //firstAssemblyHint.SetActive(false);
             };
-            tutorial.OnCompleteTutorialEvent += () => 
+            tutorial.OnCompleteTutorialEvent += () =>
             {
                 taskUI.ClearTask();
                 //firstAssemblyHint.SetActive(false);
@@ -193,15 +191,12 @@ namespace TheSTAR.GUI
 
             assemblyHintContainer.Init();
 
-            increaseIncomeBtn.Init(() =>
-            {   
-                currency.TryGiveIncomeBonusForAds();
-            });
+            increaseIncomeBtn.Init(() => { currency.TryGiveIncomeBonusForAds(); });
 
             currency.ShowIncomeX2OfferEvent += () =>
             {
                 if (currency.IncomeX2) return;
-                
+
                 increaseIncomeBtn.SetInteractable(true);
                 increaseIncomeBtn.gameObject.SetActive(true);
                 adTitleObject.SetActive(true);
@@ -236,6 +231,27 @@ namespace TheSTAR.GUI
             };
         }
 
+        private void Update()
+        {
+            if (UnityEngine.Input.GetKeyUp(KeyCode.E))
+                MainInteractionClickEvent?.Invoke();
+
+            if (UnityEngine.Input.GetKeyUp(KeyCode.F))
+                OnThrowClickEvent?.Invoke();
+
+            if (UnityEngine.Input.GetKeyUp(KeyCode.R))
+                OnOpenClickEvent?.Invoke();
+
+            if (UnityEngine.Input.GetKeyUp(KeyCode.T))
+                OnCloseClickEvent?.Invoke();
+        }
+
+        public void InitPlayer(Player player)
+        {
+            _player = player;
+            _player.LookMouse.FirstLookChanged += OnStartLookAround;
+            _player.PlayerMovePC.FirstMoveChanged += OnStartMove;
+        }       
         private void OnStartTutorial(TutorialType tutorialType, TutorialData tutorData)
         {
             if (tutorData.UseTaskPanel)
@@ -314,7 +330,8 @@ namespace TheSTAR.GUI
         {
             base.OnShow();
 
-            if (!data.gameData.commonData.gameRated && data.gameData.commonData.rateUsPlanned && DateTime.Now >= data.gameData.commonData.nextRateUsPlan)
+            if (!data.gameData.commonData.gameRated && data.gameData.commonData.rateUsPlanned &&
+                DateTime.Now >= data.gameData.commonData.nextRateUsPlan)
             {
                 data.gameData.commonData.rateUsPlanned = false;
                 gui.Show<RateUsScreen>();
@@ -333,7 +350,7 @@ namespace TheSTAR.GUI
             joystickContainer.BreakInput();
             if (tutorial.InTutorial) tutorial.BreakTutorial();
         }
-    
+
         public void OnStartDrag(Draggable draggable)
         {
             //Debug.Log("GameScreen: OnStartDrag");
@@ -350,7 +367,7 @@ namespace TheSTAR.GUI
 
             //if (tutorial.InTutorial && tutorial.CurrentTutorialID == TutorialController.TutorID_MakeFirstCoffee_Final) TriggerTutorial();
         }
-    
+
         private Draggable currentDraggable; // предмет в руках игрока
         private TouchInteractive currentFocus; // предмет на который смотрит игрок
 
@@ -364,7 +381,7 @@ namespace TheSTAR.GUI
         {
             mainInteractionOutline.SetActive(currentFocus);
             DoUpdateInteractionUI();
-        
+
             void DoUpdateInteractionUI()
             {
                 openButton.gameObject.SetActive(false);
@@ -372,10 +389,13 @@ namespace TheSTAR.GUI
                 placeButton.gameObject.SetActive(false);
                 throwButton.gameObject.SetActive(false);
                 
+                _openPCButton.gameObject.SetActive(false);
+                _closePCButton.gameObject.SetActive(false);
+
                 if (currentDraggable)
                 {
                     throwButton.gameObject.SetActive(true);
-                    
+
                     var box = currentDraggable.GetComponent<Box>();
                     if (box)
                     {
@@ -383,6 +403,8 @@ namespace TheSTAR.GUI
                         {
                             openButton.gameObject.SetActive(!boxOpenClose.IsOpen);
                             closeButton.gameObject.SetActive(boxOpenClose.IsOpen);
+                            _openPCButton.gameObject.SetActive(!boxOpenClose.IsOpen);
+                            _closePCButton.gameObject.SetActive(boxOpenClose.IsOpen);
 
                             if (!currentFocus || !boxOpenClose.IsOpen)
                             {
@@ -395,8 +417,8 @@ namespace TheSTAR.GUI
                             placeButton.gameObject.SetActive(false);
                             return;
                         }
-                        
-                        var boxDraggable =  box.CurrentDraggable;
+
+                        var boxDraggable = box.CurrentDraggable;
                         if (!boxDraggable) return;
 
                         var boxProduct = boxDraggable.GetComponent<Item>();
@@ -407,14 +429,15 @@ namespace TheSTAR.GUI
                         var draggableItem = currentDraggable.GetComponent<Item>();
 
                         var itemsHandler = currentFocus.GetComponent<ItemsHandler>();
-                        if (draggableItem && itemsHandler && itemsHandler.HavePlace(draggableItem.ItemType) && itemsHandler.CanPlaceBySectionType(boxProductSection))
+                        if (draggableItem && itemsHandler && itemsHandler.HavePlace(draggableItem.ItemType) &&
+                            itemsHandler.CanPlaceBySectionType(boxProductSection))
                         {
                             placeButton.gameObject.SetActive(true);
                         }
 
                         return;
                     }
-                    
+
                     if (currentFocus)
                     {
                         var coffeeMachine = currentFocus.GetComponent<OldCoffeeMachine>();
@@ -424,7 +447,8 @@ namespace TheSTAR.GUI
                         {
                             var productSection = itemsConfig.Get.Item(product.ItemType).MainData.SectionType;
                             var itemsHandler = currentFocus.GetComponent<ItemsHandler>();
-                            if (itemsHandler && itemsHandler.HavePlace(product.ItemType) && itemsHandler.CanPlaceBySectionType(productSection))
+                            if (itemsHandler && itemsHandler.HavePlace(product.ItemType) &&
+                                itemsHandler.CanPlaceBySectionType(productSection))
                             {
                                 placeButton.gameObject.SetActive(true);
                                 return;
@@ -434,16 +458,19 @@ namespace TheSTAR.GUI
                 }
             }
         }
-    
+
         private bool inWaitForLookAround = false;
         private bool inWaitForMove = false;
 
         public override void TriggerTutorial()
         {
             if (!IsShow) return;
-
+            
             if (!tutorial.IsCompleted(TutorialType.LookAround))
             {
+                _player.LookMouse.SetValue(false);
+                
+                Debug.Log("ComplEteD LOOK AROUND");
                 tutorial.CompleteTutorial(TutorialType.LookAround);
                 joystickContainer.gameObject.SetActive(false);
                 SetUseTopUI(false);
@@ -455,6 +482,8 @@ namespace TheSTAR.GUI
 
             if (!tutorial.IsCompleted(TutorialType.Move))
             {
+                _player.PlayerMovePC.enabled = true;
+                Debug.Log("ComplEteD MOVE");
                 lookAroundTutorObject.SetActive(false);
                 tutorial.CompleteTutorial(TutorialType.Move);
                 joystickContainer.gameObject.SetActive(true);
@@ -489,7 +518,7 @@ namespace TheSTAR.GUI
                 TriggerTutorial();
             }
         }
-    
+
         public void OnWrongOrderOnTray()
         {
             orderAlertAnim.SetTrigger("Show");

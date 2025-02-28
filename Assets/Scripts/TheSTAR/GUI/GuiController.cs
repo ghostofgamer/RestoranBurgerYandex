@@ -36,10 +36,13 @@ namespace TheSTAR.GUI
         private GameController _gameController;
         private GameWorld _gameWorld;
         private TopUiContainer _topUiContainer;
+        private GameScreen _gameScreen;
         
         public TopUiContainer TopUiContainer => _topUiContainer;
         
         public GameWorld GameWorld => _gameWorld;
+
+        public GameScreen GameScreen => _gameScreen;
 
 
         public void InitGameWorld(GameWorld gameworld)
@@ -58,6 +61,12 @@ namespace TheSTAR.GUI
             TopUiContainer game)
         {
             _topUiContainer = game;
+        }
+        
+        public void InitGameScreen(
+            GameScreen game)
+        {
+            _gameScreen = game;
         }
 
         public void ShowMainScreen()

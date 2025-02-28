@@ -169,7 +169,7 @@ public partial class GameWorldInteraction
         var lookAround = gui.FindUniversalElement<LookAroundContainer>();
 
         lookAround.StartLookAroundEvent += gameScreen.OnStartLookAround;
-
+        
         lookAround.ClickEvent += (PointerEventData pointer) =>
         {
             bool forceClick = false;
