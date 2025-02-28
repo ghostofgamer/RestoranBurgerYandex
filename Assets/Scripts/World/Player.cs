@@ -171,6 +171,7 @@ public class Player : MonoBehaviour, IJoystickControlled, ICameraFocusable
                 }
             }
         }
+        
         //else draggerRotationOffset.transform.localPosition = new Vector3(0, MathUtility.ProgressToValue((float)verticalAngle / 90, 0, DraggerBottomLookAtOffset), 0);
     }
 

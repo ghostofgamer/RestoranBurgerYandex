@@ -69,7 +69,6 @@ namespace ReputationContent
 
         public void IncreaseReputation()
         {
-            Debug.Log("увеличить репутацию");
             _currentReputation = Mathf.Clamp(_currentReputation + _minReputationChangeValue, 0, _maxReputation);
             _rateFly.Show(_minReputationChangeValue);
             UpdateReputationUI();
@@ -81,7 +80,6 @@ namespace ReputationContent
             _currentReputation = Mathf.Clamp(_currentReputation - _minReputationChangeValue, 0, _maxReputation);
             _rateFly.Show(-_minReputationChangeValue);
             UpdateReputationUI();
-            Debug.Log("уменьшить репутацию");
             SaveReputation();
         }
 
@@ -96,15 +94,12 @@ namespace ReputationContent
             _currentReputation = Mathf.Clamp(_currentReputation + result, 0, _maxReputation);
             _rateFly.Show(result);
             UpdateReputationUI();
-            Debug.Log($"уровень ожидания клиента {waitingRate}\nа грязь стола  {pollutionRate}");
-
             SaveReputation();
         }
 
         private void UpdateReputationUI()
         {
             _reputationSlider.value = (float)_currentReputation / _maxReputation;
-            Debug.Log($"урвоень нашей репутации {_currentReputation}");
             _starsRestaurant = Mathf.FloorToInt((float)_currentReputation / _maxReputation * _stars.Length);
 
             for (int i = 0; i < _stars.Length; i++)
@@ -131,8 +126,7 @@ namespace ReputationContent
             string json = JsonUtility.ToJson(data);
             string path = Path.Combine(Application.persistentDataPath, SaveFileName);
             File.WriteAllText(path, json);
-        
-            Debug.Log("Сохранили " + _currentReputation);
+            
         }
 
         public void LoadReputation()
@@ -141,7 +135,6 @@ namespace ReputationContent
             if (File.Exists(path))
             {
                 string json = File.ReadAllText(path);
-                Debug.Log("Loaded JSON: " + json); // Вывод содержимого файла для проверки
 
                 try
                 {
@@ -151,7 +144,6 @@ namespace ReputationContent
                 }
                 catch (System.Exception e)
                 {
-                    Debug.LogError("Failed to deserialize JSON: " + e.Message);
                     _currentReputation = 0;
                     // _starsCount = 0;
                 }
@@ -161,8 +153,7 @@ namespace ReputationContent
                 _currentReputation = 0;
                 // _starsCount = 0;
             }
-
-            Debug.Log("Загрузили " + _currentReputation);
+            
             UpdateReputationUI();
         }
     }
