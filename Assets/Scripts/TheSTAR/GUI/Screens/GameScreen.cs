@@ -34,7 +34,9 @@ namespace TheSTAR.GUI
 
         [Space] [SerializeField] private GameObject interactionUiContainer;
         [SerializeField] private GameObject lookAroundTutorObject;
+        [SerializeField] private GameObject lookAroundTutorObjectPC;
         [SerializeField] private GameObject moveTutorObject;
+        [SerializeField] private GameObject moveTutorObjectPC;
 
         [Space] [SerializeField] private PointerButton openCloseOrdersButton;
         [SerializeField] private TextMeshProUGUI journalTitle;
@@ -251,7 +253,8 @@ namespace TheSTAR.GUI
             _player = player;
             _player.LookMouse.FirstLookChanged += OnStartLookAround;
             _player.PlayerMovePC.FirstMoveChanged += OnStartMove;
-        }       
+        }
+
         private void OnStartTutorial(TutorialType tutorialType, TutorialData tutorData)
         {
             if (tutorData.UseTaskPanel)
@@ -388,7 +391,7 @@ namespace TheSTAR.GUI
                 closeButton.gameObject.SetActive(false);
                 placeButton.gameObject.SetActive(false);
                 throwButton.gameObject.SetActive(false);
-                
+
                 _openPCButton.gameObject.SetActive(false);
                 _closePCButton.gameObject.SetActive(false);
 
@@ -465,16 +468,22 @@ namespace TheSTAR.GUI
         public override void TriggerTutorial()
         {
             if (!IsShow) return;
-            
+
             if (!tutorial.IsCompleted(TutorialType.LookAround))
             {
                 _player.LookMouse.SetValue(false);
-                
+
                 Debug.Log("ComplEteD LOOK AROUND");
                 tutorial.CompleteTutorial(TutorialType.LookAround);
                 joystickContainer.gameObject.SetActive(false);
                 SetUseTopUI(false);
-                lookAroundTutorObject.SetActive(true);
+
+                if (Application.isMobilePlatform)
+                    lookAroundTutorObject.SetActive(true);
+                else
+                    lookAroundTutorObjectPC.SetActive(true);
+
+
                 interactionUiContainer.SetActive(false);
                 inWaitForLookAround = true;
                 return;
@@ -484,11 +493,21 @@ namespace TheSTAR.GUI
             {
                 _player.PlayerMovePC.enabled = true;
                 Debug.Log("ComplEteD MOVE");
-                lookAroundTutorObject.SetActive(false);
+
+                if (Application.isMobilePlatform)
+                    lookAroundTutorObject.SetActive(false);
+                else
+                    lookAroundTutorObjectPC.SetActive(false);
+
                 tutorial.CompleteTutorial(TutorialType.Move);
                 joystickContainer.gameObject.SetActive(true);
                 SetUseTopUI(false);
-                moveTutorObject.SetActive(true);
+
+                if (Application.isMobilePlatform)
+                    moveTutorObject.SetActive(true);
+                else
+                    moveTutorObjectPC.SetActive(true);
+
                 interactionUiContainer.SetActive(false);
                 inWaitForMove = true;
                 return;
@@ -511,7 +530,12 @@ namespace TheSTAR.GUI
             if (inWaitForMove)
             {
                 inWaitForMove = false;
-                moveTutorObject.SetActive(false);
+
+                if (Application.isMobilePlatform)
+                    moveTutorObject.SetActive(false);
+                else
+                    moveTutorObjectPC.SetActive(false);
+
                 SetUseTopUI(true);
                 gui.FindUniversalElement<TopUiContainer>().gameObject.SetActive(true);
                 interactionUiContainer.SetActive(true);
