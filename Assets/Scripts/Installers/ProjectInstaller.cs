@@ -10,6 +10,8 @@ public class ProjectInstaller : MonoInstaller
 {
     [SerializeField] private GameLoader gameControllerPrefab;
     [SerializeField] private SoundController soundControllerPrefab;
+    [SerializeField] private FocusScreen _focusScreen;
+    [SerializeField] private RewardDelivery _rewardDelivery;
 
     public override void InstallBindings()
     {
@@ -24,10 +26,20 @@ public class ProjectInstaller : MonoInstaller
         Container.Bind<AllPrices>().AsSingle();
         Container.Bind<OrdersManager>().AsSingle();
 
-        var soundController = Container.InstantiatePrefabForComponent<SoundController>(soundControllerPrefab, soundControllerPrefab.transform.position, Quaternion.identity, null);
+        var soundController = Container.InstantiatePrefabForComponent<SoundController>(soundControllerPrefab,
+            soundControllerPrefab.transform.position, Quaternion.identity, null);
         Container.Bind<SoundController>().FromInstance(soundController).AsSingle();
 
-        var gameLoader = Container.InstantiatePrefabForComponent<GameLoader>(gameControllerPrefab, gameControllerPrefab.transform.position, Quaternion.identity, null);
-        Container.Bind<GameLoader>().FromInstance(gameLoader).AsSingle();        
+        var gameLoader = Container.InstantiatePrefabForComponent<GameLoader>(gameControllerPrefab,
+            gameControllerPrefab.transform.position, Quaternion.identity, null);
+        Container.Bind<GameLoader>().FromInstance(gameLoader).AsSingle();
+
+        var focusScreen = Container.InstantiatePrefabForComponent<FocusScreen>(_focusScreen,
+            _focusScreen.transform.position, Quaternion.identity, null);
+        Container.Bind<FocusScreen>().FromInstance(focusScreen).AsSingle();
+
+        var rewardDelivery = Container.InstantiatePrefabForComponent<RewardDelivery>(_rewardDelivery,
+            _rewardDelivery.transform.position, Quaternion.identity, null);
+        Container.Bind<RewardDelivery>().FromInstance(rewardDelivery).AsSingle();
     }
 }

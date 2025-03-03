@@ -4,6 +4,7 @@ using Configs;
 using DG.Tweening;
 using System;
 using System.Collections.Generic;
+using Ads;
 using Random = UnityEngine.Random;
 using TheSTAR.Data;
 using Zenject;
@@ -43,6 +44,7 @@ public class Delivery : MonoBehaviour
     private ItemsController items;
     private DiContainer diContainer;
     private AdsManager ads;
+    private RewardDelivery _rewardDelivery;
     private SoundController sounds;
 
     public event Action OnDeleteBox;
@@ -56,7 +58,8 @@ public class Delivery : MonoBehaviour
         ItemsController items,
         DiContainer diContainer,
         AdsManager ads,
-        SoundController sounds)
+        SoundController sounds,
+        RewardDelivery rewardDelivery)
     {
         this.data = data;
         this.currency = currency;
@@ -66,6 +69,7 @@ public class Delivery : MonoBehaviour
         this.diContainer = diContainer;
         this.ads = ads;
         this.sounds = sounds;
+        _rewardDelivery = rewardDelivery;
     }
 
     public void Load()
@@ -274,11 +278,45 @@ public class Delivery : MonoBehaviour
 
     public void TrySkipForAd()
     {
-        ads.ShowRewarded("skip delivery", (success) =>
+        Debug.Log("reward!!!!");
+        
+#if UNITY_EDITOR
+        DoSkip(true);
+#else
+        // В противном случае показываем рекламу
+        _rewardDelivery.Show((success) =>
+        {
+            if (success)
+            {
+                DoSkip(true);
+            }
+            else
+            {
+                Debug.Log("Rewarded ad was not completed.");
+            }
+        });
+#endif
+        
+        /*_rewardDelivery.Show((success) =>
+        {
+            if (success)
+            {
+                DoSkip(true);
+            }
+            else
+            {
+                Debug.Log("Rewarded ad was not completed.");
+            }
+        });*/
+
+        
+        
+        
+        /*ads.ShowRewarded("skip delivery", (success) =>
         {
             if (!success) return;
             DoSkip(true);
-        });
+        });*/
     }
 
     public void SkipForFree()
