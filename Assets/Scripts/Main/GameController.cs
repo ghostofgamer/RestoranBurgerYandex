@@ -360,9 +360,6 @@ public class GameController : MonoBehaviour
     {
         if (!tutorial.IsCompleted(TutorialType.FirstDelivery))
         {
-            Debug.Log("!!!!Firdt");
-            
-            
             tutorial.TryShowInWorld(TutorialType.FirstDelivery,
                 new TutorInWorldFocus[] { createdWorld.FastFood.Computer.TutorFocus }, out _);
             return;
@@ -370,9 +367,6 @@ public class GameController : MonoBehaviour
 
         if (!tutorial.IsCompleted(TutorialType.GetFirstDelivery))
         {
-            Debug.Log("!!!!GetFIRST");
-            
-            
             var box = delivery.FindBox(ItemType.Bun);
             if (box) tutorial.TryShowInWorld(TutorialType.GetFirstDelivery, box.TutorFocus, out _);
             return;

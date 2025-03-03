@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Ads;
 using UnityEngine;
 using Zenject;
 
@@ -29,11 +30,13 @@ namespace TheSTAR.GUI
         public event Action<DollarValue> OnUpdateGivingEvent;
 
         private GuiController gui;
+        private FullAd _fullAd;
 
         [Inject]
-        private void Construct(GuiController gui)
+        private void Construct(GuiController gui,FullAd fullAd)
         {
             this.gui = gui;
+            _fullAd = fullAd;
         }
 
         public override void Init()
@@ -56,7 +59,13 @@ namespace TheSTAR.GUI
             acceptBtn.Init(() =>
             {
                 if (currentValue.dollars != neededValue.dollars || currentValue.cents != neededValue.cents) return;
-
+                
+#if UNITY_WEBGL && !UNITY_EDITOR
+            _fullAd.Show();
+#else
+                Debug.Log("Full ad is not shown because this is not a web build.");
+#endif
+                
                 successAction?.Invoke();
             });
         }

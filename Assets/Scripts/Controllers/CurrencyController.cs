@@ -12,7 +12,7 @@ public class CurrencyController
     private ConfigHelper<GameConfig> gameConfig = new();
 
     private event Action<CurrencyType, DollarValue> OnChangeCurrencyEvent;
-    
+
     public event Action<DollarValue> OnCurrencyChanged;
     public event Action<DollarValue> OnTipsChanged;
 
@@ -21,12 +21,14 @@ public class CurrencyController
     private DataController data;
     private AdsManager ads;
     private Reputation _reputation;
+    private RewardDelivery _rewardDelivery;
 
     [Inject]
-    private void Constuct(DataController data, AdsManager ads)
+    private void Constuct(DataController data, AdsManager ads, RewardDelivery rewardDelivery)
     {
         this.data = data;
         this.ads = ads;
+        _rewardDelivery = rewardDelivery;
     }
 
     public void AddCurrency(DollarValue value) => AddCurrency(default, value);
@@ -38,25 +40,25 @@ public class CurrencyController
         if (_reputation != null)
         {
             Debug.Log("репутация заведения  " + _reputation.StarsRestaurant);
-            
+
             float tipsPercentage = Mathf.Max(0, _reputation.StarsRestaurant) * 0.03f;
-            
+
             int totalCents = value.dollars * 100 + value.cents;
-            
+
             float tipsInCents = totalCents * tipsPercentage;
             int tipsDollars = Mathf.FloorToInt(tipsInCents / 100);
             int tipsCents = Mathf.FloorToInt(tipsInCents % 100);
             DollarValue tipsValue = new DollarValue { dollars = tipsDollars, cents = tipsCents };
             OnTipsChanged?.Invoke(tipsValue);
             Debug.Log("чаевые " + tipsValue);
-            
+
             float finalValueInCents = totalCents * (1 + Mathf.Max(0, _reputation.StarsRestaurant) * 0.03f);
             int finalDollars = Mathf.FloorToInt(finalValueInCents / 100);
             int finalCents = Mathf.FloorToInt(finalValueInCents % 100);
             value = new DollarValue { dollars = finalDollars, cents = finalCents };
             Debug.Log("FinalValue " + value);
         }
-        
+
         OnCurrencyChanged?.Invoke(value);
 
         if (value.dollars < 0)
@@ -174,10 +176,32 @@ public class CurrencyController
     {
         if (IncomeX2) return;
 
-        ads.ShowRewarded("Income x2", (success) =>
+#if UNITY_EDITOR
+        AddCurrency(CurrencyType.Soft, new(100, 0), true);
+        CompleteIncomeEffectEvent?.Invoke();
+        // SetIncomeBonus(gameConfig.Get.X2BonuxDuration.ToTimeSpan());
+#else
+        _rewardDelivery.Show((success) =>
+        {
+            if (success)
+            {
+AddCurrency(CurrencyType.Soft, new(100, 0), true);
+        CompleteIncomeEffectEvent?.Invoke();
+
+                // SetIncomeBonus(gameConfig.Get.X2BonuxDuration.ToTimeSpan());
+            }
+            else
+            {
+                Debug.Log("Rewarded ad was not completed.");
+            }
+        });
+#endif
+
+
+        /*ads.ShowRewarded("Income x2", (success) =>
         {
             if (success) SetIncomeBonus(gameConfig.Get.X2BonuxDuration.ToTimeSpan());
-        });
+        });*/
     }
 
     private void SetIncomeBonus(TimeSpan duration)

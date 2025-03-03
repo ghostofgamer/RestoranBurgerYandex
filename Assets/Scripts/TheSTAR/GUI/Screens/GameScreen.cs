@@ -12,6 +12,7 @@ namespace TheSTAR.GUI
     public class GameScreen : TutorialScreen
     {
         [SerializeField] private JoystickContainer joystickContainer;
+        [SerializeField] private GameObject _MobileButtonsContainer;
         [SerializeField] private GameObject _PcButtonsContainer;
         [SerializeField] private GameObject _actionPCButton;
         [SerializeField] private GameObject _throwPCButton;
@@ -98,6 +99,8 @@ namespace TheSTAR.GUI
         private void Start()
         {
             _PcButtonsContainer.SetActive(!Application.isMobilePlatform);
+            _MobileButtonsContainer.SetActive(Application.isMobilePlatform);
+            // mainInteractionButton.gameObject.SetActive(Application.isMobilePlatform);
         }
 
         // Init for game
@@ -201,7 +204,7 @@ namespace TheSTAR.GUI
 
                 increaseIncomeBtn.SetInteractable(true);
                 increaseIncomeBtn.gameObject.SetActive(true);
-                adTitleObject.SetActive(true);
+                // adTitleObject.SetActive(true);
                 incomeX2_animator.SetBool("Jump", true);
             };
 
@@ -214,10 +217,11 @@ namespace TheSTAR.GUI
 
             currency.StartIncomeEffectEvent += () =>
             {
+                Debug.Log("StartIncome");
                 increaseIncomeBtn.gameObject.SetActive(true);
                 increaseIncomeEffectTimer.gameObject.SetActive(true);
                 increaseIncomeBtn.SetInteractable(false);
-                adTitleObject.SetActive(false);
+                // adTitleObject.SetActive(false);
                 incomeX2_animator.SetBool("Jump", false);
             };
 
@@ -228,6 +232,7 @@ namespace TheSTAR.GUI
 
             currency.CompleteIncomeEffectEvent += () =>
             {
+                Debug.Log("CompleteIncome");
                 increaseIncomeBtn.gameObject.SetActive(false);
                 increaseIncomeEffectTimer.gameObject.SetActive(false);
             };
@@ -382,7 +387,9 @@ namespace TheSTAR.GUI
 
         public void UpdateInteractionButtons()
         {
-            mainInteractionOutline.SetActive(currentFocus);
+            if (Application.isMobilePlatform)
+                mainInteractionOutline.SetActive(currentFocus);
+            
             DoUpdateInteractionUI();
 
             void DoUpdateInteractionUI()

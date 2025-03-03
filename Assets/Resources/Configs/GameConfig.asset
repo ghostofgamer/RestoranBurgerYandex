@@ -200,7 +200,7 @@ MonoBehaviour:
   x2BonusOfferPeriod:
     days: 0
     hours: 0
-    minutes: 5
+    minutes: 3
     seconds: 0
   showX2BonusOfferDuration:
     days: 0

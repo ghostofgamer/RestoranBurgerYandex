@@ -210,6 +210,7 @@ namespace TheSTAR.GUI
 
         protected override void OnShow()
         {
+            Debug.Log("SHOW COMPUTER SCREEN");
             base.OnShow();
             
             shoppingCart = new();

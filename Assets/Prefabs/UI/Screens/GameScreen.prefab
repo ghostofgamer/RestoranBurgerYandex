@@ -357,6 +357,7 @@ MonoBehaviour:
   useLookAround: 1
   useMainMenuFon: 0
   joystickContainer: {fileID: 235494354687484347}
+  _MobileButtonsContainer: {fileID: 1681188915337345326}
   _PcButtonsContainer: {fileID: 9600870068707468}
   _actionPCButton: {fileID: 3776361713578582439}
   _throwPCButton: {fileID: 2639057013864476898}
@@ -771,8 +772,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -216, y: -317.39996}
-  m_SizeDelta: {x: 171, y: 147}
+  m_AnchoredPosition: {x: -181.75122, y: -287.7597}
+  m_SizeDelta: {x: 304.8038, y: 112.9067}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &57943686329268379
 CanvasRenderer:
@@ -802,7 +803,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ca3a1e204f820459882f233ff521a0a9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: da1e504c409fe0e43932119254bbe3fe, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

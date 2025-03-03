@@ -46,20 +46,22 @@ public class Delivery : MonoBehaviour
     private AdsManager ads;
     private RewardDelivery _rewardDelivery;
     private SoundController sounds;
+    private FullAd _fullAd;
 
     public event Action OnDeleteBox;
 
     [Inject]
     private void Consruct(
-        DataController data, 
-        CurrencyController currency, 
+        DataController data,
+        CurrencyController currency,
         XpController xp,
         GuiController gui,
         ItemsController items,
         DiContainer diContainer,
         AdsManager ads,
         SoundController sounds,
-        RewardDelivery rewardDelivery)
+        RewardDelivery rewardDelivery,
+        FullAd fullAd)
     {
         this.data = data;
         this.currency = currency;
@@ -70,6 +72,7 @@ public class Delivery : MonoBehaviour
         this.ads = ads;
         this.sounds = sounds;
         _rewardDelivery = rewardDelivery;
+        _fullAd = fullAd;
     }
 
     public void Load()
@@ -107,7 +110,7 @@ public class Delivery : MonoBehaviour
         data.gameData.levelData.itemsInCurrentDelivery = currentDeliveryItems;
         data.gameData.levelData.timeForNextDelivery = completeCurrentDeliveryTime;
         data.gameData.levelData.deliveryInProcess = deliveryInProcess;
-    
+
         // boxes
 
         List<BoxInGameData> boxInGameDatas = new();
@@ -116,7 +119,7 @@ public class Delivery : MonoBehaviour
         {
             if (box == null) continue;
 
-            boxInGameDatas.Add(new (box.ItemType, box.ItemsCount, box.transform.position));
+            boxInGameDatas.Add(new(box.ItemType, box.ItemsCount, box.transform.position));
         }
 
         data.gameData.levelData.boxes = boxInGameDatas;
@@ -136,29 +139,37 @@ public class Delivery : MonoBehaviour
             totalCost += itemData.CostData.BuyCost * (itemData.OtherData.BoxValue * element.Value);
             totalXpReward += itemData.XpData.BuyXpReward * element.Value;
         }
-        
+
         currency.ReduceCurrency(CurrencyType.Soft, totalCost, () =>
         {
+#if UNITY_WEBGL && !UNITY_EDITOR
+            _fullAd.Show();
+#else
+        Debug.Log("Full ad is not shown because this is not a web build.");
+#endif
+
+
             sounds.Play(SoundType.Oplata_korsini);
             xp.AddXp(totalXpReward);
             CallDelivery(shoppingCart, GetCurrentDeliveryDuration(), false);
             gui.ShowMainScreen();
-        }, () =>
-        {
-            sounds.Play(SoundType.Oshibka);
-        });
+        }, () => { sounds.Play(SoundType.Oshibka); });
     }
 
     private GameTimeSpan GetCurrentDeliveryDuration()
     {
         if (currentDeliveryIndex == 0) return deliveryConfig.Get.FirstDeliveryDuration;
-        else if (currentDeliveryIndex <= 10) return GetRandomDuration(deliveryConfig.Get.BeginnerDeliveryDurationMin, deliveryConfig.Get.BeginnerDeliveryDurationMax);
-        else return GetRandomDuration(deliveryConfig.Get.DefaultDeliveryDurationMin, deliveryConfig.Get.DefaultDeliveryDurationMax);
+        else if (currentDeliveryIndex <= 10)
+            return GetRandomDuration(deliveryConfig.Get.BeginnerDeliveryDurationMin,
+                deliveryConfig.Get.BeginnerDeliveryDurationMax);
+        else
+            return GetRandomDuration(deliveryConfig.Get.DefaultDeliveryDurationMin,
+                deliveryConfig.Get.DefaultDeliveryDurationMax);
     }
 
     private GameTimeSpan GetRandomDuration(GameTimeSpan min, GameTimeSpan max)
     {
-        return new (Random.Range(min.TotalSeconds, max.TotalSeconds));
+        return new(Random.Range(min.TotalSeconds, max.TotalSeconds));
     }
 
     private void CallDelivery(Dictionary<ItemType, int> shoppingCart, GameTimeSpan duration, bool load)
@@ -176,10 +187,8 @@ public class Delivery : MonoBehaviour
         waitForDeliveryTweener?.Kill();
 
         waitForDeliveryTweener =
-        DOVirtual.Int(duration.TotalSeconds, 0, duration.TotalSeconds, OnDeliveryTick).SetEase(Ease.Linear).OnComplete(() =>
-        {
-            OnCompleteWaitForDelivery();
-        });
+            DOVirtual.Int(duration.TotalSeconds, 0, duration.TotalSeconds, OnDeliveryTick).SetEase(Ease.Linear)
+                .OnComplete(() => { OnCompleteWaitForDelivery(); });
 
         OnStartDeliveryEvent?.Invoke(duration, currentDeliveryIndex);
 
@@ -191,9 +200,9 @@ public class Delivery : MonoBehaviour
     private void OnCompleteWaitForDelivery()
     {
         sounds.Play(SoundType.Dostavka);
-        
+
         ItemType firstItem = default;
-        
+
         foreach (var element in currentDeliveryItems)
         {
             if (element.Value > 0)
@@ -242,11 +251,12 @@ public class Delivery : MonoBehaviour
         var itemData = itemsConfig.Get.Item(itemType);
         var deliveryData = deliveryConfig.Get.DeliveryItemsData.Get(itemType);
         bool useBox = deliveryData.boxPrefab;
-        
+
         Box box = null;
         if (useBox)
         {
-            box = diContainer.InstantiatePrefabForComponent<Box>(deliveryData.boxPrefab, to, Quaternion.identity, transform);
+            box = diContainer.InstantiatePrefabForComponent<Box>(deliveryData.boxPrefab, to, Quaternion.identity,
+                transform);
             box.OnDestroyEvent += OnDestroyBox;
             box.OnEndDragEvent += () => Save();
             activeBoxes.Add(box);
@@ -279,7 +289,7 @@ public class Delivery : MonoBehaviour
     public void TrySkipForAd()
     {
         Debug.Log("reward!!!!");
-        
+
 #if UNITY_EDITOR
         DoSkip(true);
 #else
@@ -296,7 +306,7 @@ public class Delivery : MonoBehaviour
             }
         });
 #endif
-        
+
         /*_rewardDelivery.Show((success) =>
         {
             if (success)
@@ -309,9 +319,7 @@ public class Delivery : MonoBehaviour
             }
         });*/
 
-        
-        
-        
+
         /*ads.ShowRewarded("skip delivery", (success) =>
         {
             if (!success) return;
@@ -353,6 +361,7 @@ public class Delivery : MonoBehaviour
     }
 
     private bool quit = false;
+
     private void OnApplicationQuit()
     {
         Save();
@@ -368,7 +377,7 @@ public class Delivery : MonoBehaviour
             if (!activeItemTypes.ContainsKey(box.ItemType)) activeItemTypes.Add(box.ItemType, box.ItemsCount);
             else activeItemTypes[box.ItemType] += box.ItemsCount;
         }
-        
+
         return activeItemTypes;
     }
 }

@@ -1,3 +1,4 @@
+using Ads;
 using UnityEngine;
 using TheSTAR.Data;
 using Zenject;
@@ -13,8 +14,7 @@ namespace TheSTAR.GUI
         [SerializeField] private PointerToggle vibrationsToggle;
         [SerializeField] private PointerButton rateUsButton;
 
-        [Header("Cheats")]
-        [SerializeField] private GameObject cheatsContainer;
+        [Header("Cheats")] [SerializeField] private GameObject cheatsContainer;
 
         [SerializeField] private PointerButton cheatAddCurrencyBtn;
         [SerializeField] private PointerButton cheatAddXpBtn;
@@ -27,11 +27,12 @@ namespace TheSTAR.GUI
         private CurrencyController currency;
         private XpController xp;
         private SoundController sounds;
-
+        private FullAd _fullAd;
         private GuiScreen from;
 
         [Inject]
-        private void Construct(GameController game, DataController data, GuiController gui, CurrencyController currency, XpController xp, SoundController sounds)
+        private void Construct(GameController game, DataController data, GuiController gui, CurrencyController currency,
+            XpController xp, SoundController sounds,FullAd fullAd)
         {
             this.game = game;
             this.data = data;
@@ -39,6 +40,7 @@ namespace TheSTAR.GUI
             this.currency = currency;
             this.xp = xp;
             this.sounds = sounds;
+            _fullAd = fullAd;
         }
 
         public void Init(GuiScreen from, bool useMainMenuFon)
@@ -50,6 +52,12 @@ namespace TheSTAR.GUI
         private void ExitFromSettings()
         {
             gui.Show(from);
+            
+#if UNITY_WEBGL && !UNITY_EDITOR
+            _fullAd.Show();
+#else
+            Debug.Log("Full ad is not shown because this is not a web build.");
+#endif
         }
 
         public override void Init()
@@ -62,20 +70,14 @@ namespace TheSTAR.GUI
             musicToggle.Init(data.gameData.settingsData.isMusicOn, OnToggleMusic);
             vibrationsToggle.Init(data.gameData.settingsData.isVibrationOn, OnToggleVibration);
 
-            cheatAddCurrencyBtn.Init(() =>
-            {
-                currency.AddCurrency(new(100, 0));
-            });
+            cheatAddCurrencyBtn.Init(() => { currency.AddCurrency(new(100, 0)); });
 
             cheatAddXpBtn.Init(() =>
             {
                 xp.AddXp(100); // .AddCurrency(new(100, 0));
             });
 
-            cheatClearCurrencyBtn.Init(() =>
-            {
-                currency.ClearCurrency(CurrencyType.Soft);
-            });
+            cheatClearCurrencyBtn.Init(() => { currency.ClearCurrency(CurrencyType.Soft); });
 
             rateUsButton.Init(() =>
             {
@@ -84,10 +86,7 @@ namespace TheSTAR.GUI
                 gui.Show(rateUsScreen);
             });
 
-            cheatTestTerminalBtn.Init(() =>
-            {
-                gui.Show<TerminalScreen>();
-            });
+            cheatTestTerminalBtn.Init(() => { gui.Show<TerminalScreen>(); });
         }
 
         protected override void OnShow()

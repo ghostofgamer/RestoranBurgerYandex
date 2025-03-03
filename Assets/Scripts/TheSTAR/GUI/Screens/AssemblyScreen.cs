@@ -1,3 +1,4 @@
+using Ads;
 using TheSTAR.GUI;
 using UnityEngine;
 using Zenject;
@@ -12,14 +13,17 @@ public class AssemblyScreen : GuiScreen
     private CameraController cameras;
     private GameWorldInteraction worldInteraction;
     private TutorialController tutorial;
+    private FullAd _fullAd;
 
     [Inject]
-    private void Construct(GameController game, GuiController gui, CameraController cameras, TutorialController tutorial)
+    private void Construct(GameController game, GuiController gui, CameraController cameras,
+        TutorialController tutorial,FullAd fullAd)
     {
         this.game = game;
         this.gui = gui;
         this.cameras = cameras;
         this.tutorial = tutorial;
+        _fullAd = fullAd;
     }
 
     public override void Init()
@@ -36,7 +40,7 @@ public class AssemblyScreen : GuiScreen
         cameras.DeactivateRayVision();
         game.OnStartAssemblingFocus();
         gui.FindUniversalElement<LookAroundContainer>().SetClickOnlyMove(true);
-        
+
         TriggerTutorial();
     }
 
@@ -49,6 +53,12 @@ public class AssemblyScreen : GuiScreen
 
     private void OnCloseClick()
     {
+#if UNITY_WEBGL && !UNITY_EDITOR
+            _fullAd.Show();
+#else
+        Debug.Log("Full ad is not shown because this is not a web build.");
+#endif
+        
         cameras.TempFocus(null, true);
         cameras.ActivateRayVision();
         game.OnEndAssemblingFocus();
@@ -60,7 +70,7 @@ public class AssemblyScreen : GuiScreen
     {
         if (tutorial.IsCompleted(TutorialType.TakeCutlet) && !tutorial.IsCompleted(TutorialType.AssemblyBurger))
         {
-            tutorial.TryShowInWorld(TutorialType.AssemblyBurger, new TutorInWorldFocus[] {}, out _);
+            tutorial.TryShowInWorld(TutorialType.AssemblyBurger, new TutorInWorldFocus[] { }, out _);
             return;
         }
     }

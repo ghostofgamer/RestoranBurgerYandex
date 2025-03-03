@@ -1,3 +1,4 @@
+using Ads;
 using UnityEngine;
 using Zenject;
 using TheSTAR.Data;
@@ -12,6 +13,7 @@ public class ProjectInstaller : MonoInstaller
     [SerializeField] private SoundController soundControllerPrefab;
     [SerializeField] private FocusScreen _focusScreen;
     [SerializeField] private RewardDelivery _rewardDelivery;
+    [SerializeField] private FullAd _fullAd;
 
     public override void InstallBindings()
     {
@@ -41,5 +43,9 @@ public class ProjectInstaller : MonoInstaller
         var rewardDelivery = Container.InstantiatePrefabForComponent<RewardDelivery>(_rewardDelivery,
             _rewardDelivery.transform.position, Quaternion.identity, null);
         Container.Bind<RewardDelivery>().FromInstance(rewardDelivery).AsSingle();
+
+        var fullAd = Container.InstantiatePrefabForComponent<FullAd>(_fullAd, _fullAd.transform.position, 
+            Quaternion.identity, null);
+        Container.Bind<FullAd>().FromInstance(fullAd).AsSingle();
     }
 }

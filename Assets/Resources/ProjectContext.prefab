@@ -78,3 +78,4 @@ MonoBehaviour:
   soundControllerPrefab: {fileID: 2157812086158874339, guid: 67f150fb28cb84276a265ffcae17dbd0, type: 3}
   _focusScreen: {fileID: 9223218323299064335, guid: 430ba74678a2d0448b482ba7899d6a93, type: 3}
   _rewardDelivery: {fileID: 4209345314811057128, guid: 8f7e26bc899dafe47a98802a032e8e4a, type: 3}
+  _fullAd: {fileID: 8806597616418824683, guid: 4c18fa7b44742894094acfcb6158a6f3, type: 3}
