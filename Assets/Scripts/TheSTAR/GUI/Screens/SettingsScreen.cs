@@ -51,6 +51,12 @@ namespace TheSTAR.GUI
 
         private void ExitFromSettings()
         {
+            if (!Application.isMobilePlatform)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;    
+            }
+            
             gui.Show(from);
             
 #if UNITY_WEBGL && !UNITY_EDITOR

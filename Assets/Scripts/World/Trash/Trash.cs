@@ -9,11 +9,16 @@ public class Trash : MonoBehaviour
     public TutorInWorldFocus TutorFocus => tutorFocus;
 
     private GameWorldInteraction gameWorldInteraction;
+    private GameController _gameController;
+    private TutorialController _tutorialController;
 
     [Inject]
-    private void Construct(GameWorldInteraction gameWorldInteraction)
+    private void Construct(GameWorldInteraction gameWorldInteraction, GameController gameController,
+        TutorialController tutorialController)
     {
         this.gameWorldInteraction = gameWorldInteraction;
+        _gameController = gameController;
+        _tutorialController = tutorialController;
     }
 
     private void Start()
@@ -25,6 +30,13 @@ public class Trash : MonoBehaviour
     {
         touchInteractive.OnClickEvent += () =>
         {
+            if (!_tutorialController.IsCompleted(TutorialType.ClearTrash))
+            {
+                 _tutorialController.CompleteTutorial(TutorialType.ClearTrash);
+                 _gameController.TriggerTutorial();
+            }
+               
+
             gameWorldInteraction.OnTrashClick(this);
         };
     }
@@ -35,5 +47,11 @@ public class Trash : MonoBehaviour
         if (!trashDestroyable) return;
 
         trashDestroyable.OnEnterTrash(this);
+        
+        if (!_tutorialController.IsCompleted(TutorialType.ClearTrash))
+        {
+            _tutorialController.CompleteTutorial(TutorialType.ClearTrash);
+            _gameController.TriggerTutorial();
+        }
     }
 }

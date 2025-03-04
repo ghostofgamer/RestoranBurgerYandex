@@ -23,22 +23,42 @@ namespace TheSTAR.GUI
 
         public override void Init()
         {
+            Debug.Log("+++");
             base.Init();
 
             closeButton.Init(() =>
             {
                 gui.ShowMainScreen();
+                
+                if (!Application.isMobilePlatform)
+                {
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
+                }
             });
 
             acceptButton.Init(() =>
             {
                 onAcceptAction?.Invoke(inputField.text);
                 gui.ShowMainScreen();
+                
+                if (!Application.isMobilePlatform)
+                {
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
+                }
             });
         }
 
         public void Init(Action<string> onAcceptAction)
         {
+            if (!Application.isMobilePlatform)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;  
+            }
+            
+            Debug.Log("!!!");
             this.onAcceptAction = onAcceptAction;
         }
     }

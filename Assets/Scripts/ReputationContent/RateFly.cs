@@ -59,9 +59,6 @@ namespace ReputationContent
             _text.color = Color.green;
             _text.text = "+" + dollarValue.ToString() +" "+ text;
             
-            Debug.Log("GameObject activeInHierarchy: " + gameObject.activeInHierarchy);
-            Debug.Log("Component enabled: " + this.enabled);
-            
             if (gameObject.activeInHierarchy && this.enabled)
             {
                 if (transform.parent == null || transform.parent.gameObject.activeInHierarchy)
@@ -97,7 +94,7 @@ namespace ReputationContent
     
         private IEnumerator FlyUp()
         {
-            Debug.Log("StartFlyUp");
+          
             _color.a = 1;
             float elapsedTime = 0f;
             Vector3 endPosition = _startPosition + Vector3.up * _flyHeight;

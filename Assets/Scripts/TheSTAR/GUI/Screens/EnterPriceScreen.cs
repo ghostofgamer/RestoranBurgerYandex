@@ -92,6 +92,14 @@ namespace TheSTAR.GUI
 
         private void DisplayCurrentPrice()
         {
+            if (!Application.isMobilePlatform)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;  
+            }
+            
+            Debug.Log("Display");
+            
             priceText.text = $"Price: {TextUtility.FormatPrice(currentPrice)}";
 
             if (currentPrice > itemData.CostData.SellCostMaxRecommendation)
@@ -119,6 +127,12 @@ namespace TheSTAR.GUI
 
         private void OnAcceptClick()
         {
+            if (!Application.isMobilePlatform)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+            
             acceptAction?.Invoke(itemType, currentPrice);
             Debug.Log("ТИП " + itemType);
             gui.ShowMainScreen();

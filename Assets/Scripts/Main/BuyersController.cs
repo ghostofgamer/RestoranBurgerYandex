@@ -183,9 +183,7 @@ public class BuyersController : MonoBehaviour
         var duration = Random.Range(durationMin, durationMax);
         
         // var duration = Random.Range(buyersConfig.Get.OrdersPeriodMin.TotalSeconds, buyersConfig.Get.OrdersPeriodMax.TotalSeconds);
-
-        Debug.Log("MIN!!!" + durationMin);
-        Debug.Log("MAX!!! "+ durationMax);
+        
         
         waitForNextBuyerTweener =
         DOVirtual.Float(0f, 1f, duration, (value) => {}).SetEase(Ease.Linear).OnComplete(() =>

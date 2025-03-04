@@ -47,7 +47,6 @@ public class PlayerMovePC : MonoBehaviour
       
         if (!_firstLook&&(_x>0||_z>0))
         {
-            Debug.Log("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF");
             FirstMoveChanged?.Invoke();
             // _tutorialController.CompleteTutorial(TutorialType.Move);
             _firstLook = true;

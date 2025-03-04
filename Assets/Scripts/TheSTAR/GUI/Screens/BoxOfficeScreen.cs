@@ -66,6 +66,13 @@ namespace TheSTAR.GUI
                 Debug.Log("Full ad is not shown because this is not a web build.");
 #endif
                 
+                if (!Application.isMobilePlatform)
+                {
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
+                }
+                
+                
                 successAction?.Invoke();
             });
         }
@@ -78,6 +85,12 @@ namespace TheSTAR.GUI
 
         protected override void OnShow()
         {
+            if (!Application.isMobilePlatform)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;  
+            }
+            
             base.OnShow();
             ResetChangeValue();
         }

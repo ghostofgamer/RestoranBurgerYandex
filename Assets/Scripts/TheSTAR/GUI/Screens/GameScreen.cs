@@ -18,6 +18,7 @@ namespace TheSTAR.GUI
         [SerializeField] private GameObject _throwPCButton;
         [SerializeField] private GameObject _openPCButton;
         [SerializeField] private GameObject _closePCButton;
+        [SerializeField] private GameObject _handOpenButton;
 
         [Header("Interaction")] [SerializeField]
         private PointerButton mainInteractionButton;
@@ -50,6 +51,7 @@ namespace TheSTAR.GUI
         [SerializeField] private TextMeshProUGUI increaseIncomeEffectTimer;
         [SerializeField] private Animator incomeX2_animator;
         [SerializeField] private GameObject adTitleObject;
+        [SerializeField] private GameObject _pressV;
 
         public JoystickContainer JoystickContainer => joystickContainer;
 
@@ -100,6 +102,7 @@ namespace TheSTAR.GUI
         {
             _PcButtonsContainer.SetActive(!Application.isMobilePlatform);
             _MobileButtonsContainer.SetActive(Application.isMobilePlatform);
+            _pressV.SetActive(!Application.isMobilePlatform);
             // mainInteractionButton.gameObject.SetActive(Application.isMobilePlatform);
         }
 
@@ -240,9 +243,9 @@ namespace TheSTAR.GUI
 
         private void Update()
         {
-            if (UnityEngine.Input.GetKeyUp(KeyCode.E))
+            if (UnityEngine.Input.GetKeyUp(KeyCode.E)||UnityEngine.Input.GetMouseButtonUp(0))
                 MainInteractionClickEvent?.Invoke();
-
+            
             if (UnityEngine.Input.GetKeyUp(KeyCode.F))
                 OnThrowClickEvent?.Invoke();
 
@@ -251,6 +254,14 @@ namespace TheSTAR.GUI
 
             if (UnityEngine.Input.GetKeyUp(KeyCode.T))
                 OnCloseClickEvent?.Invoke();
+
+            if (UnityEngine.Input.GetKeyUp(KeyCode.V))
+            {
+                if(increaseIncomeBtn.gameObject.activeSelf)
+                    currency.TryGiveIncomeBonusForAds();
+                else
+                    Debug.Log("Выкл");
+            }
         }
 
         public void InitPlayer(Player player)
@@ -287,10 +298,15 @@ namespace TheSTAR.GUI
                     taskUI.SetTask(defaultText.Replace("{0}", $"{current}/{max}"));
                 }
                 */
+
+                /*if (tutorialType == TutorialType.LiftingBox)
+                {
+                    taskUI.SetTask("Иди подними коробку с бургерами дружище");
+                }*/
                 if (tutorialType == TutorialType.FirstDelivery)
                 {
                     int current = 0;
-                    int max = 3;
+                    int max = 1;
                     taskUI.SetTask(defaultText.Replace("{0}", $"{current}/{max}"));
                 }
                 else if (tutorialType == TutorialType.ServeTheQuests)
@@ -414,6 +430,16 @@ namespace TheSTAR.GUI
                             openButton.gameObject.SetActive(!boxOpenClose.IsOpen);
                             closeButton.gameObject.SetActive(boxOpenClose.IsOpen);
                             _openPCButton.gameObject.SetActive(!boxOpenClose.IsOpen);
+
+                            if (!tutorial.IsCompleted(TutorialType.PlacePackingBoxToShelf))
+                            {
+                                _handOpenButton.SetActive(!boxOpenClose.IsOpen);
+                            }
+                            else
+                            {
+                                _handOpenButton.SetActive(false);
+                            }
+                            
                             _closePCButton.gameObject.SetActive(boxOpenClose.IsOpen);
 
                             if (!currentFocus || !boxOpenClose.IsOpen)

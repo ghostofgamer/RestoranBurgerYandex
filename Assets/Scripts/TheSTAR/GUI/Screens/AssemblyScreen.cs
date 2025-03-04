@@ -36,6 +36,12 @@ public class AssemblyScreen : GuiScreen
 
     protected override void OnShow()
     {
+        if (!Application.isMobilePlatform)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;  
+        }
+        
         base.OnShow();
         cameras.DeactivateRayVision();
         game.OnStartAssemblingFocus();
@@ -53,6 +59,12 @@ public class AssemblyScreen : GuiScreen
 
     private void OnCloseClick()
     {
+        if (!Application.isMobilePlatform)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        
 #if UNITY_WEBGL && !UNITY_EDITOR
             _fullAd.Show();
 #else

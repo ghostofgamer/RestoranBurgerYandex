@@ -9,6 +9,8 @@ using TheSTAR.Sound;
 public class ComputerProductUI : MonoBehaviour
 {
     [SerializeField] private GameObject _soonPanel;
+    [SerializeField] private GameObject _closeTutorPanel;
+    [SerializeField] private GameObject _hand;
     [SerializeField] private TextMeshProUGUI titleText;
     [SerializeField] private PointerButton getButton;
     [SerializeField] private TextMeshProUGUI costPerUnitText;
@@ -29,15 +31,17 @@ public class ComputerProductUI : MonoBehaviour
     private DollarValue oneUnitCost;
     private int boxValue;
     private int boxesCount = 1;
+    private TutorialController _tutorialController;
 
-    public void Init(SoundController sounds, ItemType itemType, Action<ItemType, int> getAction, ScrollRect scrollRect)
+    public void Init(SoundController sounds, ItemType itemType, Action<ItemType, int> getAction, ScrollRect scrollRect,
+        TutorialController tutorialController)
     {
         this.itemType = itemType;
         this.getAction = getAction;
         getButton.Init(sounds);
         getButton.Init(OnBuyClick);
         getButton.SetScrollable(scrollRect);
-
+        _tutorialController = tutorialController;
         valueSwitcher.Init(sounds);
         valueSwitcher.Init(OnChangeBoxesValue, scrollRect);
     }
@@ -59,16 +63,25 @@ public class ComputerProductUI : MonoBehaviour
         if (boxesCount < 1) boxesCount = 1;
         costTotalText.text = TextUtility.FormatPrice(oneUnitCost * (boxValue * boxesCount), true);
     }
-    
+
     public void SetValueSoonPanel(bool value)
     {
         _soonPanel.SetActive(value);
+    }
+
+    public void SetValueTutorPanel(bool valuePanel, bool hand)
+    {
+        _closeTutorPanel.SetActive(valuePanel);
+        _hand.SetActive(hand);
     }
 
     private void OnBuyClick()
     {
         if (boxesCount < 1) boxesCount = 1;
         getAction?.Invoke(itemType, boxesCount);
+
+        if(!_tutorialController.IsCompleted(TutorialType.FirstDelivery))
+        SetValueTutorPanel(false, false);
     }
 
     public void SetLocked(int neededLevel)

@@ -32,6 +32,12 @@ namespace TheSTAR.GUI
 
         private void OnActionButtonClick()
         {
+            if (!Application.isMobilePlatform)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+
             acceptAction?.Invoke();
         }
     }

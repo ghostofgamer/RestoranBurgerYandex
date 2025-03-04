@@ -280,6 +280,10 @@ public class GameController : MonoBehaviour
 
     public void StartGame()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+
         analytics.Trigger(RepeatingEventType.StartSession);
         buyersController.StartSimulate();
         townSimulation.StartSimulate();
@@ -289,8 +293,16 @@ public class GameController : MonoBehaviour
         {
             createdPlayer.LookMouse.SetValue(true);
             createdPlayer.PlayerMovePC.enabled = false;
-            
+
             Debug.Log("Welcome tutor");
+
+            if (!Application.isMobilePlatform)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+
+
             var dialogScreen = gui.FindScreen<DialogScreen>();
             dialogScreen.Init(() =>
             {
@@ -358,16 +370,43 @@ public class GameController : MonoBehaviour
     [ContextMenu("TriggerTutorial")]
     public void TriggerTutorial()
     {
-        if (!tutorial.IsCompleted(TutorialType.FirstDelivery))
+        /*
+        if (!tutorial.IsCompleted(TutorialType.LiftingBox))
         {
+            Debug.Log("BOX ");
+            var box = delivery.FindBox(ItemType.Bun);
+
+            if (box == null)
+            {
+                 delivery.SpawnDeliveryBox(ItemType.Bun, 6, false);
+                 box = delivery.FindBox(ItemType.Bun);
+            }
+               
+            
+            tutorial.TryShowInWorld(TutorialType.LiftingBox, box.TutorFocus, out _);
+            // delivery.SpawnDeliveryBox(ItemType.BurgerPackingPaper,6,false);
+            return;
+        }
+        */
+
+        /*if (!tutorial.IsCompleted(TutorialType.FirstDelivery))
+        {
+            Debug.Log("FIRSTDELIVERY ");
             tutorial.TryShowInWorld(TutorialType.FirstDelivery,
                 new TutorInWorldFocus[] { createdWorld.FastFood.Computer.TutorFocus }, out _);
             return;
-        }
+        }*/
 
         if (!tutorial.IsCompleted(TutorialType.GetFirstDelivery))
         {
             var box = delivery.FindBox(ItemType.Bun);
+            
+            if (box == null)
+            {
+                delivery.SpawnDeliveryBox(ItemType.Bun, 8, false,true);
+                box = delivery.FindBox(ItemType.Bun);
+            }
+            
             if (box) tutorial.TryShowInWorld(TutorialType.GetFirstDelivery, box.TutorFocus, out _);
             return;
         }
@@ -378,13 +417,35 @@ public class GameController : MonoBehaviour
             tutorial.TryShowInWorld(TutorialType.CutBun, tray.TutorFocus);
             return;
         }
-
+        
+        if (!tutorial.IsCompleted(TutorialType.ClearTrash))
+        {
+            var tray = createdWorld.FastFood.Trash;
+            tutorial.TryShowInWorld(TutorialType.ClearTrash, tray.TutorFocus );
+            return;
+        }
+        
+        
         if (!tutorial.IsCompleted(TutorialType.PlacePackingBoxToShelf))
         {
+            /*var BurgerPackingPaper = delivery.FindBox(ItemType.BurgerPackingPaper);
+            
+            if (BurgerPackingPaper == null)
+            {
+                delivery.SpawnDeliveryBox(ItemType.BurgerPackingPaper, 8, false);
+            }*/
+            
             var playerDraggable = createdPlayer.CurrentDraggable;
             if (playerDraggable == null)
             {
                 var box = delivery.FindBox(ItemType.BurgerPackingPaper);
+                
+                if (box == null)
+                {
+                    delivery.SpawnDeliveryBox(ItemType.BurgerPackingPaper, 8, false,true);
+                    box = delivery.FindBox(ItemType.BurgerPackingPaper);
+                }
+                
                 if (box) tutorial.TryShowInWorld(TutorialType.PlacePackingBoxToShelf, box.TutorFocus);
             }
             else
@@ -406,10 +467,25 @@ public class GameController : MonoBehaviour
                 else
                 {
                     var neededBox = delivery.FindBox(ItemType.BurgerPackingPaper);
+                    
+                    if (neededBox == null)
+                    {
+                        delivery.SpawnDeliveryBox(ItemType.BurgerPackingPaper, 8, false,true);
+                        neededBox = delivery.FindBox(ItemType.BurgerPackingPaper);
+                    }
+                    
                     if (neededBox) tutorial.TryShowInWorld(TutorialType.PlacePackingBoxToShelf, neededBox.TutorFocus);
                 }
             }
 
+            return;
+        }
+        
+        if (!tutorial.IsCompleted(TutorialType.FirstDelivery))
+        {
+            Debug.Log("FIRSTDELIVERY ");
+            tutorial.TryShowInWorld(TutorialType.FirstDelivery,
+                new TutorInWorldFocus[] { createdWorld.FastFood.Computer.TutorFocus }, out _);
             return;
         }
 

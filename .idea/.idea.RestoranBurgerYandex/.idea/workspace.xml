@@ -6,27 +6,41 @@
   <component name="ChangeListManager">
     <list default="true" id="02332a16-073c-444b-8fc8-7e2f7e70d71c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RestoranBurgerYandex/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RestoranBurgerYandex/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Elements/ItemSlot.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Elements/ItemSlot.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Screens/EnterCoffeeNameScreen.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Screens/EnterCoffeeNameScreen.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Screens/GameScreen.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Screens/GameScreen.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/GameConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/GameConfig.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/ProjectContext.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ProjectContext.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/InitializationScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/InitializationScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Loader.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Loader.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ads/FullAd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ads/FullAd.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/CurrencyController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/CurrencyController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Installers/ProjectInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Installers/ProjectInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Tutorial/point.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Tutorial/point.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/UniversalElements/TopUiContainer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/UniversalElements/TopUiContainer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/World/Location/Delivery.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/World/Location/Delivery.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/World/Location/World.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/World/Location/World.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/LookMouse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/LookMouse.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/PlayerMovePC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/PlayerMovePC.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main/BuyersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main/BuyersController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main/Delivery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main/Delivery.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main/FastFood.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main/FastFood.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main/GameController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ReputationContent/RateFly.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ReputationContent/RateFly.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Elements/ComputerProductUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Elements/ComputerProductUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Elements/DeliveryInfoUi.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Elements/DeliveryInfoUi.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Screens/AssemblyScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Screens/AssemblyScreen.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Screens/BoxOfficeScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Screens/BoxOfficeScreen.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Screens/ComputerManageScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Screens/ComputerManageScreen.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Screens/ComputerStoreScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Screens/ComputerStoreScreen.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Screens/DialogScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Screens/DialogScreen.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Screens/EnterNameScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Screens/EnterNameScreen.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Screens/EnterPriceScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Screens/EnterPriceScreen.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Screens/GameScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Screens/GameScreen.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Screens/SettingsScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Screens/SettingsScreen.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/road diner icon.jpeg.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/road diner icon.jpeg.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/UniversalElements/TopUiContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/UniversalElements/TopUiContainer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tutor/TutorialController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Tutor/TutorialController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/World/Trash/Trash.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/World/Trash/Trash.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Bild/Build.zip" beforeDir="false" afterPath="$PROJECT_DIR$/Bild/Build.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build/0de0b76f4916bea4dfc1557a7917782e.data.unityweb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build/57efbbf276a217565bb4b9dff6b56303.loader.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build/60615b60f6798f43ec47dd1079c7bdd6.wasm.unityweb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build/224d0002ceaf17e0f04bf6cf5dc42db4.data.unityweb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build/35f17b8e42df06968a8bf9a6c0c6a807.loader.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build/81fd67deecc4d049e1e4ff2e004cd2f5.wasm.unityweb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Bild/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Bild/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,6 +65,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SDKYandex/SDKInitialization.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.agava.yandexgames/Runtime/YandexGamesSdk.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.applovin.mediation.ads/Scripts/MaxSdkUnityEditor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation/Samples~/Scripts/ClickToMove.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem/InputSystem/Plugins/UI/InputSystemUIInputModule.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
@@ -121,7 +136,8 @@
       <updated>1740643962031</updated>
       <workItem from="1740643963440" duration="7226000" />
       <workItem from="1740728674257" duration="958000" />
-      <workItem from="1740989009855" duration="17271000" />
+      <workItem from="1740989009855" duration="17961000" />
+      <workItem from="1741073245445" duration="21463000" />
     </task>
     <servers />
   </component>

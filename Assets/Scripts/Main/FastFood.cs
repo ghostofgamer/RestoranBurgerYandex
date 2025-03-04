@@ -14,7 +14,7 @@ using World;
 public class FastFood : MonoBehaviour
 {
     [SerializeField] private Collider _monitorOrdersCollider;
-
+[SerializeField]private Trash _trash;
     [SerializeField] private DraggerGroup[] draggerGroupsToSaveLoad;
     [SerializeField] private Player _player;
     [Header("Objects")] [SerializeField] private OpenClosedBoard openClosedBoard;
@@ -52,6 +52,7 @@ public class FastFood : MonoBehaviour
     private int _currentIndexOrderTray;
 
 
+    public Trash Trash => _trash;
     public Computer Computer => computer;
     public AssemblyItemsContainer BurgerPackingPaperHandler => burgerPackingPaperHandler;
     public OpenClosedBoard OpenClosedBoard => openClosedBoard;

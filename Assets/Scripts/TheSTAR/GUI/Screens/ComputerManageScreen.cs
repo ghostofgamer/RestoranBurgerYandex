@@ -72,6 +72,12 @@ namespace TheSTAR.GUI
 
             closeButton.Init(() =>
             {
+                if (!Application.isMobilePlatform)
+                {
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
+                }
+                
                 gui.ShowMainScreen();
             });
 

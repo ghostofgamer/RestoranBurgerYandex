@@ -15,7 +15,8 @@ namespace TheSTAR.GUI
         [SerializeField] private RateFly _profitFly;
         [SerializeField] private RateFly _tipsFly;
         [SerializeField] private RateFly _xpFly;
-
+        [SerializeField] private GameObject _mobileButtonsContainer;
+        [SerializeField] private GameObject _pcButtonsContainer;
         private DollarValue _lastProfit = new DollarValue();
         private DollarValue _lastTips = new DollarValue();
 
@@ -38,7 +39,7 @@ namespace TheSTAR.GUI
 
             currency.OnCurrencyChanged += SetLastProfit;
             currency.OnTipsChanged += SetLastTips;
-            
+
             xp.OnProfitXpValue += ShowXP;
             currency.Subscribe(OnTransactionReact);
             xp.SubscribeOnChangeXp(OnChangeXp);
@@ -48,9 +49,34 @@ namespace TheSTAR.GUI
         {
             if (_lastProfit.dollars > 0 || _lastProfit.cents > 0)
                 ShowProfit(_lastProfit);
-            
-            if(_lastTips.dollars > 0 || _lastTips.cents > 0)
+
+            if (_lastTips.dollars > 0 || _lastTips.cents > 0)
                 ShowTipsProfit(_lastTips);
+        }
+
+        private void Start()
+        {
+            _pcButtonsContainer.SetActive(!Application.isMobilePlatform);
+            _mobileButtonsContainer.SetActive(Application.isMobilePlatform);
+        }
+
+        private void Update()
+        {
+            if (UnityEngine.Input.GetKeyUp(KeyCode.Escape))
+            {
+                var settingsScreen = gui.FindScreen<SettingsScreen>();
+                settingsScreen.Init(gui.CurrentScreen, false);
+                gui.Show(settingsScreen);
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+
+            if (UnityEngine.Input.GetKeyUp(KeyCode.Tab))
+            {
+                gui.Show<ComputerStoreScreen>();
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
         }
 
         public void InitReputation(FastFood fastFood)

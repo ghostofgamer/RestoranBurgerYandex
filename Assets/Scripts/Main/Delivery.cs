@@ -15,6 +15,7 @@ public class Delivery : MonoBehaviour
 {
     [SerializeField] private Transform deliveryPoint;
     [SerializeField] private Transform beginnerPoint;
+    [SerializeField] private Transform beginnerPointTutor;
 
     private readonly ConfigHelper<GameConfig> gameConfig = new();
     private readonly ConfigHelper<ItemsConfig> itemsConfig = new();
@@ -147,7 +148,12 @@ public class Delivery : MonoBehaviour
 #else
         Debug.Log("Full ad is not shown because this is not a web build.");
 #endif
-
+            
+            if (!Application.isMobilePlatform)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
 
             sounds.Play(SoundType.Oplata_korsini);
             xp.AddXp(totalXpReward);
@@ -241,9 +247,14 @@ public class Delivery : MonoBehaviour
         Save();
     }
 
-    private void SpawnDeliveryBox(ItemType itemType, int unitsInBox, bool toBeginnerPos)
+    public void SpawnDeliveryBox(ItemType itemType, int unitsInBox, bool toBeginnerPos)
     {
         SpawnDeliveryBox(itemType, unitsInBox, toBeginnerPos ? beginnerPoint.position : deliveryPoint.position);
+    }
+    
+    public void SpawnDeliveryBox(ItemType itemType, int unitsInBox, bool toBeginnerPos,bool tutor)
+    {
+        SpawnDeliveryBox(itemType, unitsInBox,beginnerPointTutor.position );
     }
 
     private void SpawnDeliveryBox(ItemType itemType, int unitsInBox, Vector3 to)

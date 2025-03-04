@@ -43,9 +43,10 @@ public class TutorialController : MonoBehaviour
     {
         { TutorialType.LookAround, new() },
         { TutorialType.Move, new() },
-        { TutorialType.ClearTrash, new("Remove trash: {0}") },
+        { TutorialType.LiftingBox, new("Pic Up Box Burgers") },
+        { TutorialType.ClearTrash, new("Throw in the trash BOX WITH BURGER BUN ") },
         { TutorialType.FirstDelivery, new("Order products: {0}") },
-        { TutorialType.GetFirstDelivery, new("Receive a package") },
+        { TutorialType.GetFirstDelivery, new("PICK UP A BOX OF BURGER BUN.") },
         { TutorialType.CutBun, new("Place the burger bun in the tray") },
         { TutorialType.PlacePackingBoxToShelf, new("Place the Burger Boxes on the shelf") },
         { TutorialType.PlaceCutletToTray, new("Place the burger patty in the tray") },
@@ -234,6 +235,7 @@ public class TutorialController : MonoBehaviour
 
         successful = true;
 
+        Debug.Log("ТУТОР ТАЙПЕ " + tutorialType);
         OnStartTutorialEvent?.Invoke(tutorialType, tutorialDatas[tutorialType]);
     }
 
@@ -533,6 +535,7 @@ public enum TutorialType
     Congratulations,
     LookAround,
     Move,
+    LiftingBox,
     FirstDelivery,
     GetFirstDelivery,
     CutBun,

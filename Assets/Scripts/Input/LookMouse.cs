@@ -51,7 +51,6 @@ public class LookMouse : MonoBehaviour
         
         if (!_firstLook&&(mouseX>0||mouseY>0))
         {
-            Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
             FirstLookChanged?.Invoke();
             // _tutorialController.CompleteTutorial(TutorialType.LookAround);
             _firstLook = true;

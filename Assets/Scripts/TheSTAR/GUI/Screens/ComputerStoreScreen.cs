@@ -25,12 +25,11 @@ namespace TheSTAR.GUI
         [SerializeField] private ScrollRect resultScroller;
         [SerializeField] private GameObject comingSoonObject;
 
-        [Header("Sections")]
-        [SerializeField] private PointerButton productsBtn_Active;
+        [Header("Sections")] [SerializeField] private PointerButton productsBtn_Active;
         [SerializeField] private PointerButton productsBtn_Inactive;
         [SerializeField] private PointerButton decorationsBtn_Active;
         [SerializeField] private PointerButton decorationsBtn_Inactive;
-        
+
         private ConfigHelper<ItemsConfig> itemsConfig = new();
         private Dictionary<ItemType, int> shoppingCart;
 
@@ -39,7 +38,7 @@ namespace TheSTAR.GUI
         private ComputerStoreSectionType currentSectionType = default;
         private List<ComputerProductUI> createdItemSlots = new();
         private List<CartElementSlot> createdCartItemsList = new();
-        
+
         private const int MaxItemsInCartLimit = 99;
 
         private GuiController gui;
@@ -51,7 +50,7 @@ namespace TheSTAR.GUI
         [Inject]
         private void Consruct(
             GuiController gui,
-            DataController data, 
+            DataController data,
             GameController game,
             XpController xp,
             Delivery delivery,
@@ -71,6 +70,12 @@ namespace TheSTAR.GUI
 
             closeButton.Init(() =>
             {
+                if (!Application.isMobilePlatform)
+                {
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
+                }
+
                 gui.ShowMainScreen();
             });
 
@@ -96,10 +101,7 @@ namespace TheSTAR.GUI
 
             clearButton.Init(OnClearClick);
             buyButton.Init(OnBuyClick);
-            manageBtn.Init(() =>
-            {
-                gui.Show<ComputerManageScreen>();
-            });
+            manageBtn.Init(() => { gui.Show<ComputerManageScreen>(); });
         }
 
         /// <summary>
@@ -110,7 +112,7 @@ namespace TheSTAR.GUI
             int currentLevel = xp.CurrentLevel;
 
             ItemType[] productTypes = null;
-            
+
             if (sectionType == ComputerStoreSectionType.Products)
             {
                 productTypes = itemsConfig.Get.ProductItemTypes;
@@ -137,14 +139,29 @@ namespace TheSTAR.GUI
                 }
 
                 var itemType = productTypes[slotIndex];
-                slot.Init(sounds, itemType, OnGetClick, scroller);
+                slot.Init(sounds, itemType, OnGetClick, scroller,tutorial);
                 var itemData = itemsConfig.Get.Item(itemType);
-                slot.SetVisual(itemData.MainData.Name, itemData.CostData.BuyCost, itemData.OtherData.BoxValue, itemData.MainData.IconSprite);
+                slot.SetVisual(itemData.MainData.Name, itemData.CostData.BuyCost, itemData.OtherData.BoxValue,
+                    itemData.MainData.IconSprite);
 
-                if(itemType==ItemType.FrenchFriesFrozen||itemType==ItemType.FriesPackingPaper)
+                if (itemType == ItemType.FrenchFriesFrozen || itemType == ItemType.FriesPackingPaper)
                     slot.SetValueSoonPanel(true);
+
+                if (!tutorial.IsCompleted(TutorialType.FirstDelivery))
+                {
+                    if (slotIndex == 0 || slotIndex == 2)
+                        slot.SetValueTutorPanel(true,false);
+
+                    if (slotIndex == 1)
+                        slot.SetValueTutorPanel(false,true);
+                }
+                else
+                {
+                    if (slotIndex == 0 || slotIndex == 2||slotIndex == 1)
+                        slot.SetValueTutorPanel(false,false);
+                }
                 // Debug.Log(itemType);
-                
+
                 if (currentLevel >= itemData.XpData.NeededLevelForBuy) slot.SetUnlocked();
                 else slot.SetLocked(itemData.XpData.NeededLevelForBuy);
             }
@@ -186,7 +203,8 @@ namespace TheSTAR.GUI
                 var itemType = element.Key;
                 var itemData = itemsConfig.Get.Item(itemType);
                 slot.Init(sounds, itemType, OnChangeItemsCountFromResultList, resultScroller);
-                slot.SetVisual(itemData.MainData.Name, itemData.CostData.BuyCost * (element.Value * itemData.OtherData.BoxValue), element.Value);
+                slot.SetVisual(itemData.MainData.Name,
+                    itemData.CostData.BuyCost * (element.Value * itemData.OtherData.BoxValue), element.Value);
 
                 cartItemIndex++;
             }
@@ -210,9 +228,15 @@ namespace TheSTAR.GUI
 
         protected override void OnShow()
         {
+            if (!Application.isMobilePlatform)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+
             Debug.Log("SHOW COMPUTER SCREEN");
             base.OnShow();
-            
+
             shoppingCart = new();
 
             LoadItemSlots(currentSectionType);
@@ -235,7 +259,8 @@ namespace TheSTAR.GUI
         private void OnGetClick(ItemType itemType, int boxesCount)
         {
             if (totalItemsInCart >= MaxItemsInCartLimit) return;
-            if (totalItemsInCart + boxesCount > MaxItemsInCartLimit) boxesCount = MaxItemsInCartLimit - totalItemsInCart;
+            if (totalItemsInCart + boxesCount > MaxItemsInCartLimit)
+                boxesCount = MaxItemsInCartLimit - totalItemsInCart;
 
             ArrayUtility.AddValue(shoppingCart, itemType, boxesCount);
             UpdateVisualByShoppingCart();
@@ -255,8 +280,10 @@ namespace TheSTAR.GUI
             }
 
             //itemsInCartCountText.text = totalItemsInCart.ToString();
-            totalItemsCostText.text = TextUtility.FormatPrice(totalItemsCost, true); // TextUtility.NumericValueToText(totalItemsCost, NumericTextFormatType.DollarPriceCompactInt);
-        
+            totalItemsCostText.text =
+                TextUtility.FormatPrice(totalItemsCost,
+                    true); // TextUtility.NumericValueToText(totalItemsCost, NumericTextFormatType.DollarPriceCompactInt);
+
             UpdateCartList();
         }
 
@@ -267,11 +294,11 @@ namespace TheSTAR.GUI
             shoppingCart.Clear();
             UpdateVisualByShoppingCart();
         }
-        
+
         private void OnBuyClick()
         {
             if (shoppingCart.Count <= 0) return;
-            
+
             delivery.TryBuyProductsForDelivery(shoppingCart);
         }
     }
