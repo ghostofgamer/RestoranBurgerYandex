@@ -57,8 +57,8 @@ public class LookMouse : MonoBehaviour
         }
         
 #if UNITY_WEBGL && !UNITY_EDITOR
- _mouseX = mouseX * (_sensivity * 0.5f) * Time.deltaTime + _xOffset * Time.deltaTime;
-        _mouseY = mouseY * (_sensivity * 0.5f) * Time.deltaTime + _yOffset * Time.deltaTime;
+ _mouseX = mouseX * (_sensivity * 0.3f) * Time.deltaTime + _xOffset * Time.deltaTime;
+        _mouseY = mouseY * (_sensivity * 0.3f) * Time.deltaTime + _yOffset * Time.deltaTime;
         #else
         _mouseX = mouseX * _sensivity * Time.deltaTime + _xOffset * Time.deltaTime;
         _mouseY = mouseY * _sensivity * Time.deltaTime + _yOffset * Time.deltaTime;
