@@ -56,8 +56,14 @@ public class LookMouse : MonoBehaviour
             _firstLook = true;
         }
         
+#if UNITY_WEBGL && !UNITY_EDITOR
+ _mouseX = mouseX * (_sensivity * 0.5f) * Time.deltaTime + _xOffset * Time.deltaTime;
+        _mouseY = mouseY * (_sensivity * 0.5f) * Time.deltaTime + _yOffset * Time.deltaTime;
+        #else
         _mouseX = mouseX * _sensivity * Time.deltaTime + _xOffset * Time.deltaTime;
         _mouseY = mouseY * _sensivity * Time.deltaTime + _yOffset * Time.deltaTime;
+#endif
+        
         _xOffset = 0f;
         _yOffset = 0f;
         _xRotation -= _mouseY;

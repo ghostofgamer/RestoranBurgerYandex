@@ -244,15 +244,15 @@ namespace TheSTAR.GUI
 
             if (!tutorial.IsCompleted(TutorialType.FirstDelivery))
             {
-                createdItemSlots[0].SetTutorial(true);
+                // createdItemSlots[0].SetTutorial(true);
                 createdItemSlots[1].SetTutorial(true);
-                createdItemSlots[2].SetTutorial(true);
+                // createdItemSlots[2].SetTutorial(true);
             }
             else
             {
-                createdItemSlots[0].SetTutorial(false);
+                // createdItemSlots[0].SetTutorial(false);
                 createdItemSlots[1].SetTutorial(false);
-                createdItemSlots[2].SetTutorial(false);
+                // createdItemSlots[2].SetTutorial(false);
             }
         }
 

@@ -3,6 +3,7 @@ using UnityEngine;
 using TheSTAR.Data;
 using Zenject;
 using TheSTAR.Sound;
+using UnityEngine.Audio;
 
 namespace TheSTAR.GUI
 {
@@ -13,7 +14,9 @@ namespace TheSTAR.GUI
         [SerializeField] private PointerToggle musicToggle;
         [SerializeField] private PointerToggle vibrationsToggle;
         [SerializeField] private PointerButton rateUsButton;
-
+        [SerializeField] private AudioMixerGroup _audioMixerGroup;
+        [SerializeField] private string _volumeParameter = "Music";
+        
         [Header("Cheats")] [SerializeField] private GameObject cheatsContainer;
 
         [SerializeField] private PointerButton cheatAddCurrencyBtn;
@@ -29,7 +32,9 @@ namespace TheSTAR.GUI
         private SoundController sounds;
         private FullAd _fullAd;
         private GuiScreen from;
-
+        private float _valueEnabled = 0f;
+        private float _valueDisabled = -80f;
+        
         [Inject]
         private void Construct(GameController game, DataController data, GuiController gui, CurrencyController currency,
             XpController xp, SoundController sounds,FullAd fullAd)
@@ -74,6 +79,7 @@ namespace TheSTAR.GUI
 
             soundsToggle.Init(data.gameData.settingsData.isSoundsOn, OnToggleSounds);
             musicToggle.Init(data.gameData.settingsData.isMusicOn, OnToggleMusic);
+            Debug.Log(data.gameData.settingsData.isMusicOn);
             vibrationsToggle.Init(data.gameData.settingsData.isVibrationOn, OnToggleVibration);
 
             cheatAddCurrencyBtn.Init(() => { currency.AddCurrency(new(100, 0)); });
@@ -115,9 +121,10 @@ namespace TheSTAR.GUI
         private void OnToggleMusic(bool value)
         {
             data.gameData.settingsData.isMusicOn = value;
-
-            if (value) game.PlayRandomMusic();
-            else sounds.StopMusic();
+            _audioMixerGroup.audioMixer.SetFloat(_volumeParameter, value ? _valueEnabled : _valueDisabled);
+            
+            /*if (value) game.PlayRandomMusic();
+            else sounds.StopMusic();*/
         }
 
         private void OnToggleVibration(bool value)

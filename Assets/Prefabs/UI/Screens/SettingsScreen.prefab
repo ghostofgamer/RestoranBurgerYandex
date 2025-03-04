@@ -198,6 +198,8 @@ MonoBehaviour:
   musicToggle: {fileID: 3004044523996266413}
   vibrationsToggle: {fileID: 938851923562772426}
   rateUsButton: {fileID: 3399275310289207709}
+  _audioMixerGroup: {fileID: 24300002, guid: 11c12adff15da874e935a43b13a73595, type: 2}
+  _volumeParameter: Music
   cheatsContainer: {fileID: 7986702997290222987}
   cheatAddCurrencyBtn: {fileID: 2975148268215697205}
   cheatAddXpBtn: {fileID: 111693606937458045}

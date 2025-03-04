@@ -839,7 +839,7 @@ public class GameController : MonoBehaviour
 
     public void PlayRandomMusic()
     {
-        sounds.Play(ArrayUtility.GetRandomValue(gameConfig.Get.RandomMusicTypes));
+        // sounds.Play(ArrayUtility.GetRandomValue(gameConfig.Get.RandomMusicTypes));
     }
 }
 
