@@ -42,7 +42,7 @@ public class GameController : MonoBehaviour
     private AllBuyerPlaces allBuyerPlaces;
     private TownSimulation townSimulation;
     private PriceListInWorld priceListInWorld;
-
+  
     public bool UseCheats => gameConfig.Get.UseCheats;
     public GameWorld World => createdWorld;
 
@@ -64,7 +64,8 @@ public class GameController : MonoBehaviour
         TutorialController tutorial,
         ItemsController items,
         OrdersManager ordersManager,
-        AdsManager ads)
+        AdsManager ads
+        )
     {
         this.data = data;
         this.analytics = analytics;
@@ -79,7 +80,7 @@ public class GameController : MonoBehaviour
         this.tutorial = tutorial;
         this.items = items;
         this.ordersManager = ordersManager;
-
+        
         ads.InitAds();
 
         ordersManager.OnOrderChangeEvent += (activeOrderData) =>
@@ -535,8 +536,17 @@ public class GameController : MonoBehaviour
                 if (!itemInHands || itemInHands.ItemType != ItemType.CutletRaw)
                 {
                     // throw
-                    var focus = gui.FindScreen<GameScreen>().ThrowButton.transform;
-                    tutorial.TryShowInUI(TutorialType.GetFourCutletsInHands, focus.transform);
+                    if (Application.isMobilePlatform)
+                    {
+                        var focus = gui.FindScreen<GameScreen>().ThrowButton.transform;
+                        tutorial.TryShowInUI(TutorialType.GetFourCutletsInHands, focus.transform);
+                    }
+                    else
+                    {
+                        var focus = gui.FindScreen<GameScreen>().ThrowPCButton.transform;
+                        tutorial.TryShowInUI(TutorialType.GetFourCutletsInHands, focus.transform);
+                    }
+
                     return;
                 }
             }
@@ -571,13 +581,14 @@ public class GameController : MonoBehaviour
             if (cutlet != null) tutorial.TryShowInWorld(TutorialType.TakeCutlet, cutlet.TutorFocus);
             return;
         }
-        
+
         if (!tutorial.IsCompleted(TutorialType.TakeToAssemblyTable))
         {
-            tutorial.TryShowInWorld(TutorialType.TakeToAssemblyTable, createdWorld.FastFood.CutletsContainer.TutorFocus);
+            tutorial.TryShowInWorld(TutorialType.TakeToAssemblyTable,
+                createdWorld.FastFood.CutletsContainer.TutorFocus);
             return;
         }
-        
+
         if (!tutorial.IsCompleted(TutorialType.AssemblyBurger))
         {
             tutorial.TryShowInWorld(TutorialType.AssemblyBurger, createdWorld.FastFood.CuttingBoard, out _);
@@ -638,7 +649,7 @@ public class GameController : MonoBehaviour
 
             if (amount > 0)
                 tutorial.TryShowInWorld(TutorialType.ClearTables, placeTable, out _);
-            
+
             return;
         }
 

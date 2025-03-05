@@ -215,11 +215,6 @@ public class TutorialController : MonoBehaviour
 
         if (basingType == TutorialBasingType.UI)
         {
-            /*foreach (var point in createdPoints)
-            {
-                point.gameObject.SetActive(true);
-            }*/
-
             cursor.gameObject.SetActive(true);
         }
         else
@@ -312,6 +307,9 @@ public class TutorialController : MonoBehaviour
         _currentTutorial = null;
         _autoUpdatePos = false;
         gameObject.SetActive(false);
+        
+        
+        
         cursor.gameObject.SetActive(false);
 
         Debug.Log("Hide Tutor");
@@ -440,14 +438,28 @@ public class TutorialController : MonoBehaviour
                     if (angleToTarget < thresholdAngle)
                     {
                         focusScreenPos = mainCamera.WorldToScreenPoint(focusPos);
-                        focusScreenPos.x = Mathf.Clamp(focusScreenPos.x,
+                        /*focusScreenPos.x = Mathf.Clamp(focusScreenPos.x,
                             cursor.GetComponent<RectTransform>().rect.width / 2,
                             Screen.width - cursor.GetComponent<RectTransform>().rect.width / 2);
                         focusScreenPos.y = Mathf.Clamp(focusScreenPos.y,
                             cursor.GetComponent<RectTransform>().rect.height / 2,
                             Screen.height - cursor.GetComponent<RectTransform>().rect.height / 2);
-                        focusScreenPos.z = 0; // Ensure the Z position is 0 for UI elements
+                        focusScreenPos.z = 0;*/ // Ensure the Z position is 0 for UI elements
 
+                        
+                        focusScreenPos.x = Mathf.Clamp(focusScreenPos.x,
+                            createdPoints[i].GetComponent<RectTransform>().rect.width / 2,
+                            Screen.width - createdPoints[i].GetComponent<RectTransform>().rect.width / 2);
+                        focusScreenPos.y = Mathf.Clamp(focusScreenPos.y,
+                            createdPoints[i].GetComponent<RectTransform>().rect.height / 2,
+                            Screen.height - createdPoints[i].GetComponent<RectTransform>().rect.height / 2);
+                        focusScreenPos.z = 0;
+                        
+                        
+                        
+                        
+                        
+                        
                         createdPoints[i].transform.position = focusScreenPos;
                         // Debug.Log("IF");
                         // cursor.gameObject.SetActive(true);
@@ -460,13 +472,26 @@ public class TutorialController : MonoBehaviour
                         float edgeX = screenDirection.x > 0 ? 0 : Screen.width;
                         float edgeY = screenDirection.y > 0 ? 0 : Screen.height;
 
-                        focusScreenPos.x = Mathf.Clamp(edgeX,
+                        /*focusScreenPos.x = Mathf.Clamp(edgeX,
                             cursor.GetComponent<RectTransform>().rect.width / 2,
                             Screen.width - cursor.GetComponent<RectTransform>().rect.width / 2);
                         focusScreenPos.y = Mathf.Clamp(edgeY,
                             cursor.GetComponent<RectTransform>().rect.height / 2,
                             Screen.height - cursor.GetComponent<RectTransform>().rect.height / 2);
+                        focusScreenPos.z = 0;*/
+                        
+                        
+                        focusScreenPos.x = Mathf.Clamp(edgeX,
+                            createdPoints[i].GetComponent<RectTransform>().rect.width / 2,
+                            Screen.width - createdPoints[i].GetComponent<RectTransform>().rect.width / 2);
+                        focusScreenPos.y = Mathf.Clamp(edgeY,
+                            createdPoints[i].GetComponent<RectTransform>().rect.height / 2,
+                            Screen.height - createdPoints[i].GetComponent<RectTransform>().rect.height / 2);
                         focusScreenPos.z = 0;
+                        
+                        
+                        
+                        
                         createdPoints[i].transform.position = focusScreenPos;
                         /*Debug.Log("ELSE");
                         cursor.gameObject.SetActive(false);*/

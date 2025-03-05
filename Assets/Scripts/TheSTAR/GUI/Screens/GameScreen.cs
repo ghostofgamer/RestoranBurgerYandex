@@ -76,6 +76,8 @@ namespace TheSTAR.GUI
 
         public PointerButton OpenButton => openButton;
         public PointerButton ThrowButton => throwButton;
+        
+        public GameObject ThrowPCButton => _throwPCButton;
 
         private bool ordersOpenned = false;
 

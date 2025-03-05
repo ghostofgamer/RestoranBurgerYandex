@@ -559,6 +559,14 @@ public partial class GameWorldInteraction
 
     private void TryAssemblyFocus(out bool success)
     {
+        Debug.Log("СМОТРИМ НА СБОРКУ ЕДЫ");
+
+        if (tutorial.IsCompleted(TutorialType.AssemblyBurger))
+        {
+           tutorial.CompleteTutorial(TutorialType.AssemblyBurger); 
+           game.TriggerTutorial();
+        }
+        
         success = false;
         if (player.CurrentDraggable) return;
         if (game.InAssemblyFocus) return;

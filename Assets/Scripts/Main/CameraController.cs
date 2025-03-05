@@ -48,7 +48,7 @@ public class CameraController : MonoBehaviour
         {
             ChangeCameraPosition?.Invoke(true);
             // _playerInput.enabled = true;
-            Debug.Log("111");
+            
             moveDraggableTweener =
             main.transform.DOLocalMove(Vector3.zero, MoveDuration).SetEase(MoveEase);
 
@@ -59,7 +59,7 @@ public class CameraController : MonoBehaviour
         {
             ChangeCameraPosition?.Invoke(false);
             // _playerInput.enabled = false;
-            Debug.Log("333");
+            
             moveDraggableTweener =
             main.transform.DOMove(focus.FocusTransform.position, MoveDuration).SetEase(MoveEase);
 

@@ -35,7 +35,7 @@ public partial class GameWorldInteraction
                     tutorial.CompleteTutorial(TutorialType.PrepareCoffee);
                     game.TriggerTutorial();
                 }
-                
+
                 if (tutorial.InTutorial && tutorial.CurrentTutorial == TutorialType.CompleteOrders)
                 {
                     game.TriggerTutorial();
@@ -120,7 +120,7 @@ public partial class GameWorldInteraction
             if (!itemsHandler) return;
 
             OnItemsHandlerClick(itemsHandler);
-            
+
             return;
         }
 
@@ -133,7 +133,7 @@ public partial class GameWorldInteraction
             // пробуем переместить в лоток. Если не получается - берем в руки
             if (TryReturnAssemblyItemToHandler(assemblyItem)) return;
         }
-        
+
         if (player.HavePlace(draggable, out var place))
         {
             var item = draggable.GetComponent<Item>();
@@ -146,9 +146,10 @@ public partial class GameWorldInteraction
                     return;
                 }
             }
+
             place.StartDrag(draggable);
         }
-    
+
         bool TryPlaceCupToCup()
         {
             return false;
@@ -310,10 +311,12 @@ public partial class GameWorldInteraction
             TryAssemblyFocus(out var success);
             if (success) return;
 
-            if (!slicedContainer.IsEmpty && 
+            if (!slicedContainer.IsEmpty &&
                 slicedContainer.CurrentCutType == CutType.PackingPaper &&
-                game.World.FastFood.FinalBurgersGroup.HavePlace(ItemType.BurgerPackingPaper_Closed, out var placeForFinalBurger))
+                game.World.FastFood.FinalBurgersGroup.HavePlace(ItemType.BurgerPackingPaper_Closed,
+                    out var placeForFinalBurger))
             {
+               
                 //Debug.Log("Пытаемся упаковать бургер");
                 var finalBurger = game.World.FastFood.AssemblingBoard.TryGetFinalItem();
                 if (finalBurger)
@@ -333,19 +336,21 @@ public partial class GameWorldInteraction
                         game.TriggerTutorial();
                     }
                 }
+
                 //else Debug.Log("Не удаётся упаковать");
                 return;
             }
 
+          
             if (!game.World.FastFood.AssemblingBoard.HavePlace()) return;
-
+           
             var item = slicedContainer.AutoGetItem(game.World.FastFood.AssemblingBoard.Deep > 0);
             if (item == null) return;
 
             item.Draggable.CurrentDragger.EndDrag();
             game.World.FastFood.AssemblingBoard.Place(item.GetComponent<AssemblyItem>());
             sounds.Play(SoundType.Gotovka);
-            
+
             return;
         }
         else
@@ -353,6 +358,18 @@ public partial class GameWorldInteraction
             var item = playerDraggable.GetComponent<Item>();
             if (item)
             {
+             
+                if (item.ItemType == ItemType.CutletWell)
+                {
+                    if (!tutorial.IsCompleted(TutorialType.TakeToAssemblyTable) &&
+                        tutorial.IsCompleted(TutorialType.TakeCutlet))
+                    {
+                       
+                        tutorial.CompleteTutorial(TutorialType.TakeToAssemblyTable);
+                        game.TriggerTutorial();
+                    }
+                }
+
                 TrySetItemToSlicedContainer(item, slicedContainer);
                 return;
             }
@@ -369,12 +386,13 @@ public partial class GameWorldInteraction
                 if (!boxItem) return;
 
                 TrySetItemToSlicedContainer(boxItem, slicedContainer);
-                
+
                 if (!tutorial.IsCompleted(TutorialType.CutBun) && box.IsEmpty)
                 {
                     tutorial.CompleteTutorial(TutorialType.CutBun);
                     game.TriggerTutorial();
                 }
+
                 return;
             }
         }
@@ -423,10 +441,7 @@ public partial class GameWorldInteraction
         if (paymentType == PaymentType.DebitCard)
         {
             var terminal = gui.FindScreen<TerminalScreen>();
-            terminal.Init(costDollar, () =>
-            {   
-                OnPaymentCompleted(orderMonitor, costDollar);
-            });
+            terminal.Init(costDollar, () => { OnPaymentCompleted(orderMonitor, costDollar); });
             orderMonitor.SetOrderCost(costDollar);
             orderMonitor.SetStatus(MonitorStatus.CardPayment);
             gui.Show(terminal);
@@ -437,10 +452,7 @@ public partial class GameWorldInteraction
             var boxOfficeScreen = gui.FindScreen<BoxOfficeScreen>();
             CalculateHaveCash(costDollar, out var have);
             DollarValue change = have - costDollar;
-            boxOfficeScreen.Init(change, () =>
-            {
-                OnPaymentCompleted(orderMonitor, costDollar);
-            });
+            boxOfficeScreen.Init(change, () => { OnPaymentCompleted(orderMonitor, costDollar); });
             orderMonitor.SetOrderCost(costDollar);
             orderMonitor.SetReceived(have);
             orderMonitor.SetStatus(MonitorStatus.CashPayment);
@@ -454,7 +466,8 @@ public partial class GameWorldInteraction
         sounds.Play(SoundType.Cash_Register_2);
 
         // todo сделать защиту, если заказ сделан то должно быть необходимо обслужить клиента (запомнить заказ и клиента даже если перезаходим в игру)
-        ordersManager.TryAcceptOrder(orderMonitor.currentBuyer, orderMonitor.currentBuyer.Place, (OrderData)orderMonitor.currentOrderData);
+        ordersManager.TryAcceptOrder(orderMonitor.currentBuyer, orderMonitor.currentBuyer.Place,
+            (OrderData)orderMonitor.currentOrderData);
         currency.AddCurrency(costDollar);
         camera.TempFocus(null, false);
         gui.ShowMainScreen();
@@ -484,7 +497,7 @@ public partial class GameWorldInteraction
             if (!boxItem) return;
 
             TrySetItemToGriddle(boxItem, griddle);
-            
+
             return;
         }
     }
@@ -531,7 +544,7 @@ public partial class GameWorldInteraction
             if (!boxItem) return;
 
             TrySetItemToDeepTryer(boxItem, deepFryer);
-            
+
             return;
         }
     }
@@ -562,7 +575,7 @@ public partial class GameWorldInteraction
     {
         Debug.Log("Положил на место");
         var playerDraggable = player.CurrentDraggable;
-        
+
         if (playerDraggable == null) return;
 
         if (!playerDraggable.TryGetComponent<OrderTray>(out var tray)) return;
@@ -648,7 +661,7 @@ public partial class GameWorldInteraction
     {
         TryAssemblyFocus(out var success);
         if (success) return;
-        
+
         if (!game.World.FastFood.AssemblingBoard.HavePlace()) return;
         var item = items.CreateItem(sousContainer.SousType, sousContainer.CreateItemPos.position);
         game.World.FastFood.AssemblingBoard.Place(item.GetComponent<AssemblyItem>());
@@ -657,7 +670,8 @@ public partial class GameWorldInteraction
     public void OnAssemblyTableClick(AssemlbyTable table)
     {
         var playerDraggable = player.CurrentDraggable;
-        if (playerDraggable && playerDraggable.TryGetComponent<Item>(out var item) && item.ItemType == ItemType.BurgerPackingPaper_Closed)
+        if (playerDraggable && playerDraggable.TryGetComponent<Item>(out var item) &&
+            item.ItemType == ItemType.BurgerPackingPaper_Closed)
         {
             if (game.World.FastFood.FinalBurgersGroup.HavePlace(item.ItemType, out var place))
             {

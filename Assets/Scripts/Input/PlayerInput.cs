@@ -13,21 +13,20 @@ public class PlayerInput : MonoBehaviour
     private PlayerMovePC _playerMovement;
     private float _mouseX;
     private float _mouseY;
-    
+
     public float X { get; private set; }
 
     public float Z { get; private set; }
 
-    private CameraController _camera; 
-    
+    private CameraController _camera;
+
     [Inject]
     private void Constuct(CameraController camera)
     {
         _camera = camera;
         _camera.ChangeCameraPosition += SetValue;
-
     }
-    
+
     private void Start()
     {
         _playerMovement = GetComponent<PlayerMovePC>();
@@ -50,6 +49,7 @@ public class PlayerInput : MonoBehaviour
 
     private void SetValue(bool value)
     {
-        enabled = value;
+        if (!Application.isMobilePlatform)
+            enabled = value;
     }
 }
