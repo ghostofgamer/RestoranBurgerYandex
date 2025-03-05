@@ -10,9 +10,12 @@ public class GameWorld : MonoBehaviour
     [SerializeField] private FastFood fastFood;
     [SerializeField] private Transform playerSpawnPoint;
     [SerializeField] private NavMeshSurface navMeshSurface;
+    [SerializeField] private BuyerPlaceFurnitureUnit[] _placesFurnitureUnitTutor;
 
     public Transform PlayerSpawnPoint => playerSpawnPoint;
     public FastFood FastFood => fastFood;
+    
+    public BuyerPlaceFurnitureUnit[] BuyerPlacesFurnitureUnitTutor => _placesFurnitureUnitTutor;
     
     [ContextMenu("BakeNavigationSurface")]
     public void BakeNavigationSurface()
@@ -20,8 +23,9 @@ public class GameWorld : MonoBehaviour
         navMeshSurface.BuildNavMesh();
     }
 
-    public void Init(Reputation reputation)
+    public void Init(Reputation reputation,BuyerPlaceFurnitureUnit[] placesFurnitureUnitTutor )
     {
+        _placesFurnitureUnitTutor = placesFurnitureUnitTutor;
         fastFood.Init(reputation);
     }
 

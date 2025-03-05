@@ -11,6 +11,8 @@ public class BuyerPlaceFurnitureUnit : MonoBehaviour
     private bool active;
     public bool Active => active;
 
+    public BuyerPlace[] Places=>places;
+
     public void Init(AllBuyerPlaces allBuyerPlaces)
     {
         foreach (var place in places) place.Init(allBuyerPlaces);

@@ -11,11 +11,14 @@ public class AllBuyerPlaces : MonoBehaviour
 {
     [SerializeField] private MembersQueue waitingQueue; // клиенты сперва должны вставать в WaitingQueue, после принятия заказа и оплаты должны садиться на место
     [SerializeField] private UnityDictionary<BuyerPlaceType, BuyerPlacesGroup> placeGroups;
+    [SerializeField] private BuyerPlaceFurnitureUnit[] _placesFurnitureUnitTutor;
 
     public UnityDictionary<BuyerPlaceType, BuyerPlacesGroup> PlaceGroups => placeGroups;
 
     private OrdersManager ordersManager;
     private AnalyticsManager analytics;
+
+    public BuyerPlaceFurnitureUnit[] BuyerPlacesFurnitureUnitTutor => _placesFurnitureUnitTutor;
     //private ItemsController items;
     
     public bool HaveAvailablePlaces(out int availablePlacesCount)

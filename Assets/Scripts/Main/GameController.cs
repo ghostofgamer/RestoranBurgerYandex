@@ -200,7 +200,7 @@ public class GameController : MonoBehaviour
         townSimulation = diContainer.InstantiatePrefabForComponent<TownSimulation>(townSimulationPrefab);
         diContainer.Bind<TownSimulation>().FromInstance(townSimulation).AsSingle();
 
-        createdWorld.Init(gui.Reputation);
+        createdWorld.Init(gui.Reputation, allBuyerPlaces.BuyerPlacesFurnitureUnitTutor);
         createdWorld.Load();
 
         gui.InitGameWorld(createdWorld);
@@ -381,8 +381,8 @@ public class GameController : MonoBehaviour
                  delivery.SpawnDeliveryBox(ItemType.Bun, 6, false);
                  box = delivery.FindBox(ItemType.Bun);
             }
-               
-            
+
+
             tutorial.TryShowInWorld(TutorialType.LiftingBox, box.TutorFocus, out _);
             // delivery.SpawnDeliveryBox(ItemType.BurgerPackingPaper,6,false);
             return;
@@ -400,13 +400,13 @@ public class GameController : MonoBehaviour
         if (!tutorial.IsCompleted(TutorialType.GetFirstDelivery))
         {
             var box = delivery.FindBox(ItemType.Bun);
-            
+
             if (box == null)
             {
-                delivery.SpawnDeliveryBox(ItemType.Bun, 8, false,true);
+                delivery.SpawnDeliveryBox(ItemType.Bun, 8, false, true);
                 box = delivery.FindBox(ItemType.Bun);
             }
-            
+
             if (box) tutorial.TryShowInWorld(TutorialType.GetFirstDelivery, box.TutorFocus, out _);
             return;
         }
@@ -417,35 +417,36 @@ public class GameController : MonoBehaviour
             tutorial.TryShowInWorld(TutorialType.CutBun, tray.TutorFocus);
             return;
         }
-        
+
         if (!tutorial.IsCompleted(TutorialType.ClearTrash))
         {
             var tray = createdWorld.FastFood.Trash;
-            tutorial.TryShowInWorld(TutorialType.ClearTrash, tray.TutorFocus );
+            tutorial.TryShowInWorld(TutorialType.ClearTrash, tray.TutorFocus);
             return;
         }
-        
-        
+
+
         if (!tutorial.IsCompleted(TutorialType.PlacePackingBoxToShelf))
         {
             /*var BurgerPackingPaper = delivery.FindBox(ItemType.BurgerPackingPaper);
-            
+
             if (BurgerPackingPaper == null)
             {
                 delivery.SpawnDeliveryBox(ItemType.BurgerPackingPaper, 8, false);
             }*/
-            
+
             var playerDraggable = createdPlayer.CurrentDraggable;
             if (playerDraggable == null)
             {
                 var box = delivery.FindBox(ItemType.BurgerPackingPaper);
-                
+
                 if (box == null)
                 {
-                    delivery.SpawnDeliveryBox(ItemType.BurgerPackingPaper, 8, false,true);
+                    delivery.SpawnDeliveryBox(ItemType.BurgerPackingPaper, 8, false, true);
                     box = delivery.FindBox(ItemType.BurgerPackingPaper);
                 }
-                
+
+                Debug.Log("EDRAGGGHjsd BOX HERE");
                 if (box) tutorial.TryShowInWorld(TutorialType.PlacePackingBoxToShelf, box.TutorFocus);
             }
             else
@@ -457,30 +458,40 @@ public class GameController : MonoBehaviour
                     {
                         tutorial.TryShowInUI(TutorialType.PlacePackingBoxToShelf,
                             gui.FindScreen<GameScreen>().OpenButton.transform);
-                    }
-                    else
-                    {
+
+
                         tutorial.TryShowInWorld(TutorialType.PlacePackingBoxToShelf,
                             createdWorld.FastFood.BurgerPackingPaperHandler.TutorFocus);
                     }
+
+                    Debug.Log("iF BOX HERE");
+
+                    tutorial.TryShowInWorld(TutorialType.PlacePackingBoxToShelf,
+                        createdWorld.FastFood.BurgerPackingPaperHandler.TutorFocus);
+                    /*else
+                    {
+                        tutorial.TryShowInWorld(TutorialType.PlacePackingBoxToShelf,
+                            createdWorld.FastFood.BurgerPackingPaperHandler.TutorFocus);
+                    }*/
                 }
                 else
                 {
                     var neededBox = delivery.FindBox(ItemType.BurgerPackingPaper);
-                    
+
                     if (neededBox == null)
                     {
-                        delivery.SpawnDeliveryBox(ItemType.BurgerPackingPaper, 8, false,true);
+                        delivery.SpawnDeliveryBox(ItemType.BurgerPackingPaper, 8, false, true);
                         neededBox = delivery.FindBox(ItemType.BurgerPackingPaper);
                     }
-                    
+
+                    Debug.Log("ELSE BOX HERE");
                     if (neededBox) tutorial.TryShowInWorld(TutorialType.PlacePackingBoxToShelf, neededBox.TutorFocus);
                 }
             }
 
             return;
         }
-        
+
         if (!tutorial.IsCompleted(TutorialType.FirstDelivery))
         {
             Debug.Log("FIRSTDELIVERY ");
@@ -560,10 +571,16 @@ public class GameController : MonoBehaviour
             if (cutlet != null) tutorial.TryShowInWorld(TutorialType.TakeCutlet, cutlet.TutorFocus);
             return;
         }
-
+        
+        if (!tutorial.IsCompleted(TutorialType.TakeToAssemblyTable))
+        {
+            tutorial.TryShowInWorld(TutorialType.TakeToAssemblyTable, createdWorld.FastFood.CutletsContainer.TutorFocus);
+            return;
+        }
+        
         if (!tutorial.IsCompleted(TutorialType.AssemblyBurger))
         {
-            tutorial.TryShowInWorld(TutorialType.AssemblyBurger, new TutorInWorldFocus[] { }, out _);
+            tutorial.TryShowInWorld(TutorialType.AssemblyBurger, createdWorld.FastFood.CuttingBoard, out _);
             return;
         }
 
@@ -590,6 +607,38 @@ public class GameController : MonoBehaviour
         {
             tutorial.BreakTutorial(); // чтобы обновилась TaskPanel
             tutorial.TryShowInWorld(TutorialType.ServeTheQuests, new TutorInWorldFocus[] { }, out _);
+            return;
+        }
+
+        if (!tutorial.IsCompleted(TutorialType.ClearTables))
+        {
+            tutorial.BreakTutorial();
+            TutorInWorldFocus placeTable = new TutorInWorldFocus();
+            bool breakOuterLoop = false;
+            int amount = 0;
+
+            foreach (var tableTutor in createdWorld.BuyerPlacesFurnitureUnitTutor)
+            {
+                foreach (var place in tableTutor.Places)
+                {
+                    Debug.Log("№ " + place.GetTrashActiveCount() + "    " + place.gameObject.name);
+
+                    if (place.GetTrashActiveCount() > 0)
+                    {
+                        amount = place.GetTrashActiveCount();
+                        placeTable = place.GetComponent<TutorInWorldFocus>();
+                        breakOuterLoop = true;
+                        break;
+                    }
+                }
+
+                if (breakOuterLoop)
+                    break;
+            }
+
+            if (amount > 0)
+                tutorial.TryShowInWorld(TutorialType.ClearTables, placeTable, out _);
+            
             return;
         }
 

@@ -30,6 +30,9 @@ public class PlayerMovePC : MonoBehaviour
     
     private void Start()
     {
+        if (Application.isMobilePlatform)
+            enabled = false;
+        
         _playerInput = GetComponent<PlayerInput>();
         _rb = GetComponent<Rigidbody>();
         _steps = GetComponent<PlayerSteps>();

@@ -243,6 +243,8 @@ namespace TheSTAR.GUI
 
         private void Update()
         {
+            if (Application.isMobilePlatform) return;
+            
             if (UnityEngine.Input.GetKeyUp(KeyCode.E)||UnityEngine.Input.GetMouseButtonUp(0))
                 MainInteractionClickEvent?.Invoke();
             

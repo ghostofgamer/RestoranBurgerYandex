@@ -118,10 +118,10 @@ public partial class GameWorldInteraction
 
             SetInteractionScenarioByBox(box);
 
-            if (tutorial.InTutorial && tutorial.CurrentTutorial == TutorialType.PlacePackingBoxToShelf)
+            /*if (tutorial.InTutorial && tutorial.CurrentTutorial == TutorialType.PlacePackingBoxToShelf)
             {
                 game.TriggerTutorial();
-            }
+            }*/
         };
 
         gameScreen.OnCloseClickEvent += () =>
@@ -137,10 +137,10 @@ public partial class GameWorldInteraction
 
             SetInteractionScenarioByBox(box);
 
-            if (tutorial.InTutorial && tutorial.CurrentTutorial == TutorialType.PlacePackingBoxToShelf)
+            /*if (tutorial.InTutorial && tutorial.CurrentTutorial == TutorialType.PlacePackingBoxToShelf)
             {
                 game.TriggerTutorial();
-            }
+            }*/
         };
 
         gameScreen.OnUseClickEvent += () =>

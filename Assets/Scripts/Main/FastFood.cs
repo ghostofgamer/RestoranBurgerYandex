@@ -24,7 +24,10 @@ public class FastFood : MonoBehaviour
     [SerializeField] private AssemblyItemsContainer burgerPackingPaperHandler;
     [SerializeField] private Griddle[] griddles;
     [SerializeField] private ItemsHandler tutorRawCutletsTray;
-
+    [SerializeField] private AssemblyItemsContainer _cutletsContainer;
+    [SerializeField] private TutorInWorldFocus _cuttingBoard;
+    
+    
     [Header("Apparats")] [SerializeField] private CoffeeMachine coffeeMachine;
     // [SerializeField] private DeepFryer deepFryer;
     [SerializeField] private SodaMachine sodaMachine;
@@ -34,16 +37,12 @@ public class FastFood : MonoBehaviour
     [Space] [SerializeField] private AssemblingBoard assemblingBoard;
     [SerializeField] private OrderTray orderTray;
     [SerializeField] private Transform orderTrayPos;
-
     [SerializeField] private Transform[] _orderTrayPositions;
-
     [SerializeField] private AssemblyItemsContainer tutorSlicedContainerBun;
     [SerializeField] private AssemblyItemsContainer[] allAssemblyContainers;
     [SerializeField] private DraggerGroup finalBurgersGroup;
     [SerializeField] private SousContainer ketchupContainer;
     [SerializeField] private SousContainer gorchizaContainer;
-
-
     [SerializeField] private OrderTray[] _orderTrays;
 
     private List<OrderTray> availableTrays = new List<OrderTray>();
@@ -52,6 +51,8 @@ public class FastFood : MonoBehaviour
     private int _currentIndexOrderTray;
 
 
+    public AssemblyItemsContainer CutletsContainer => _cutletsContainer;
+    public TutorInWorldFocus CuttingBoard =>_cuttingBoard;
     public Trash Trash => _trash;
     public Computer Computer => computer;
     public AssemblyItemsContainer BurgerPackingPaperHandler => burgerPackingPaperHandler;

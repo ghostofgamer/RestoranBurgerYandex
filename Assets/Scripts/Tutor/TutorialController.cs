@@ -48,17 +48,19 @@ public class TutorialController : MonoBehaviour
         { TutorialType.FirstDelivery, new("Order products: {0}") },
         { TutorialType.GetFirstDelivery, new("PICK UP A BOX OF BURGER BUN.") },
         { TutorialType.CutBun, new("Place the burger bun in the tray") },
-        { TutorialType.PlacePackingBoxToShelf, new("Place the Burger Boxes on the shelf") },
+        { TutorialType.PlacePackingBoxToShelf, new("Opeun Box and Place the Burger Boxes on the shelf") },
         { TutorialType.PlaceCutletToTray, new("Place the burger patty in the tray") },
         { TutorialType.GetFourCutletsInHands, new("You can hold up to 4 cutlets on the tray!") },
         { TutorialType.PlaceCutletToGrill, new("Place the burger patty on the grill") },
         { TutorialType.FryCutlet, new("Fry the burger patty") },
         { TutorialType.TakeCutlet, new("Take the burger patty") },
+        { TutorialType.TakeToAssemblyTable, new("Take cutlets To Assembly Table") },
         { TutorialType.AssemblyBurger, new("Make the first s burger") },
         { TutorialType.SetPrice, new("Great! You've learned how to make burgers! Let's set the price!") },
         { TutorialType.SetFastFoodName, new("Let's name the restaurant!") },
         { TutorialType.OpenFastFood, new("It's time to open a fast food restaurant!") },
         { TutorialType.ServeTheQuests, new("Serve the guests: {0}") },
+        { TutorialType.ClearTables, new("Clear table") },
         { TutorialType.BuyChair, new("Buy a chair") },
         { TutorialType.BuySection, new("Buy a selection 1") },
 
@@ -167,7 +169,8 @@ public class TutorialController : MonoBehaviour
     {
         currentWorldFocus = focus;
         Transform[] focusTran = new Transform[focus.Length];
-        for (int i = 0; i < focus.Length; i++) focusTran[i] = focus[i].FocusTran;
+        for (int i = 0; i < focus.Length; i++)
+            focusTran[i] = focus[i].FocusTran;
         Show(tutorialType, focusTran, true, TutorialBasingType.World, out successful);
     }
 
@@ -210,7 +213,15 @@ public class TutorialController : MonoBehaviour
         _currentFocusTran = focusTran;
         currentlyInFOV = transform;
 
-        if (basingType == TutorialBasingType.UI) cursor.gameObject.SetActive(true);
+        if (basingType == TutorialBasingType.UI)
+        {
+            /*foreach (var point in createdPoints)
+            {
+                point.gameObject.SetActive(true);
+            }*/
+
+            cursor.gameObject.SetActive(true);
+        }
         else
         {
             while (createdPoints.Count < focusTran.Length)
@@ -304,7 +315,8 @@ public class TutorialController : MonoBehaviour
         cursor.gameObject.SetActive(false);
 
         Debug.Log("Hide Tutor");
-        foreach (var point in createdPoints) point.gameObject.SetActive(false);
+        foreach (var point in createdPoints)
+            point.gameObject.SetActive(false);
 
         _currentTutorialBasingType = null;
         _currentFocusTran = null;
@@ -406,7 +418,18 @@ public class TutorialController : MonoBehaviour
                 break;
 
             case TutorialBasingType.World:
-                
+
+
+                if (_currentFocusTran.Length > 0)
+                {
+                    foreach (var point in createdPoints)
+                        point.gameObject.SetActive(true);
+                }
+                else
+                {
+                    Debug.Log("НУЛ");
+                }
+
                 for (int i = 0; i < _currentFocusTran.Length; i++)
                 {
                     focusPos = _currentFocusTran[i].position;
@@ -431,11 +454,12 @@ public class TutorialController : MonoBehaviour
                     }
                     else
                     {
-                        Vector3 screenDirection = mainCamera.WorldToScreenPoint(focusPos) - new Vector3(Screen.width / 2, Screen.height / 2, 0);
+                        Vector3 screenDirection = mainCamera.WorldToScreenPoint(focusPos) -
+                                                  new Vector3(Screen.width / 2, Screen.height / 2, 0);
                         screenDirection.Normalize();
                         float edgeX = screenDirection.x > 0 ? 0 : Screen.width;
                         float edgeY = screenDirection.y > 0 ? 0 : Screen.height;
-                        
+
                         focusScreenPos.x = Mathf.Clamp(edgeX,
                             cursor.GetComponent<RectTransform>().rect.width / 2,
                             Screen.width - cursor.GetComponent<RectTransform>().rect.width / 2);
@@ -471,9 +495,8 @@ public class TutorialController : MonoBehaviour
                 bool inFOV = checkInFovDelegate(currentWorldFocus[i].Col);
                 if (inFOV != createdPoints[i].CurrentlyInFOV)
                 {
-                    
                     createdPoints[i].SetInFOV(true);
-                    
+
                     // createdPoints[i].SetInFOV(inFOV);
                 }
             }
@@ -545,11 +568,13 @@ public enum TutorialType
     PlaceCutletToGrill,
     FryCutlet,
     TakeCutlet,
+    TakeToAssemblyTable,
     AssemblyBurger,
     SetPrice,
     SetFastFoodName,
     OpenFastFood,
     ServeTheQuests,
+    ClearTables,
     BuyChair,
     BuySection,
 

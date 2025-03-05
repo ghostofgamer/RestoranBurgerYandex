@@ -22,7 +22,8 @@ public class BuyerPlace : MonoBehaviour
     
     private ItemsController items;
     private int _maxPollutaionCategories = 3;
-    
+    private GameController _gameController;
+    private TutorialController _tutorial;
     public PathPoint Point => point;
     public Transform SittingPlace => sittingPlace;
     public List<Draggable> OrderItems => tablePlace.OrderItems;
@@ -46,9 +47,13 @@ public class BuyerPlace : MonoBehaviour
     public int Index => index;
 
     [Inject]
-    private void Construct(ItemsController items)
+    private void Construct(ItemsController items,
+        GameController gameController,
+        TutorialController tutorialController)
     {
         this.items = items;
+        _gameController = gameController;
+        _tutorial = tutorialController;
         //Debug.Log("Construct BuyerPlace");
     }
 
@@ -59,6 +64,19 @@ public class BuyerPlace : MonoBehaviour
         tablePlace.Init(index);
         cash.Init(this);
         DeactivateCash();
+    }
+
+    public int GetTrashActiveCount()
+    {
+        int amount = 0;
+
+        foreach (var garbage in _garbages)
+        {
+            if (garbage.gameObject.activeSelf)
+                amount++;
+        }
+
+        return amount;
     }
 
     public void PolluteTable()
@@ -86,6 +104,12 @@ public class BuyerPlace : MonoBehaviour
     {
         if (_pollutionLevel <= 0) return;
 
+        if (!_tutorial.IsCompleted(TutorialType.ClearTables))
+        {
+            _tutorial.CompleteTutorial(TutorialType.ClearTables);
+            _gameController.TriggerTutorial();
+        }
+        
         _pollutionLevel--;
         /*_garbages[index].SetActive(false);*/
 

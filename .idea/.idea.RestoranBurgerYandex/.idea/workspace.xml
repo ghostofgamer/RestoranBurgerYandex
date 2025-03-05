@@ -5,10 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02332a16-073c-444b-8fc8-7e2f7e70d71c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/PerformanceTestRunInfo.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/PerformanceTestRunInfo.json.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/PerformanceTestRunSettings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/PerformanceTestRunSettings.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.RestoranBurgerYandex/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RestoranBurgerYandex/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Tutorial/point.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Tutorial/point.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/World/Diner/BuyerPlaces/AllBuyerPlaces.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/World/Diner/BuyerPlaces/AllBuyerPlaces.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/World/Location/Delivery.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/World/Location/Delivery.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/World/Location/World.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/World/Location/World.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuyerPlace/AllBuyerPlaces.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuyerPlace/AllBuyerPlaces.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuyerPlace/BuyerPlace.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuyerPlace/BuyerPlace.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuyerPlace/BuyerPlaceFurnitureUnit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuyerPlace/BuyerPlaceFurnitureUnit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/LookMouse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/LookMouse.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/PlayerMovePC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/PlayerMovePC.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main/FastFood.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main/FastFood.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main/GameController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main/GameWorldInteraction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main/GameWorldInteraction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Screens/GameScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Screens/GameScreen.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tutor/TutorialController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Tutor/TutorialController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/World/GameWorld.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/World/GameWorld.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +47,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.agava.yandexgames/Runtime/YandexGamesSdk.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.applovin.mediation.ads/Scripts/MaxSdkUnityEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation/Samples~/Scripts/ClickToMove.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation/Samples~/Scripts/MeshTool.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ide.visualstudio/Editor/UsageUtility.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem/InputSystem/Plugins/UI/InputSystemUIInputModule.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -105,7 +120,9 @@
       <workItem from="1740643963440" duration="7226000" />
       <workItem from="1740728674257" duration="958000" />
       <workItem from="1740989009855" duration="17961000" />
-      <workItem from="1741073245445" duration="24581000" />
+      <workItem from="1741073245445" duration="25847000" />
+      <workItem from="1741106831848" duration="132000" />
+      <workItem from="1741165421285" duration="11364000" />
     </task>
     <servers />
   </component>

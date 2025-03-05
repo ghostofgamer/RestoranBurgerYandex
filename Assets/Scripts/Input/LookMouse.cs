@@ -36,6 +36,9 @@ public class LookMouse : MonoBehaviour
         // _tutorialController = FindObjectOfType<TutorialController>();
         
         // Cursor.lockState = CursorLockMode.Locked;
+
+        if (Application.isMobilePlatform)
+            enabled = false;
     }
 
     public void SetValue(bool value)
