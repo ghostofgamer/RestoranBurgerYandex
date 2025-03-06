@@ -23,7 +23,7 @@ namespace TheSTAR.GUI
 
         public override void Init()
         {
-            Debug.Log("+++");
+        
             base.Init();
 
             closeButton.Init(() =>

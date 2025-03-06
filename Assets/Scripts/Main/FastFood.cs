@@ -26,7 +26,7 @@ public class FastFood : MonoBehaviour
     [SerializeField] private ItemsHandler tutorRawCutletsTray;
     [SerializeField] private AssemblyItemsContainer _cutletsContainer;
     [SerializeField] private TutorInWorldFocus _cuttingBoard;
-    
+    [SerializeField] private DraggerGroup _cutletContainer;
     
     [Header("Apparats")] [SerializeField] private CoffeeMachine coffeeMachine;
     // [SerializeField] private DeepFryer deepFryer;
@@ -91,6 +91,10 @@ public class FastFood : MonoBehaviour
     private void Start()
     {
         availableTrays.AddRange(_orderTrays);
+        _cutletContainer.OnAnyChangeEvent+=(group)=>OnChangeDraggerGroup(group);
+        _cutletContainer.ChangeEvent += TestDebug;
+        Debug.Log("ПОДПИСКА!");
+            // itemsContainer.OnAnyChangeEvent += (group) => OnChangeDraggerGroup(group);
         // StartCoroutine(FindReputationWithDelay(3.0f));
     }
 
@@ -308,6 +312,7 @@ public class FastFood : MonoBehaviour
 
         for (int i = 0; i < draggerGroupsToSaveLoad.Length; i++)
         {
+            // Debug.Log("Ш " +i);
             DraggerGroup itemsContainer = draggerGroupsToSaveLoad[i];
             itemsContainer.OnAnyChangeEvent += (group) => OnChangeDraggerGroup(group);
             itemsContainer.Init(i);
@@ -406,14 +411,30 @@ public class FastFood : MonoBehaviour
         loaded = true;
     }
 
+    public void TestDebug()
+    {
+        Debug.Log("ТЕСТОВЫЙ");
+        Debug.Log("ТЕСТОВЫЙ");
+        Debug.Log("ТЕСТОВЫЙ");
+        Debug.Log("ТЕСТОВЫЙ");
+        Debug.Log("ТЕСТОВЫЙ");
+        Debug.Log("ТЕСТОВЫЙ");
+        Debug.Log("ТЕСТОВЫЙ");
+        Debug.Log("ТЕСТОВЫЙ");
+    }
+    
     public void OnChangeDraggerGroup(DraggerGroup draggerGroup)
     {
+        Debug.Log("LOADEd " + loaded);
         if (!loaded) return;
-
+        Debug.Log("LOADEd end" + loaded);
+        
         //Debug.Log("OnChangeDraggerGroup " + draggerGroup.gameObject.name, draggerGroup.gameObject);
-
+        
+        Debug.Log("draggerGroup.Index" + draggerGroup.Index);
         if (draggerGroup.Index == -1) return;
-
+        Debug.Log("draggerGroup.Index end" + draggerGroup.Index);
+        
         while (data.gameData.levelData.itemContainers.Count <= draggerGroup.Index)
             data.gameData.levelData.itemContainers.Add(new());
 
@@ -431,7 +452,7 @@ public class FastFood : MonoBehaviour
         }
 
         //Debug.Log("Items count: " + itemsInDraggerGroup.Count);
-
+Debug.Log("SaveFastFoodLevel");
         data.gameData.levelData.itemContainers[draggerGroup.Index].items = itemsInDraggerGroup;
         data.Save(DataSectionType.Level);
     }

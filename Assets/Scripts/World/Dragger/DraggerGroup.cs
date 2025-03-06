@@ -10,6 +10,12 @@ public class DraggerGroup : MonoBehaviour
     [SerializeField] private Dragger[] draggers;
 
     public event Action<DraggerGroup> OnAnyChangeEvent;
+    
+    
+    
+    public event Action ChangeEvent;
+    
+    
     public event Action<DraggerGroup, Dragger, Draggable> OnSetItemEvent; // оба эти ивента вызывать когда ставим стакан в стакан
     public event Action<DraggerGroup, Dragger, Draggable> OnEndDragItemEvent; // (или достаём стакан из стакана)
     public event Action<DraggerGroup> OnEmptyGroup; // группа опустошена
@@ -19,6 +25,7 @@ public class DraggerGroup : MonoBehaviour
 
     public void Init(int index)
     {
+        Debug.Log("ПОДПИС " + gameObject.name);
         this.index = index;
     }
 
@@ -109,8 +116,10 @@ public class DraggerGroup : MonoBehaviour
         return allAvailablePlaces.Count;
     }
 
-    private void OnEndDrag(Dragger dragger, Draggable draggable)
+    public void OnEndDrag(Dragger dragger, Draggable draggable)
     {
+        Debug.Log("OnendDrag  " + gameObject.name);
+        ChangeEvent?.Invoke();
         OnEndDragItemEvent?.Invoke(this, dragger, draggable);
         OnAnyChangeEvent?.Invoke(this);
 

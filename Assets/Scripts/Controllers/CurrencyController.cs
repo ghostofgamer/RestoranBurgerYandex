@@ -35,12 +35,8 @@ public class CurrencyController
 
     public void AddCurrency(CurrencyType currencyType, DollarValue value, bool autoSave = true)
     {
-        Debug.Log("деньги сумма " + value);
-
         if (_reputation != null)
         {
-            Debug.Log("репутация заведения  " + _reputation.StarsRestaurant);
-
             float tipsPercentage = Mathf.Max(0, _reputation.StarsRestaurant) * 0.03f;
 
             int totalCents = value.dollars * 100 + value.cents;
@@ -50,13 +46,11 @@ public class CurrencyController
             int tipsCents = Mathf.FloorToInt(tipsInCents % 100);
             DollarValue tipsValue = new DollarValue { dollars = tipsDollars, cents = tipsCents };
             OnTipsChanged?.Invoke(tipsValue);
-            Debug.Log("чаевые " + tipsValue);
 
             float finalValueInCents = totalCents * (1 + Mathf.Max(0, _reputation.StarsRestaurant) * 0.03f);
             int finalDollars = Mathf.FloorToInt(finalValueInCents / 100);
             int finalCents = Mathf.FloorToInt(finalValueInCents % 100);
             value = new DollarValue { dollars = finalDollars, cents = finalCents };
-            Debug.Log("FinalValue " + value);
         }
 
         OnCurrencyChanged?.Invoke(value);

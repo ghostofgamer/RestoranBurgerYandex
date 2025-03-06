@@ -28,18 +28,20 @@ namespace TheSTAR.Data
         [ContextMenu("Save")]
         private void ForceSave()
         {
-            Debug.Log("ForceSave");
+            Debug.Log("FORCE SAVE!");
             SaveAll(true);
         }
 
         public void SaveAll(bool force = false)
         {
+            Debug.Log("SAVE ALL!!!");
             var allSections = EnumUtility.GetValues<DataSectionType>();
             foreach (var section in allSections) Save(section, force);
         }
 
         public void Save(DataSectionType secion, bool force = false)
         {
+            Debug.Log("SAVE!!!!! " + secion);
             if (!force && lockSaves) return;
 
             JsonSerializerSettings settings = new() { TypeNameHandling = TypeNameHandling.Objects };

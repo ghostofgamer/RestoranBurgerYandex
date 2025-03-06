@@ -82,6 +82,7 @@ public class OrderTray : MonoBehaviour
 
     private bool CheckHaveAllNeededItems()
     {
+  
         List<ItemType> neededItems = new();
 
         foreach (var orderItem in currentOrderData.OrderData.Items)

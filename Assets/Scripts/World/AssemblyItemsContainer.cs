@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
@@ -6,25 +7,40 @@ using Zenject;
 public class AssemblyItemsContainer : MonoBehaviour
 {
     [SerializeField] private TouchInteractive touchInteractive;
-    [SerializeField] private UnityDictionary<CutType, CutVariantData[]> _cutDatas = new(); // какие предметы во что преобразуются
-    [SerializeField] private GroupsByTypeHandler groups;
+    [SerializeField] private GameObject _smallBurgerPrefab;
 
-    [Space]
-    [SerializeField] private TutorInWorldFocus tutorFocus;
+    [SerializeField]
+    private UnityDictionary<CutType, CutVariantData[]> _cutDatas = new(); // какие предметы во что преобразуются
+
+    [SerializeField] private GroupsByTypeHandler groups;
+    [SerializeField] private FastFood _fastFood;
+    [SerializeField] private DraggerGroup _draggerGroup;
+    [SerializeField] private bool _cutletContainer;
+
+    [Space] [SerializeField] private TutorInWorldFocus tutorFocus;
 
     private GameWorldInteraction gameWorldInteraction;
     private ItemsController items;
+    private Coroutine _coroutine;
 
+
+    public GameObject SmallBurger => _smallBurgerPrefab;
     public TutorInWorldFocus TutorFocus => tutorFocus;
     public TouchInteractive TouchInteractive => touchInteractive;
 
     public UnityDictionary<CutType, CutVariantData[]> CutData => _cutDatas;
-    
+
     private CutType? currentCutType = null;
 
     public bool IsEmpty => currentCutType == null;
     public CutType? CurrentCutType => currentCutType;
 
+    public GameObject InterBurger()
+    {
+        var burger = Instantiate(_smallBurgerPrefab);
+        return burger;
+    }
+    
     private Dictionary<ItemType, DraggerGroup> GetCurrentGroups()
     {
         Dictionary<ItemType, DraggerGroup> resultGroups = new();
@@ -41,7 +57,7 @@ public class AssemblyItemsContainer : MonoBehaviour
                 if (!haveItemTypesInCutVariant.Contains(element)) haveItemTypesInCutVariant.Add(element);
             }
         }
-        
+
         foreach (var groupType in haveItemTypesInCutVariant)
         {
             resultGroups.Add(groupType, groups.GetGroupByItemType(groupType));
@@ -134,21 +150,40 @@ public class AssemblyItemsContainer : MonoBehaviour
     {
         touchInteractive.OnClickEvent += () =>
         {
+            if (_cutletContainer)
+            {
+                StartSaveCutlets();
+                Debug.Log("ложим");
+                // _fastFood.OnChangeDraggerGroup(_draggerGroup);
+            }
+
             gameWorldInteraction.OnSlicedContainerClick(this);
         };
 
         groups.Init();
 
-        groups.OnTotalEmpty += () =>
-        {
-            currentCutType = null;
-        };
+        groups.OnTotalEmpty += () => { currentCutType = null; };
     }
 
+    private void StartSaveCutlets()
+    {
+        if(_coroutine!=null)
+            StopCoroutine(_coroutine);
+
+        _coroutine = StartCoroutine(PauseSave());
+    }
+    
+    private IEnumerator PauseSave()
+    {
+        yield return new WaitForSeconds(0.1f);
+        Debug.Log("ложим");
+        _fastFood.OnChangeDraggerGroup(_draggerGroup);
+    }   
+    
     public void TryPlace(Item item, out bool success)
     {
         success = false;
-        
+
         if (!CanUse(item.ItemType, out var cutType, out var cutVariant)) return;
 
         var fromItemType = item.ItemType;
@@ -157,17 +192,19 @@ public class AssemblyItemsContainer : MonoBehaviour
         item.Draggable.CurrentDragger.EndDrag();
         var previousItemPosition = item.transform.position;
         var previousItemRotation = item.transform.rotation;
-
+    
         if (toItemTypes.Length == 1 && toItemTypes[0] == item.ItemType)
         {
             groups.GetGroupByItemType(item.ItemType).GetAllEmptyPlaces(out var availablePlaces);
             availablePlaces[0].StartDrag(item.Draggable);
             availablePlaces.RemoveAt(0);
+            
+            if(_cutletContainer)
+                StartSaveCutlets();
         }
         else
         {
             Destroy(item.gameObject);
-
             foreach (var toItemType in toItemTypes)
             {
                 groups.GetGroupByItemType(toItemType).GetAllEmptyPlaces(out var availablePlaces);
@@ -236,7 +273,7 @@ public class AssemblyItemsContainer : MonoBehaviour
         if (!checkByCutType) return false;
 
         var portionsCount = items.GetItemData(itemType).OtherData.PortionsValue;
-        
+
         foreach (var itemTypeTo in cutVariant.To)
         {
             var group = groups.GetGroupByItemType(itemTypeTo);

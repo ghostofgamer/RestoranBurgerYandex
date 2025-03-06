@@ -37,6 +37,7 @@ public class DraggableByPlayer : Draggable
 
     public override void OnEndDrag(bool autoChangeInteractable)
     {
+        Debug.Log("END DRAG");
         base.OnEndDrag(autoChangeInteractable);
 
         rigidBody.isKinematic = false;

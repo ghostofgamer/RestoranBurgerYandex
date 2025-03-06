@@ -104,12 +104,14 @@ public partial class GameWorldInteraction
 
     public void OnClickToDraggable(Draggable draggable)
     {
+        Debug.Log("1");
         var playerDraggable = player.CurrentDraggable;
         if (playerDraggable && !player.HavePlace(draggable, out _))
         {
+            Debug.Log("3");
             if (TryPlaceCupToCup()) return;
             if (TryPackBurger()) return;
-
+            Debug.Log("5");
             var dragger = draggable.CurrentDragger;
             if (!dragger) return;
 
@@ -118,7 +120,7 @@ public partial class GameWorldInteraction
 
             var itemsHandler = group.GetComponent<ItemsHandler>();
             if (!itemsHandler) return;
-
+            Debug.Log("6");
             OnItemsHandlerClick(itemsHandler);
 
             return;
@@ -127,6 +129,7 @@ public partial class GameWorldInteraction
         var assemblyItem = draggable.GetComponent<AssemblyItem>();
         if (assemblyItem && assemblyItem.InAssembly)
         {
+            Debug.Log("10");
             TryAssemblyFocus(out var success);
             if (success) return;
 
@@ -136,15 +139,16 @@ public partial class GameWorldInteraction
 
         if (player.HavePlace(draggable, out var place))
         {
+            Debug.Log("11");
             var item = draggable.GetComponent<Item>();
             if (item)
             {
                 var itemSection = items.GetItemData(item.ItemType).mainData.SectionType;
-                if (itemSection == ItemSectionType.FinalBurger)
+                /*if (itemSection == ItemSectionType.FinalBurger)
                 {
                     TryAssemblyFocus(out _);
                     return;
-                }
+                }*/
             }
 
             place.StartDrag(draggable);
@@ -319,16 +323,21 @@ public partial class GameWorldInteraction
                
                 //Debug.Log("Пытаемся упаковать бургер");
                 var finalBurger = game.World.FastFood.AssemblingBoard.TryGetFinalItem();
+                
                 if (finalBurger)
                 {
-                    //Debug.Log("Пакуем");
+                    /*var burger = slicedContainer.InterBurger();
+                    placeForFinalBurger.StartDrag(burger.GetComponent<Item>().Draggable);*/
+                    placeForFinalBurger.StartDrag(finalBurger.Draggable);
+                    
+                    /*Debug.Log("УПАКОВКА!!! " + finalBurger.ItemType);
                     var paper = slicedContainer.AutoGetItem(true);
                     paper.Draggable.CurrentDragger.EndDrag();
                     var newPaper = items.Replace(paper, ItemType.BurgerPackingPaper_Closed);
                     newPaper.transform.position = finalBurger.transform.position;
                     newPaper.transform.rotation = finalBurger.transform.rotation;
                     newPaper.GetComponent<PackingPaperItem>().Dragger.StartDrag(finalBurger.Draggable);
-                    placeForFinalBurger.StartDrag(newPaper.Draggable);
+                    placeForFinalBurger.StartDrag(newPaper.Draggable);*/
 
                     if (!tutorial.IsCompleted(TutorialType.AssemblyBurger))
                     {
@@ -341,7 +350,7 @@ public partial class GameWorldInteraction
                 return;
             }
 
-          
+          Debug.Log("НУУУ!");
             if (!game.World.FastFood.AssemblingBoard.HavePlace()) return;
            
             var item = slicedContainer.AutoGetItem(game.World.FastFood.AssemblingBoard.Deep > 0);
