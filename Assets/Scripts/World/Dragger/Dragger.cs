@@ -6,7 +6,7 @@ public class Dragger : MonoBehaviour
 {
     [SerializeField] private bool autoChangeInteractableForDraggable = false;
 
-    private Draggable currentDraggable;
+    [SerializeField] private Draggable currentDraggable;
 
     public event Action<Dragger, Draggable> OnStartDragEvent;
     public event Action<Dragger, Draggable> OnEndDragEvent;

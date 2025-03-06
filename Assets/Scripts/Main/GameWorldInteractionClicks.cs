@@ -144,11 +144,11 @@ public partial class GameWorldInteraction
             if (item)
             {
                 var itemSection = items.GetItemData(item.ItemType).mainData.SectionType;
-                /*if (itemSection == ItemSectionType.FinalBurger)
+                if (itemSection == ItemSectionType.FinalBurger)
                 {
                     TryAssemblyFocus(out _);
                     return;
-                }*/
+                }
             }
 
             place.StartDrag(draggable);
@@ -326,9 +326,9 @@ public partial class GameWorldInteraction
                 
                 if (finalBurger)
                 {
-                    /*var burger = slicedContainer.InterBurger();
-                    placeForFinalBurger.StartDrag(burger.GetComponent<Item>().Draggable);*/
-                    placeForFinalBurger.StartDrag(finalBurger.Draggable);
+                    var burger = slicedContainer.InterBurger();
+                    placeForFinalBurger.StartDrag(burger.GetComponent<Item>().Draggable);
+                    // placeForFinalBurger.StartDrag(finalBurger.Draggable);
                     
                     /*Debug.Log("УПАКОВКА!!! " + finalBurger.ItemType);
                     var paper = slicedContainer.AutoGetItem(true);

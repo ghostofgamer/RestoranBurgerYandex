@@ -5,7 +5,7 @@ public class Draggable : MonoBehaviour
 {
     [SerializeField] private Collider col;
 
-    private Dragger currentDragger;
+    [SerializeField]private Dragger currentDragger;
     public Dragger CurrentDragger => currentDragger;
 
     public event Action OnStartDragEvent;
