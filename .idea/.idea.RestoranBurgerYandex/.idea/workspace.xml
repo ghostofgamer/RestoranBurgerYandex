@@ -6,12 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="02332a16-073c-444b-8fc8-7e2f7e70d71c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RestoranBurgerYandex/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RestoranBurgerYandex/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/PlayerInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input/PlayerInput.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main/GameController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main/GameWorldInteractionClicks.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main/GameWorldInteractionClicks.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Screens/GameScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Screens/GameScreen.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tutor/TutorialController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Tutor/TutorialController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/World/AssemblyItemsContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/World/AssemblyItemsContainer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/World/Location/World.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/World/Location/World.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Screens/EnterNameScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Screens/EnterNameScreen.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build/333a08c349df2dcf49ae86dcc9da784b.wasm.unityweb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build/809b273a9dd1d24cdf0c9bfb0e63c33b.framework.js.unityweb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build/826db91c4e66e7164bc3e02f88d94745.loader.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build/9341680301f43abd0e994dce60bee48a.data.unityweb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/StreamingAssets/UnityServicesProjectConfiguration.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/index.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +42,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation/Samples~/Scripts/MeshTool.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ide.visualstudio/Editor/UsageUtility.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem/InputSystem/Plugins/UI/InputSystemUIInputModule.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mobile.notifications/Samples~/NotificationsSamples/Demo/GameController.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -111,7 +115,8 @@
       <workItem from="1740989009855" duration="17961000" />
       <workItem from="1741073245445" duration="25847000" />
       <workItem from="1741106831848" duration="132000" />
-      <workItem from="1741165421285" duration="14984000" />
+      <workItem from="1741165421285" duration="15755000" />
+      <workItem from="1741245661094" duration="2138000" />
     </task>
     <servers />
   </component>

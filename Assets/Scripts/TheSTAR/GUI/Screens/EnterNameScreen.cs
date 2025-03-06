@@ -39,6 +39,15 @@ namespace TheSTAR.GUI
 
             acceptButton.Init(() =>
             {
+                int maxLength = 26; 
+                
+                if (inputField.text.Length > maxLength)
+                {
+                    Debug.LogWarning("Текст превышает максимальную длину!");
+                   
+                    return;
+                }
+                
                 onAcceptAction?.Invoke(inputField.text);
                 gui.ShowMainScreen();
                 
