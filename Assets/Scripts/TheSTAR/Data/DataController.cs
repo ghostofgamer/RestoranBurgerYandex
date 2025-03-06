@@ -28,6 +28,7 @@ namespace TheSTAR.Data
         [ContextMenu("Save")]
         private void ForceSave()
         {
+            Debug.Log("ForceSave");
             SaveAll(true);
         }
 

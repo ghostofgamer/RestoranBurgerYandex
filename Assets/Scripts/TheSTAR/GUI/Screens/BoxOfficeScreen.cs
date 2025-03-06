@@ -53,7 +53,20 @@ namespace TheSTAR.GUI
                 centInfo.Value.Init(centInfo.Key, OnCentsClick);
             }
 
-            closeBtn.Init(gui.ShowMainScreen);
+            // closeBtn.Init(gui.ShowMainScreen);
+            closeBtn.Init(() =>
+            {
+                Camera.main.GetComponent<CameraController>().TempFocus(null, false);
+                
+                if (!Application.isMobilePlatform)
+                {
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
+                }
+                
+                gui.ShowMainScreen();
+            });
+            
             resetBtn.Init(ResetChangeValue);
             deleteLastBtn.Init(DeleteLast);
             acceptBtn.Init(() =>
