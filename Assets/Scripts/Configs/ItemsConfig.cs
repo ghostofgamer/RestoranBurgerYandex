@@ -145,5 +145,6 @@ public enum ItemType
 
     KetchupUsed,
     MustardUsed,
-    SmallCompletedBurge
+    SmallCompletedBurge,
+    Cheeseburger
 }

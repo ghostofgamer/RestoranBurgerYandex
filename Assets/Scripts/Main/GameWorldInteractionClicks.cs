@@ -332,7 +332,10 @@ public partial class GameWorldInteraction
                 if (finalBurger)
                 {
                     // finalBurger.gameObject.SetActive(false);
-                    var burger = slicedContainer.InterBurger();
+                    
+                    var burger = slicedContainer.InterBurger(finalBurger);
+                    burger.transform.position = finalBurger.transform.position;
+                    burger.transform.rotation = finalBurger.transform.rotation;
                     placeForFinalBurger.StartDrag(burger.GetComponent<Item>().Draggable);
                     
                     
@@ -346,7 +349,7 @@ public partial class GameWorldInteraction
                     newPaper.transform.rotation = finalBurger.transform.rotation;
                     newPaper.GetComponent<PackingPaperItem>().Dragger.StartDrag(finalBurger.Draggable);
                     // placeForFinalBurger.StartDrag(newPaper.Draggable);
-                    // newPaper.Draggable.gameObject.SetActive(false);
+                    newPaper.Draggable.gameObject.SetActive(false);
                     
                     if (!tutorial.IsCompleted(TutorialType.AssemblyBurger))
                     {

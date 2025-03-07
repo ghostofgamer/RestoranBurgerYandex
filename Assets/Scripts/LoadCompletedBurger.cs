@@ -20,5 +20,9 @@ public class LoadCompletedBurger : MonoBehaviour
     {
        var item= diContainer.InstantiatePrefabForComponent<Item>(_finallyBurger, transform);
        item.GetComponent<DraggableByPlayer>().SetDragger(_dragger);
+       var dragger = item.GetComponent<DraggableByPlayer>();
+       dragger.Rigidbody.isKinematic = true;
+       dragger.Col.enabled = false;
+       _dragger.SetCurrentItem(item.GetComponent<Draggable>());
     }
 }

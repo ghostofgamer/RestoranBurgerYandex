@@ -56,11 +56,14 @@ Debug.Log("1");
 
         // init update cost
         Debug.Log("7");
-        /*foreach (var itemType in allItemTypes)
+        foreach (var itemType in allItemTypes)
         {
+            if(itemType == ItemType.SmallCompletedBurge)
+                continue;
+            
             Debug.Log("8");
             SetPrice(itemType, prices[itemType]);
-        }*/
+        }
         Debug.Log("10");
     }
 

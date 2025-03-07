@@ -5,10 +5,12 @@ public class DraggableByPlayer : Draggable
 {
     [SerializeField] private TouchInteractive touchInteractive;
     [SerializeField] private Rigidbody rigidBody;
-
-    private GameWorldInteraction gameWorldInteraction;
     [SerializeField] private bool _isLoadVersion;
 
+    private GameWorldInteraction gameWorldInteraction;
+
+    public Rigidbody Rigidbody => rigidBody;
+    
     [Inject]
     private void Construct(GameWorldInteraction gameWorldInteraction)
     {

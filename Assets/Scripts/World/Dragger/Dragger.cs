@@ -21,13 +21,19 @@ public class Dragger : MonoBehaviour
     private Tweener rotateDraggableTweener;
 
     public Draggable CurrentDraggable => currentDraggable;
+
     public bool IsEmpty
     {
         get
         {
-            if (CurrentDraggable == null) return true;
+            Debug.Log("1");
+            if (CurrentDraggable == null)
+                return true;
+            Debug.Log("3");
             var draggableItem = currentDraggable.GetComponent<Item>();
-            if (draggableItem == null) return false;
+            if (draggableItem == null)
+                return false;
+            Debug.Log("5");
 
             return false;
         }
@@ -38,17 +44,24 @@ public class Dragger : MonoBehaviour
 
     public virtual void StartDrag(Draggable draggable, bool useAnim = true)
     {
-        if (draggable.CurrentDragger) draggable.CurrentDragger.EndDrag();
+        Debug.Log("StartDrag " + draggable.gameObject.name);
+        if (draggable.CurrentDragger)
+        {
+            Debug.Log("draggable.CurrentDragger " + draggable.CurrentDragger.gameObject.name);
+            draggable.CurrentDragger.EndDrag();
+        }
+
 
         draggable.transform.parent = transform;
+        Debug.Log(" draggable.transform.parent " + transform);
 
         if (useAnim)
         {
             moveDraggableTweener =
-            draggable.transform.DOLocalMove(Vector3.zero, MoveDuration).SetEase(MoveEase);
+                draggable.transform.DOLocalMove(Vector3.zero, MoveDuration).SetEase(MoveEase);
 
             rotateDraggableTweener =
-            draggable.transform.DOLocalRotate(Vector3.zero, MoveDuration).SetEase(MoveEase);
+                draggable.transform.DOLocalRotate(Vector3.zero, MoveDuration).SetEase(MoveEase);
         }
         else
         {
@@ -63,6 +76,11 @@ public class Dragger : MonoBehaviour
         OnStartDrag(draggable);
     }
 
+    public void SetCurrentItem(Draggable draggable)
+    {
+        currentDraggable = draggable;
+    }
+    
     public void OnStartDrag(Draggable draggable)
     {
         OnStartDragEvent?.Invoke(this, draggable);
@@ -86,13 +104,15 @@ public class Dragger : MonoBehaviour
         rotateDraggableTweener?.Kill();
         moveDraggableTweener = null;
         rotateDraggableTweener = null;
-
         currentDraggable.transform.parent = null;
+
+        Debug.Log(currentDraggable.gameObject.name);
+
         currentDraggable.OnEndDrag(autoChangeInteractableForDraggable);
         if (impulseDirection != Vector3.zero) currentDraggable.Throw(impulseDirection * ThrowForce);
 
         var draggableToCallback = currentDraggable;
-        
+
         currentDraggable = null;
 
         OnEndDrag(draggableToCallback);

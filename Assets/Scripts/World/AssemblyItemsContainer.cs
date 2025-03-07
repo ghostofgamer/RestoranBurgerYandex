@@ -8,6 +8,7 @@ public class AssemblyItemsContainer : MonoBehaviour
 {
     [SerializeField] private TouchInteractive touchInteractive;
     [SerializeField] private GameObject _smallBurgerPrefab;
+    [SerializeField] private GameObject _cheeseBurgerPrefab;
 
     [SerializeField]
     private UnityDictionary<CutType, CutVariantData[]> _cutDatas = new(); // какие предметы во что преобразуются
@@ -35,11 +36,29 @@ public class AssemblyItemsContainer : MonoBehaviour
     public bool IsEmpty => currentCutType == null;
     public CutType? CurrentCutType => currentCutType;
 
-    public GameObject InterBurger()
+    public GameObject InterBurger(Item item)
     {
-        var burger = Instantiate(_smallBurgerPrefab);
+        var burger = new GameObject();
+        
+        switch (item.ItemType)
+        {
+          case ItemType.SmallCompletedBurge:
+              burger = Instantiate(_smallBurgerPrefab);
+              burger.GetComponent<DraggableByPlayer>().InitGameWorldInteraction(gameWorldInteraction);
+              return burger;
+              break;
+                  
+          case ItemType.Cheeseburger:
+              burger = Instantiate(_cheeseBurgerPrefab);
+              burger.GetComponent<DraggableByPlayer>().InitGameWorldInteraction(gameWorldInteraction);
+              return burger;
+              break;
+        }
+
+        return null;
+        /*var burger = Instantiate(_smallBurgerPrefab);
         burger.GetComponent<DraggableByPlayer>().InitGameWorldInteraction(gameWorldInteraction);
-        return burger;
+        return burger;*/
     }
     
     private Dictionary<ItemType, DraggerGroup> GetCurrentGroups()

@@ -48,7 +48,7 @@ public class ItemsController : MonoBehaviour
         }
     
         var item = new Item();
-        if (itemType == ItemType.SmallCompletedBurge)
+        /*if (itemType == ItemType.SmallCompletedBurge)
         {
            
             // var fullItem = diContainer.InstantiatePrefabForComponent<Item>(prefab, pos, rotation, transform);
@@ -60,7 +60,10 @@ public class ItemsController : MonoBehaviour
         else
         {
             item = diContainer.InstantiatePrefabForComponent<Item>(prefab, pos, rotation, transform);
-        }
+        }*/
+        item = diContainer.InstantiatePrefabForComponent<Item>(prefab, pos, rotation, transform);
+
+        
         // var item = diContainer.InstantiatePrefabForComponent<Item>(prefab, pos, rotation, transform);
         activeItems[itemType].Add(item);
         item.OnDestroyEvent += OnDestroyItem;
