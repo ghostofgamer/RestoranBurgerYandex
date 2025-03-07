@@ -104,7 +104,7 @@ public partial class GameWorldInteraction
 
     public void OnClickToDraggable(Draggable draggable)
     {
-        Debug.Log("1");
+        Debug.Log("1 " + draggable.gameObject.name);
         var playerDraggable = player.CurrentDraggable;
         if (playerDraggable && !player.HavePlace(draggable, out _))
         {
@@ -143,24 +143,28 @@ public partial class GameWorldInteraction
             var item = draggable.GetComponent<Item>();
             if (item)
             {
+                Debug.Log("item " + item.ItemType);
                 var itemSection = items.GetItemData(item.ItemType).mainData.SectionType;
+                Debug.Log("itemSection " + itemSection);
                 if (itemSection == ItemSectionType.FinalBurger)
                 {
+                    Debug.Log("TryAssemblyFocus");
                     TryAssemblyFocus(out _);
                     return;
                 }
             }
-
+            Debug.Log("place.StartDrag(draggable);");
             place.StartDrag(draggable);
         }
-
+        Debug.Log("15");
         bool TryPlaceCupToCup()
         {
             return false;
         }
-
+        Debug.Log("16");
         bool TryPackBurger()
         {
+            Debug.Log("31");
             bool packCompleted = false;
             var playerDraggable = player.CurrentDraggable;
             if (playerDraggable == null) return false;
@@ -191,7 +195,8 @@ public partial class GameWorldInteraction
                     }
                 }
             }
-
+            Debug.Log("33");
+            
             return packCompleted;
         }
 
@@ -341,7 +346,7 @@ public partial class GameWorldInteraction
                     newPaper.transform.rotation = finalBurger.transform.rotation;
                     newPaper.GetComponent<PackingPaperItem>().Dragger.StartDrag(finalBurger.Draggable);
                     // placeForFinalBurger.StartDrag(newPaper.Draggable);
-                    newPaper.Draggable.gameObject.SetActive(false);
+                    // newPaper.Draggable.gameObject.SetActive(false);
                     
                     if (!tutorial.IsCompleted(TutorialType.AssemblyBurger))
                     {

@@ -2127,7 +2127,7 @@ namespace Zenject
                 typeof(T), prefab, parentTransform, extraArgs);
         }
 
-        public T InstantiatePrefabForComponent<T>(
+        /*public T InstantiatePrefabForComponent<T>(
             UnityEngine.Object prefab, Vector3 position, Quaternion rotation, Transform parentTransform)
         {
             return (T)InstantiatePrefabForComponent(
@@ -2137,6 +2137,42 @@ namespace Zenject
                     Position = position,
                     Rotation = rotation
                 });
+        }*/
+        
+        public T InstantiatePrefabForComponent<T>(
+            UnityEngine.Object prefab, Vector3 position, Quaternion rotation, Transform parentTransform)
+        {
+            Debug.Log("InstantiatePrefabForComponent вызван для префаба: " + prefab.name);
+            Debug.Log("Позиция: " + position);
+            Debug.Log("Вращение: " + rotation);
+            Debug.Log("Родительский трансформ: " + (parentTransform != null ? parentTransform.name : "null"));
+
+            T component = default(T);
+            try
+            {
+                component = (T)InstantiatePrefabForComponent(
+                    typeof(T), prefab, new object[0], new GameObjectCreationParameters
+                    {
+                        ParentTransform = parentTransform,
+                        Position = position,
+                        Rotation = rotation
+                    });
+
+                if (component != null)
+                {
+                    Debug.Log("Компонент успешно создан: " + component.GetType().Name);
+                }
+                else
+                {
+                    Debug.LogError("Компонент не создан.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError("Ошибка при создании компонента: " + ex.Message);
+            }
+
+            return component;
         }
 
         public T InstantiatePrefabForComponent<T>(

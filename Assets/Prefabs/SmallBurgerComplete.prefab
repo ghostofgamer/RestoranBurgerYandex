@@ -325,9 +325,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   col: {fileID: 963367773768053687}
-  currentDragger: {fileID: 0}
+  currentDragger: {fileID: 9093473084163441836}
   touchInteractive: {fileID: 1532468266084679568}
   rigidBody: {fileID: 6988904718121776570}
+  _isLoadVersion: 1
 --- !u!114 &6864884654411290767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,7 +336,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4269065657697349770}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09290c93977654e36bcd3ff8867b1f45, type: 3}
   m_Name: 
@@ -837,6 +838,7 @@ MonoBehaviour:
   currentDragger: {fileID: 0}
   touchInteractive: {fileID: 5264474053937311810}
   rigidBody: {fileID: 2009558811225078123}
+  _isLoadVersion: 1
 --- !u!114 &9105676964712327861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -850,7 +852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   draggable: {fileID: 7310100538247803884}
-  itemType: 41
+  itemType: 44
   tutorFocus: {fileID: 7614847263249918071}
   playerDragPos: {fileID: 2915650584274921687}
   touchInteractive: {fileID: 5264474053937311810}

@@ -369,45 +369,60 @@ public class FastFood : MonoBehaviour
     public void LoadItems()
     {
         // load items
-
+Debug.Log("1");
+        
         var itemsData = data.gameData.levelData.itemContainers;
-
+        Debug.Log("3");
         for (int i = 0; i < itemsData.Count; i++)
         {
+            Debug.Log("5");
             if (i >= draggerGroupsToSaveLoad.Length)
             {
+                Debug.Log("6");
                 Debug.LogError("Не удалось загрузить предмет в группу " + i);
                 break;
             }
-
+            Debug.Log("7");
             var groupData = itemsData[i];
-
+            Debug.Log("8");
             foreach (var itemInGameData in groupData.items)
             {
+                Debug.Log("9");
                 if (itemInGameData is EmbeddableItemInGameData embeddableItemInGameData)
                 {
+                    Debug.Log("10");
                     var count = embeddableItemInGameData.count;
+                    Debug.Log("11");
                     for (int stackIndex = 0; stackIndex < count; stackIndex++)
                     {
+                        Debug.Log("13");
                         draggerGroupsToSaveLoad[i].HavePlace(itemInGameData.itemType, out var place);
                         var item = items.CreateItem(itemInGameData.itemType, place.transform.position);
                         place.StartDrag(item.Draggable);
+                        Debug.Log("15");
                     }
                 }
                 else
                 {
+                    Debug.Log("16");
                     draggerGroupsToSaveLoad[i].HavePlace(itemInGameData.itemType, out var place);
+                    Debug.Log("--- "+ itemInGameData.itemType );
                     var item = items.CreateItem(itemInGameData.itemType, place.transform.position);
+                    Debug.Log("---000 " + itemInGameData.itemType);
                     place.StartDrag(item.Draggable);
+                    Debug.Log("17");
                 }
             }
         }
-
+        
+        Debug.Log("18");
+        
         foreach (var slicedContainer in allAssemblyContainers)
         {
+            Debug.Log("19");
             slicedContainer.LoadCurrentCutType();
         }
-
+        Debug.Log("31");
         loaded = true;
     }
 

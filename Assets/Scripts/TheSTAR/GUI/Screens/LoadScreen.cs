@@ -26,14 +26,16 @@ namespace TheSTAR.GUI
 
             DOVirtual.Float(0f, ProgressForLoading, 1f, (value) =>
             {
+                Debug.Log("Progress " + ProgressForLoading);
                 loadBarFillImg.fillAmount = value;
             }).OnComplete(DoDelayAction);
         }
 
         private void DoDelayAction()
         {
+            Debug.Log("DoDelayAction " );
             loadingAction?.Invoke();
-
+          
             DOVirtual.Float(ProgressForLoading, 1f, 1f, (value) =>
             {
                 loadBarFillImg.fillAmount = value;

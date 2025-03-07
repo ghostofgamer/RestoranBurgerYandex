@@ -15,7 +15,7 @@ public class ItemsController : MonoBehaviour
 
     private DataController data;
     private DiContainer diContainer;
-
+    
     [Inject]
     private void Construct(DataController data, DiContainer diContainer)
     {
@@ -29,6 +29,7 @@ public class ItemsController : MonoBehaviour
         var allItemTypes = EnumUtility.GetValues<ItemType>();
         foreach (var itemType in allItemTypes)
         {
+            Debug.Log("ТИП " + itemType);
             activeItems.Add(itemType, new());
         }
     }
@@ -37,17 +38,33 @@ public class ItemsController : MonoBehaviour
     public Item CreateItem(ItemType itemType, Vector3 pos) => CreateItem(itemType, pos, Quaternion.identity);
     public Item CreateItem(ItemType itemType, Vector3 pos, Quaternion rotation)
     {
+      
         var prefab = itemsConfig.Get.Item(itemType).MainData.ItemPrefab;
+      
         if (prefab == null)
         {
-            Debug.LogError($"Префаб на предмет {itemType} не назначен!");
+       
             return null;
         }
-
-        var item = diContainer.InstantiatePrefabForComponent<Item>(prefab, pos, rotation, transform);
-        
+    
+        var item = new Item();
+        if (itemType == ItemType.SmallCompletedBurge)
+        {
+           
+            // var fullItem = diContainer.InstantiatePrefabForComponent<Item>(prefab, pos, rotation, transform);
+            // item = Instantiate(prefab, transform);
+            
+            item = diContainer.InstantiatePrefabForComponent<Item>(prefab, pos, rotation, transform);
+          
+        }
+        else
+        {
+            item = diContainer.InstantiatePrefabForComponent<Item>(prefab, pos, rotation, transform);
+        }
+        // var item = diContainer.InstantiatePrefabForComponent<Item>(prefab, pos, rotation, transform);
         activeItems[itemType].Add(item);
         item.OnDestroyEvent += OnDestroyItem;
+  
         return item;
     }
 

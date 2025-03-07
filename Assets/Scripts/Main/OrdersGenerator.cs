@@ -199,6 +199,7 @@ public class OrdersGenerator
     // какие товары можно сейчас заказать исходя из уровня игрока 
     private ItemType[] AvailableItemsToOrder(int forLevel)
     {
+        Debug.Log("AvailableItemsToOrder " );
         List<ItemType> availableItems = new();
 
         var allOrderItems = buyersConfig.Get.OrderItems;
@@ -206,10 +207,28 @@ public class OrdersGenerator
 
         foreach (var orderItemType in allOrderItems)
         {
+            
+            Debug.Log($"orderItemType " + orderItemType) ;
+        }
+        
+        ItemType errorKey = ItemType.SmallCompletedBurge; 
+        if (allHaveItems.ContainsKey(errorKey))
+        {
+            allHaveItems.Remove(errorKey);
+        }
+        
+        List<ItemType> filteredOrderItems = new List<ItemType>(allOrderItems);
+        filteredOrderItems.Remove(errorKey);
+        allOrderItems = filteredOrderItems.ToArray();
+        
+        foreach (var orderItemType in allOrderItems)
+        {
             bool checkLevel = forLevel >= itemsConfig.Get.Item(orderItemType).XpData.NeededLevelForBuy;
             if (!checkLevel) continue;
 
+            
             bool checkItems = CheckItemsCondition(allHaveItems, NededItemsToStartOrder[orderItemType]);
+         
             if (!checkItems) continue;
 
             availableItems.Add(orderItemType);
@@ -220,6 +239,64 @@ public class OrdersGenerator
 
     private bool CheckItemsCondition(Dictionary<ItemType, int> allHaveItems, NeededItem neededItem)
     {
+        Debug.Log("Check 3");
+        ItemType errorKey = ItemType.SmallCompletedBurge; // Замените на ваш ключ
+
+        if (neededItem is SingleNeededItem singleNeededItem)
+        {
+            if (singleNeededItem.ItemType == errorKey)
+            {
+                Debug.Log("RETURN GALSE");
+                return false;
+            }
+            Debug.Log("RETURN " + singleNeededItem.ItemType);
+            return allHaveItems.ContainsKey(singleNeededItem.ItemType);
+        }
+        else if (neededItem is CountNeededItem countNeededItem)
+        {
+            if (countNeededItem.ItemType == errorKey)
+            {
+                return false;
+            }
+            if (allHaveItems.TryGetValue(countNeededItem.ItemType, out int count))
+            {
+                return count >= countNeededItem.Count;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else if (neededItem is NeededItemGroup group)
+        {
+            if (neededItem is OrGroup)
+            {
+                foreach (var element in group.NeededItems)
+                {
+                    bool check = CheckItemsCondition(allHaveItems, element);
+                    if (check) return true;
+                }
+
+                return false;
+            }
+            else if (neededItem is AndGroup)
+            {
+                foreach (var element in group.NeededItems)
+                {
+                    bool check = CheckItemsCondition(allHaveItems, element);
+                    if (!check) return false;
+                }
+
+                return true;
+            }
+        }
+        Debug.Log("RETURN FFF" );
+        return false;
+    }
+    
+    /*private bool CheckItemsCondition(Dictionary<ItemType, int> allHaveItems, NeededItem neededItem)
+    {
+        Debug.Log("Check 3" );
         if (neededItem is SingleNeededItem singleNeededItem)
         {
             return allHaveItems.ContainsKey(singleNeededItem.ItemType);
@@ -254,7 +331,7 @@ public class OrdersGenerator
         }
 
         return false;
-    }
+    }*/
 
     /*
     /// <summary>

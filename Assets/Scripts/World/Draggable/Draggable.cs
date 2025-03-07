@@ -12,6 +12,11 @@ public class Draggable : MonoBehaviour
     public event Action OnEndDragEvent;
     public event Action<Vector3> OnThrowEvent;
 
+    public void SetDragger(Dragger dragger)
+    {
+        currentDragger = dragger;
+    }
+    
     public virtual void OnStartDrag(Dragger dragger, bool autoChangeInteractable)
     {
         currentDragger = dragger;

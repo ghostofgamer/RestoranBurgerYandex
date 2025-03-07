@@ -68,6 +68,9 @@ MonoBehaviour:
     - key: 7
       value:
         boxPrefab: {fileID: 315152322035282131, guid: aaa4bc655fe214eee832148a41283433, type: 3}
+    - key: 7
+      value:
+        boxPrefab: {fileID: 315152322035282131, guid: aaa4bc655fe214eee832148a41283433, type: 3}
   firstDeliveryDuration:
     days: 0
     hours: 0

@@ -4,6 +4,7 @@ using Configs;
 using Zenject;
 using TheSTAR.Data;
 using System;
+using UnityEngine;
 
 // должен просто хранить все цены и предоставлять логику для переназначения цен, обновление же на ценниках можно сделать через подписки на ивенты
 public class AllPrices
@@ -31,10 +32,14 @@ public class AllPrices
     public void Init()
     {
         // load
-
+Debug.Log("1");
         var allItemTypes = EnumUtility.GetValues<ItemType>();
+        
+        Debug.Log("3");
+        
         if (data.gameData.levelData.prices.Count == 0)
         {
+            Debug.Log("5");
             foreach (var itemType in allItemTypes)
             {
                 var itemData = itemsConfig.Get.Item(itemType);
@@ -45,15 +50,18 @@ public class AllPrices
         }
         else
         {
+            Debug.Log("6");
             prices = data.gameData.levelData.prices;
         }
 
         // init update cost
-
-        foreach (var itemType in allItemTypes)
+        Debug.Log("7");
+        /*foreach (var itemType in allItemTypes)
         {
+            Debug.Log("8");
             SetPrice(itemType, prices[itemType]);
-        }
+        }*/
+        Debug.Log("10");
     }
 
     public void SetPrice(ItemType itemType, DollarValue price)

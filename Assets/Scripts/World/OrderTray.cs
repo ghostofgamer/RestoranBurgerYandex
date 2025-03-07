@@ -74,15 +74,17 @@ public class OrderTray : MonoBehaviour
 
     private void OnPlaceItem()
     {
+        Debug.Log("PlaceItem");
         if (CheckHaveAllNeededItems())
         {
+            Debug.Log("TRUE PlaceItem");
             OnAllNeededItemsPlaced();
         }
     }
 
     private bool CheckHaveAllNeededItems()
     {
-  
+        Debug.Log("CheckHaveAllNeededItems");
         List<ItemType> neededItems = new();
 
         foreach (var orderItem in currentOrderData.OrderData.Items)
@@ -101,6 +103,11 @@ public class OrderTray : MonoBehaviour
             if (item == null) continue;
 
             if (item.ItemType == ItemType.BurgerPackingPaper_Closed)
+            {
+                haveItems.Add(item.GetComponent<PackingPaperItem>().Dragger.CurrentDraggable.GetComponent<Item>()
+                    .ItemType);
+            }
+            else if (item.ItemType == ItemType.SmallCompletedBurge)
             {
                 haveItems.Add(item.GetComponent<PackingPaperItem>().Dragger.CurrentDraggable.GetComponent<Item>()
                     .ItemType);

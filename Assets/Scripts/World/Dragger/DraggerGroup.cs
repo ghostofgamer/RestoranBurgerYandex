@@ -25,7 +25,6 @@ public class DraggerGroup : MonoBehaviour
 
     public void Init(int index)
     {
-        Debug.Log("ПОДПИС " + gameObject.name);
         this.index = index;
     }
 
