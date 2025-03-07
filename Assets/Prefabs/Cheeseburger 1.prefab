@@ -241,7 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   draggable: {fileID: 5958931842239943961}
-  itemType: 41
+  itemType: 45
   tutorFocus: {fileID: 7708311375146626305}
   playerDragPos: {fileID: 2631072950547871730}
   touchInteractive: {fileID: 1108864581652494654}

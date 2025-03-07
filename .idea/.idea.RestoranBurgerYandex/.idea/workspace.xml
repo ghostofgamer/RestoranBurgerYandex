@@ -6,27 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="02332a16-073c-444b-8fc8-7e2f7e70d71c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RestoranBurgerYandex/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RestoranBurgerYandex/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/World/Location/World.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/World/Location/World.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/43_Mustard 1.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/43_Mustard 1.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Configs/ItemsConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Configs/ItemsConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LoadCompletedBurger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LoadCompletedBurger.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main/AllPrices.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main/AllPrices.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main/FastFood.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main/FastFood.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main/GameWorldInteractionClicks.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main/GameWorldInteractionClicks.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main/ItemsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main/ItemsController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/World/AssemblyItemsContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/World/AssemblyItemsContainer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/World/Draggable/Draggable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/World/Draggable/Draggable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/World/Draggable/DraggableByPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/World/Draggable/DraggableByPlayer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/World/Dragger/Dragger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/World/Dragger/Dragger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/World/OrderTray.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/World/OrderTray.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build.zip" beforeDir="false" afterPath="$PROJECT_DIR$/Bild/Build.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build/39352a083a48e3fdca1620c5e0b2886a.data.unityweb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build/a549ae7b523fa772b56b271b3c5b07e5.wasm.unityweb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build/e426fd41c5ab962fd00b2af0cd4f7389.loader.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Bild/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

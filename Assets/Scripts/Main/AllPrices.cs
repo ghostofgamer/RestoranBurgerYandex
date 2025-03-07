@@ -32,14 +32,11 @@ public class AllPrices
     public void Init()
     {
         // load
-Debug.Log("1");
+
         var allItemTypes = EnumUtility.GetValues<ItemType>();
-        
-        Debug.Log("3");
         
         if (data.gameData.levelData.prices.Count == 0)
         {
-            Debug.Log("5");
             foreach (var itemType in allItemTypes)
             {
                 var itemData = itemsConfig.Get.Item(itemType);
@@ -50,21 +47,18 @@ Debug.Log("1");
         }
         else
         {
-            Debug.Log("6");
             prices = data.gameData.levelData.prices;
         }
 
         // init update cost
-        Debug.Log("7");
+      
         foreach (var itemType in allItemTypes)
         {
-            if(itemType == ItemType.SmallCompletedBurge)
+            if(itemType == ItemType.SmallCompletedBurge||itemType == ItemType.Cheeseburger)
                 continue;
             
-            Debug.Log("8");
             SetPrice(itemType, prices[itemType]);
         }
-        Debug.Log("10");
     }
 
     public void SetPrice(ItemType itemType, DollarValue price)

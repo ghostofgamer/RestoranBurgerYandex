@@ -38,29 +38,53 @@ public class AssemblyItemsContainer : MonoBehaviour
 
     public GameObject InterBurger(Item item)
     {
-        var burger = new GameObject();
+        Debug.Log("ПЕРЕДАЧА " + item.ItemType);
+        
+        /*if (item.ItemType == ItemType.FinalBurger_Small)
+        {
+            Debug.Log("Small 1");
+            var smallBurger = Instantiate(_smallBurgerPrefab);
+            smallBurger.GetComponent<DraggableByPlayer>().InitGameWorldInteraction(gameWorldInteraction);
+            Debug.Log("Small 3");
+            return smallBurger;
+        }
+
+        if (item.ItemType == ItemType.FinalBurger_Cheeseburger)
+        {
+            Debug.Log("Cheese 1");
+            var cheeseburger = Instantiate(_cheeseBurgerPrefab);
+            cheeseburger.GetComponent<DraggableByPlayer>().InitGameWorldInteraction(gameWorldInteraction);
+            Debug.Log("Cheese 3");
+            return cheeseburger;
+        }*/
+        GameObject burger = new GameObject();
         
         switch (item.ItemType)
         {
-          case ItemType.SmallCompletedBurge:
+          case ItemType.FinalBurger_Small:
+              Debug.Log("Small 1");
               burger = Instantiate(_smallBurgerPrefab);
               burger.GetComponent<DraggableByPlayer>().InitGameWorldInteraction(gameWorldInteraction);
+              Debug.Log("Small 3");
               return burger;
               break;
-                  
-          case ItemType.Cheeseburger:
+
+          case ItemType.FinalBurger_Cheeseburger:
+              Debug.Log("Cheese 1");
               burger = Instantiate(_cheeseBurgerPrefab);
               burger.GetComponent<DraggableByPlayer>().InitGameWorldInteraction(gameWorldInteraction);
+              Debug.Log("Cheese 3");
               return burger;
               break;
         }
 
+        Debug.Log("ПОСЛЕ " + item.ItemType);
         return null;
         /*var burger = Instantiate(_smallBurgerPrefab);
         burger.GetComponent<DraggableByPlayer>().InitGameWorldInteraction(gameWorldInteraction);
         return burger;*/
     }
-    
+
     private Dictionary<ItemType, DraggerGroup> GetCurrentGroups()
     {
         Dictionary<ItemType, DraggerGroup> resultGroups = new();
@@ -187,19 +211,19 @@ public class AssemblyItemsContainer : MonoBehaviour
 
     private void StartSaveCutlets()
     {
-        if(_coroutine!=null)
+        if (_coroutine != null)
             StopCoroutine(_coroutine);
 
         _coroutine = StartCoroutine(PauseSave());
     }
-    
+
     private IEnumerator PauseSave()
     {
         yield return new WaitForSeconds(0.1f);
         Debug.Log("ложим");
         _fastFood.OnChangeDraggerGroup(_draggerGroup);
-    }   
-    
+    }
+
     public void TryPlace(Item item, out bool success)
     {
         success = false;
@@ -212,14 +236,14 @@ public class AssemblyItemsContainer : MonoBehaviour
         item.Draggable.CurrentDragger.EndDrag();
         var previousItemPosition = item.transform.position;
         var previousItemRotation = item.transform.rotation;
-    
+
         if (toItemTypes.Length == 1 && toItemTypes[0] == item.ItemType)
         {
             groups.GetGroupByItemType(item.ItemType).GetAllEmptyPlaces(out var availablePlaces);
             availablePlaces[0].StartDrag(item.Draggable);
             availablePlaces.RemoveAt(0);
-            
-            if(_cutletContainer)
+
+            if (_cutletContainer)
                 StartSaveCutlets();
         }
         else
