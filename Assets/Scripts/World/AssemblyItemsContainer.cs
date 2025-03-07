@@ -38,6 +38,7 @@ public class AssemblyItemsContainer : MonoBehaviour
     public GameObject InterBurger()
     {
         var burger = Instantiate(_smallBurgerPrefab);
+        burger.GetComponent<DraggableByPlayer>().InitGameWorldInteraction(gameWorldInteraction);
         return burger;
     }
     

@@ -581,7 +581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoChangeInteractableForDraggable: 1
-  currentDraggable: {fileID: 0}
+  currentDraggable: {fileID: 3080368002981128825}
 --- !u!1 &6511720622736173703
 GameObject:
   m_ObjectHideFlags: 0

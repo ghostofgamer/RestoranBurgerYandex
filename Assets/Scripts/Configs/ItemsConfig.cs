@@ -144,5 +144,6 @@ public enum ItemType
     BurgerPackingPaper_Closed,
 
     KetchupUsed,
-    MustardUsed
+    MustardUsed,
+    SmallCompletedBurger
 }

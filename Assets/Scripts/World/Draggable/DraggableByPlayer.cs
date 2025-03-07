@@ -19,19 +19,26 @@ public class DraggableByPlayer : Draggable
         Init();
     }
 
+    public void InitGameWorldInteraction(GameWorldInteraction gameWorldInteraction)
+    {
+        this.gameWorldInteraction = gameWorldInteraction;
+    }
+    
     private void Init()
     {
         touchInteractive.OnClickEvent += () =>
         {
+            Debug.Log("1121231313131");
             gameWorldInteraction.OnClickToDraggable(this);
+            Debug.Log("33333");
         };
     }
 
     public override void OnStartDrag(Dragger dragger, bool autoChangeInteractable)
     {
         base.OnStartDrag(dragger, autoChangeInteractable);
-
         rigidBody.isKinematic = true;
+        
         if (autoChangeInteractable) touchInteractive.SetInteractable(false);
     }
 
