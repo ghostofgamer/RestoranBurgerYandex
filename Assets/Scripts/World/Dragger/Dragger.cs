@@ -26,14 +26,12 @@ public class Dragger : MonoBehaviour
     {
         get
         {
-            Debug.Log("1");
             if (CurrentDraggable == null)
                 return true;
-            Debug.Log("3");
+           
             var draggableItem = currentDraggable.GetComponent<Item>();
             if (draggableItem == null)
                 return false;
-            Debug.Log("5");
 
             return false;
         }
@@ -50,8 +48,7 @@ public class Dragger : MonoBehaviour
             Debug.Log("draggable.CurrentDragger " + draggable.CurrentDragger.gameObject.name);
             draggable.CurrentDragger.EndDrag();
         }
-
-
+        
         draggable.transform.parent = transform;
         Debug.Log(" draggable.transform.parent " + transform);
 

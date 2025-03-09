@@ -34,7 +34,7 @@ public class AllPrices
         // load
 
         var allItemTypes = EnumUtility.GetValues<ItemType>();
-        
+
         if (data.gameData.levelData.prices.Count == 0)
         {
             foreach (var itemType in allItemTypes)
@@ -51,12 +51,14 @@ public class AllPrices
         }
 
         // init update cost
-      
+
         foreach (var itemType in allItemTypes)
         {
-            if(itemType == ItemType.SmallCompletedBurge||itemType == ItemType.Cheeseburger)
+            if (itemType == ItemType.SmallCompletedBurge || itemType == ItemType.Cheeseburger ||
+                itemType == ItemType.MBurger || itemType == ItemType.StarBurger || itemType == ItemType.BigBurger ||
+                itemType == ItemType.MegaBurger)
                 continue;
-            
+
             SetPrice(itemType, prices[itemType]);
         }
     }
@@ -76,7 +78,8 @@ public class AllPrices
         var itemData = itemsConfig.Get.Item(itemType);
         if (prices.ContainsKey(itemType))
         {
-            if (prices[itemType] < itemData.CostData.SaleCostMin || prices[itemType] > itemData.CostData.SaleCostMax) prices[itemType] = itemData.CostData.SaleCostMin;
+            if (prices[itemType] < itemData.CostData.SaleCostMin || prices[itemType] > itemData.CostData.SaleCostMax)
+                prices[itemType] = itemData.CostData.SaleCostMin;
             return prices[itemType];
         }
         else
@@ -89,7 +92,7 @@ public class AllPrices
     public void SubscribeToSetPrice(Action<ItemType, DollarValue> onSetPriceAction)
     {
         OnSetPriceEvent += onSetPriceAction;
-        
+
         foreach (var element in prices)
         {
             onSetPriceAction?.Invoke(element.Key, GetPrice(element.Key));

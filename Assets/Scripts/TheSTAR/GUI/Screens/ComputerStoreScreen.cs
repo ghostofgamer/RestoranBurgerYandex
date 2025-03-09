@@ -109,7 +109,8 @@ namespace TheSTAR.GUI
         /// </summary>
         private void LoadItemSlots(ComputerStoreSectionType sectionType)
         {
-            int currentLevel = xp.CurrentLevel;
+            // int currentLevel = xp.CurrentLevel;
+            int currentLevel = 7;
 
             ItemType[] productTypes = null;
 

@@ -16,7 +16,7 @@ public class OrderTray : MonoBehaviour
     public Buyer Buyer => _buyer;
 
     private int _numberTable = -1;
-    
+
     public int NumberTable => _numberTable;
 
     public int IndexOrderTray => _indexOrderTray;
@@ -54,7 +54,7 @@ public class OrderTray : MonoBehaviour
     {
         _numberTable = index;
     }
-    
+
     public void AddBuyer(Buyer buyer)
     {
         _buyer = buyer;
@@ -104,7 +104,9 @@ public class OrderTray : MonoBehaviour
                 haveItems.Add(item.GetComponent<PackingPaperItem>().Dragger.CurrentDraggable.GetComponent<Item>()
                     .ItemType);
             }
-            else if (item.ItemType == ItemType.SmallCompletedBurge||item.ItemType == ItemType.Cheeseburger)
+            else if (item.ItemType == ItemType.SmallCompletedBurge || item.ItemType == ItemType.Cheeseburger ||
+                     item.ItemType == ItemType.MBurger || item.ItemType == ItemType.StarBurger ||
+                     item.ItemType == ItemType.BigBurger || item.ItemType == ItemType.MegaBurger)
             {
                 haveItems.Add(item.GetComponent<PackingPaperItem>().Dragger.CurrentDraggable.GetComponent<Item>()
                     .ItemType);

@@ -9,7 +9,11 @@ public class AssemblyItemsContainer : MonoBehaviour
     [SerializeField] private TouchInteractive touchInteractive;
     [SerializeField] private GameObject _smallBurgerPrefab;
     [SerializeField] private GameObject _cheeseBurgerPrefab;
-
+    [SerializeField] private GameObject _mBurgerPrefab;
+    [SerializeField] private GameObject _starBurgerPrefab;
+    [SerializeField] private GameObject _bigBurgerPrefab;
+    [SerializeField] private GameObject _megaBurgerPrefab;
+    
     [SerializeField]
     private UnityDictionary<CutType, CutVariantData[]> _cutDatas = new(); // какие предметы во что преобразуются
 
@@ -23,8 +27,7 @@ public class AssemblyItemsContainer : MonoBehaviour
     private GameWorldInteraction gameWorldInteraction;
     private ItemsController items;
     private Coroutine _coroutine;
-
-
+    
     public GameObject SmallBurger => _smallBurgerPrefab;
     public TutorInWorldFocus TutorFocus => tutorFocus;
     public TouchInteractive TouchInteractive => touchInteractive;
@@ -39,41 +42,43 @@ public class AssemblyItemsContainer : MonoBehaviour
     public GameObject InterBurger(Item item)
     {
         Debug.Log("ПЕРЕДАЧА " + item.ItemType);
-        
-        /*if (item.ItemType == ItemType.FinalBurger_Small)
-        {
-            Debug.Log("Small 1");
-            var smallBurger = Instantiate(_smallBurgerPrefab);
-            smallBurger.GetComponent<DraggableByPlayer>().InitGameWorldInteraction(gameWorldInteraction);
-            Debug.Log("Small 3");
-            return smallBurger;
-        }
-
-        if (item.ItemType == ItemType.FinalBurger_Cheeseburger)
-        {
-            Debug.Log("Cheese 1");
-            var cheeseburger = Instantiate(_cheeseBurgerPrefab);
-            cheeseburger.GetComponent<DraggableByPlayer>().InitGameWorldInteraction(gameWorldInteraction);
-            Debug.Log("Cheese 3");
-            return cheeseburger;
-        }*/
         GameObject burger = new GameObject();
         
         switch (item.ItemType)
         {
           case ItemType.FinalBurger_Small:
-              Debug.Log("Small 1");
               burger = Instantiate(_smallBurgerPrefab);
               burger.GetComponent<DraggableByPlayer>().InitGameWorldInteraction(gameWorldInteraction);
-              Debug.Log("Small 3");
               return burger;
               break;
 
           case ItemType.FinalBurger_Cheeseburger:
-              Debug.Log("Cheese 1");
               burger = Instantiate(_cheeseBurgerPrefab);
               burger.GetComponent<DraggableByPlayer>().InitGameWorldInteraction(gameWorldInteraction);
-              Debug.Log("Cheese 3");
+              return burger;
+              break;
+          
+          case ItemType.FinalBurger_Medium:
+              burger = Instantiate(_mBurgerPrefab);
+              burger.GetComponent<DraggableByPlayer>().InitGameWorldInteraction(gameWorldInteraction);
+              return burger;
+              break;
+          
+          case ItemType.FinalBurger_Star:
+              burger = Instantiate(_starBurgerPrefab);
+              burger.GetComponent<DraggableByPlayer>().InitGameWorldInteraction(gameWorldInteraction);
+              return burger;
+              break;
+          
+          case ItemType.FinalBurger_Big:
+              burger = Instantiate(_bigBurgerPrefab);
+              burger.GetComponent<DraggableByPlayer>().InitGameWorldInteraction(gameWorldInteraction);
+              return burger;
+              break;
+          
+          case ItemType.FinalBurger_Mega:
+              burger = Instantiate(_megaBurgerPrefab);
+              burger.GetComponent<DraggableByPlayer>().InitGameWorldInteraction(gameWorldInteraction);
               return burger;
               break;
         }

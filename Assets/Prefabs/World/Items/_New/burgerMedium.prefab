@@ -442,7 +442,7 @@ Transform:
   m_GameObject: {fileID: 7253799543475054370}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 118.792, y: 1.3573, z: 20.241}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -491,8 +491,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   col: {fileID: 1105749817790562774}
+  currentDragger: {fileID: 0}
   touchInteractive: {fileID: 3215121498962854156}
   rigidBody: {fileID: 8831018436146380222}
+  _isLoadVersion: 0
 --- !u!114 &6670844800926408673
 MonoBehaviour:
   m_ObjectHideFlags: 0

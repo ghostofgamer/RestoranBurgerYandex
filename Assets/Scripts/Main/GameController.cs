@@ -201,9 +201,7 @@ public class GameController : MonoBehaviour
         Debug.Log("создание GAME WORLD");
         townSimulation = diContainer.InstantiatePrefabForComponent<TownSimulation>(townSimulationPrefab);
         diContainer.Bind<TownSimulation>().FromInstance(townSimulation).AsSingle();
-        Debug.Log("1");
         createdWorld.Init(gui.Reputation, allBuyerPlaces.BuyerPlacesFurnitureUnitTutor);
-        Debug.Log("3");
         createdWorld.Load();
         Debug.Log("5");
         gui.InitGameWorld(createdWorld);
