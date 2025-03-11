@@ -1,13 +1,13 @@
 using System;
 using Agava.YandexGames;
-// using Lean.Localization;
+using Lean.Localization;
 using UnityEngine;
 
 namespace LocalizationContent
 {
     public class Localization : MonoBehaviour
     {
-        /*private const string Language = "Language";
+        private const string Language = "Language";
         private const string EnglishCode = "English";
         private const string RussianCode = "Russian";
         private const string TurkishCode = "Turkish";
@@ -15,7 +15,7 @@ namespace LocalizationContent
         private const string Russian = "ru";
         private const string Turkish = "tr";
 
-        // [SerializeField] private LeanLocalization _leanLocalization;
+        [SerializeField] private LeanLocalization _leanLocalization;
 
         private string _currentLanguage;
         private string _autoFoundLanguage;
@@ -40,11 +40,11 @@ namespace LocalizationContent
          /*_autoFoundLanguage = YandexGamesSdk.Environment.i18n.lang;
          _currentLanguage = _load.Get(Language, _autoFoundLanguage);
          SetLanguage(_currentLanguage);
-         LanguageChanged?.Invoke(_currentLanguage);#1#
+         LanguageChanged?.Invoke(_currentLanguage);*/
 
         /*_autoFoundLanguage = YandexGamesSdk.Environment.i18n.lang;
         SetLanguage(_currentLanguage);
-        LanguageChanged?.Invoke(_currentLanguage);#1#
+        LanguageChanged?.Invoke(_currentLanguage);*/
         
         
         _autoFoundLanguage = YandexGamesSdk.Environment.i18n.lang;
@@ -76,6 +76,6 @@ namespace LocalizationContent
             Debug.Log(" language " + _autoFoundLanguage);
             Debug.Log(" language " + _autoFoundLanguage);
             return _autoFoundLanguage;
-        }*/
+        }
     }
 }
