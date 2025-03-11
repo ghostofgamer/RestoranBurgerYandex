@@ -80,8 +80,8 @@ public class ComputerProductUI : MonoBehaviour
         if (boxesCount < 1) boxesCount = 1;
         getAction?.Invoke(itemType, boxesCount);
 
-        if(!_tutorialController.IsCompleted(TutorialType.FirstDelivery))
-        SetValueTutorPanel(false, false);
+        if (!_tutorialController.IsCompleted(TutorialType.FirstDelivery))
+            SetValueTutorPanel(false, false);
     }
 
     public void SetLocked(int neededLevel)

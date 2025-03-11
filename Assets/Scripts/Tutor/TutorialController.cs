@@ -39,7 +39,7 @@ public class TutorialController : MonoBehaviour
     public event Action OnBreakTutorialEvent;
     public event Action OnCompleteTutorialEvent;
 
-    public readonly Dictionary<TutorialType, TutorialData> tutorialDatas = new()
+      public readonly Dictionary<TutorialType, TutorialData> tutorialDatas = new()
     {
         { TutorialType.LookAround, new() },
         { TutorialType.Move, new() },
@@ -59,6 +59,10 @@ public class TutorialController : MonoBehaviour
         { TutorialType.SetPrice, new("Great! You've learned how to make burgers! Let's set the price!") },
         { TutorialType.SetFastFoodName, new("Let's name the restaurant!") },
         { TutorialType.OpenFastFood, new("It's time to open a fast food restaurant!") },
+        { TutorialType.ExpectBuyers, new("Expect customers after the restaurant opens!") },
+        { TutorialType.AcceptOrder, new("Accept Order!") },
+        { TutorialType.PutBurgerOnTray, new("Put the burger on the tray") },
+        { TutorialType.PickUpTray, new("Pick up the tray") },
         { TutorialType.ServeTheQuests, new("Serve the guests: {0}") },
         { TutorialType.ClearTables, new("Clear table") },
         { TutorialType.BuyChair, new("Buy a chair") },
@@ -278,8 +282,36 @@ public class TutorialController : MonoBehaviour
 
     public void CompleteTutorial(TutorialType tutorialType)
     {
-        data.gameData.tutorialData.CompleteTutorial(tutorialType);
-        data.Save(DataSectionType.Tutorial);
+        if (!IsCompleted(TutorialType.SetFastFoodName))
+        {
+            Debug.Log("IF TUTORIAL COMPELTE " + tutorialType);
+            data.gameData.tutorialData.CompleteTutorial(tutorialType);
+            data.Save(DataSectionType.Tutorial);
+        }
+        /*else if(IsCompleted(TutorialType.SetFastFoodName)&&!IsCompleted(TutorialType.ClearTables))
+        {
+            Debug.Log("ELSE IF TUTORIAL COMPELTE " + tutorialType);
+            data.gameData.tutorialData.CompleteTutorial(tutorialType);
+        }*/
+        else if(IsCompleted(TutorialType.SetFastFoodName)&&!IsCompleted(TutorialType.ServeTheQuests))
+        {
+            Debug.Log("ELSE IF TUTORIAL COMPELTE " + tutorialType);
+            data.gameData.tutorialData.CompleteTutorial(tutorialType);
+        }
+        else if(IsCompleted(TutorialType.ServeTheQuests)&&!IsCompleted(TutorialType.ClearTables))
+        {
+            data.gameData.tutorialData.CompleteTutorial(tutorialType);
+            data.Save(DataSectionType.Tutorial);
+        }
+        else if(IsCompleted(TutorialType.ExpectBuyers)&&IsCompleted(TutorialType.ClearTables))
+        {
+            Debug.Log("ELSE IF CLEAR TABLE TUTORIAL COMPELTE " + tutorialType);
+            data.gameData.tutorialData.CompleteTutorial(tutorialType);
+            data.Save(DataSectionType.Tutorial);
+        }
+        
+        /*data.gameData.tutorialData.CompleteTutorial(tutorialType);
+        data.Save(DataSectionType.Tutorial);*/
         HideTutor();
 
         analytics.LogForTutorial(tutorialType);
@@ -598,6 +630,10 @@ public enum TutorialType
     SetPrice,
     SetFastFoodName,
     OpenFastFood,
+    ExpectBuyers,
+    AcceptOrder,
+    PutBurgerOnTray,
+    PickUpTray,
     ServeTheQuests,
     ClearTables,
     BuyChair,

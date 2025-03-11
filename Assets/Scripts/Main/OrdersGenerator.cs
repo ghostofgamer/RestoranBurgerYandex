@@ -149,14 +149,16 @@ public class OrdersGenerator
         this.delivery = delivery;
     }
 
-    public OrderData GenerateOrder(out bool success)
+    public OrderData GenerateOrder(out bool success, bool tutorValue)
     {
         success = false;
         OrderData loopOrder;
         var availableItemsToOrder = AvailableItemsToOrder(xp.CurrentLevel);
         if (availableItemsToOrder.Length == 0) return default;
+        
+        int itemsInOrder;
+        itemsInOrder = tutorValue ? 1 : Random.Range(1, 2 + 1);
 
-        int itemsInOrder = Random.Range(1, 2 + 1);
         //if (!tutor.IsCompleted(TutorialType.CompleteOrders)) itemsInOrder = 1;
 
         if (itemsInOrder == 1)

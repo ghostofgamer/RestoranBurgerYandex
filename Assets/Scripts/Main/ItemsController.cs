@@ -61,8 +61,8 @@ public class ItemsController : MonoBehaviour
         {
             item = diContainer.InstantiatePrefabForComponent<Item>(prefab, pos, rotation, transform);
         }*/
+     
         item = diContainer.InstantiatePrefabForComponent<Item>(prefab, pos, rotation, transform);
-
         
         // var item = diContainer.InstantiatePrefabForComponent<Item>(prefab, pos, rotation, transform);
         activeItems[itemType].Add(item);

@@ -58,7 +58,7 @@ public class AllPrices
                 itemType == ItemType.MBurger || itemType == ItemType.StarBurger || itemType == ItemType.BigBurger ||
                 itemType == ItemType.MegaBurger)
                 continue;
-
+            
             SetPrice(itemType, prices[itemType]);
         }
     }

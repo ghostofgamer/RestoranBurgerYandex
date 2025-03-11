@@ -13,7 +13,8 @@ public class BuyerPlaceSlot : MonoBehaviour
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private GameObject buyGroup;
     [SerializeField] private GameObject ownedGroup;
-
+    [SerializeField] private GameObject _hand;
+    
     [Space]
     [SerializeField] private GameObject availableByExpandContainer;
     [SerializeField] private GameObject availableByLevelContainer;
@@ -56,6 +57,11 @@ public class BuyerPlaceSlot : MonoBehaviour
     {
         buyGroup.SetActive(!owned);
         ownedGroup.SetActive(owned);
+    }
+    
+    public void SetActiveHandValue(bool value)
+    {
+        _hand.SetActive(value);
     }
 
     private void OnBuyButtonClick()

@@ -12,12 +12,13 @@ public class AllBuyerPlaces : MonoBehaviour
     [SerializeField] private MembersQueue waitingQueue; // клиенты сперва должны вставать в WaitingQueue, после принятия заказа и оплаты должны садиться на место
     [SerializeField] private UnityDictionary<BuyerPlaceType, BuyerPlacesGroup> placeGroups;
     [SerializeField] private BuyerPlaceFurnitureUnit[] _placesFurnitureUnitTutor;
-
-    public UnityDictionary<BuyerPlaceType, BuyerPlacesGroup> PlaceGroups => placeGroups;
-
+    
     private OrdersManager ordersManager;
     private AnalyticsManager analytics;
-
+    private TutorialController _tutorialController;
+    private GameController _gameController;
+    
+    public UnityDictionary<BuyerPlaceType, BuyerPlacesGroup> PlaceGroups => placeGroups;
     public BuyerPlaceFurnitureUnit[] BuyerPlacesFurnitureUnitTutor => _placesFurnitureUnitTutor;
     //private ItemsController items;
     
@@ -40,10 +41,13 @@ public class AllBuyerPlaces : MonoBehaviour
     }
 
     [Inject]
-    private void Construct(OrdersManager ordersManager, AnalyticsManager analytics)
+    private void Construct(OrdersManager ordersManager, AnalyticsManager analytics,
+        TutorialController tutorialController, GameController gameController)
     {
         this.ordersManager = ordersManager;
         this.analytics = analytics;
+        _tutorialController = tutorialController;
+        _gameController = gameController;
     }
 
     public void Init()
@@ -101,10 +105,19 @@ public class AllBuyerPlaces : MonoBehaviour
 
         buyer.SetDestination(waitingQueue.Points[waitingPlaceIndex], (b) =>
         {
-            Debug.Log("Встал в очередь");
             buyer.StartWait();
 
-            if (waitingPlaceIndex == 0) OnBuyerStayForOrder(buyer);
+            if (waitingPlaceIndex == 0)
+            {
+                if (!_tutorialController.IsCompleted(TutorialType.ExpectBuyers))
+                {
+                    Debug.Log("АГА");
+                    _tutorialController.CompleteTutorial(TutorialType.ExpectBuyers);
+                    _gameController.TriggerTutorial();
+                }
+                
+                OnBuyerStayForOrder(buyer);
+            }
             //buyer.Sit(place);
         });
     }

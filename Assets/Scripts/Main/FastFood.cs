@@ -27,6 +27,7 @@ public class FastFood : MonoBehaviour
     [SerializeField] private AssemblyItemsContainer _cutletsContainer;
     [SerializeField] private TutorInWorldFocus _cuttingBoard;
     [SerializeField] private DraggerGroup _cutletContainer;
+    [SerializeField] private TutorInWorldFocus orderTrayTutorFocus;
     
     [Header("Apparats")] [SerializeField] private CoffeeMachine coffeeMachine;
     // [SerializeField] private DeepFryer deepFryer;
@@ -44,13 +45,14 @@ public class FastFood : MonoBehaviour
     [SerializeField] private SousContainer ketchupContainer;
     [SerializeField] private SousContainer gorchizaContainer;
     [SerializeField] private OrderTray[] _orderTrays;
-
+    
     private List<OrderTray> availableTrays = new List<OrderTray>();
     private List<OrderTray> occupiedTrays = new List<OrderTray>();
 
     private int _currentIndexOrderTray;
 
-
+    public TutorInWorldFocus OrderTrayFocus => orderTrayTutorFocus;
+    public OrderMonitor OrderMonitor=>orderMonitor;
     public AssemblyItemsContainer CutletsContainer => _cutletsContainer;
     public TutorInWorldFocus CuttingBoard =>_cuttingBoard;
     public Trash Trash => _trash;
@@ -429,15 +431,11 @@ Debug.Log("1");
     
     public void OnChangeDraggerGroup(DraggerGroup draggerGroup)
     {
-        Debug.Log("LOADEd " + loaded);
         if (!loaded) return;
-        Debug.Log("LOADEd end" + loaded);
         
         //Debug.Log("OnChangeDraggerGroup " + draggerGroup.gameObject.name, draggerGroup.gameObject);
-        
-        Debug.Log("draggerGroup.Index" + draggerGroup.Index);
+      
         if (draggerGroup.Index == -1) return;
-        Debug.Log("draggerGroup.Index end" + draggerGroup.Index);
         
         while (data.gameData.levelData.itemContainers.Count <= draggerGroup.Index)
             data.gameData.levelData.itemContainers.Add(new());

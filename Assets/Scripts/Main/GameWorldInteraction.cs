@@ -12,6 +12,8 @@ using TheSTAR.Sound;
 
 public partial class GameWorldInteraction
 {
+    private readonly ConfigHelper<ItemsConfig> itemsConfig = new();
+    
     private GameController game;
     private DataController data;
     private GuiController gui;
@@ -25,14 +27,12 @@ public partial class GameWorldInteraction
     private TutorialController tutorial;
     private AnalyticsManager analytics;
     private SoundController sounds;
+    private int currentLayerMask;
+    private GameController _gameController;
 
+    public int CurrentInteractionLayerMask => currentLayerMask;
     private event Action OnAnyChangePlayerDraggerEvent;
     
-    private readonly ConfigHelper<ItemsConfig> itemsConfig = new();
-
-    private int currentLayerMask;
-    public int CurrentInteractionLayerMask => currentLayerMask;
-
     // с какими физическими слоями игрок может взаимодействовать в определённых условиях в игре
     private readonly Dictionary<PlayerInteractionScenario, string[]> layersForInteractionScenarios = new ()
     {
@@ -60,7 +60,8 @@ public partial class GameWorldInteraction
         XpController xp,
         TutorialController tutorial,
         AnalyticsManager analytics,
-        SoundController sounds)
+        SoundController sounds,
+        GameController gameController)
     {
         this.game = game;
         this.data = data;
@@ -75,7 +76,8 @@ public partial class GameWorldInteraction
         this.tutorial = tutorial;
         this.analytics = analytics;
         this.sounds = sounds;
-
+        _gameController = gameController;
+        
         Init();
     }    
 

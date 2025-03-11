@@ -100,19 +100,20 @@ namespace ReputationContent
         private void UpdateReputationUI()
         {
             _reputationSlider.value = (float)_currentReputation / _maxReputation;
-            _starsRestaurant = Mathf.FloorToInt((float)_currentReputation / _maxReputation * _stars.Length);
+            // _starsRestaurant = Mathf.FloorToInt((float)_currentReputation / _maxReputation * _stars.Length);
 
-            for (int i = 0; i < _stars.Length; i++)
+            _starsRestaurant = _currentReputation switch
             {
-                if (i < _starsRestaurant)
-                {
-                    _stars[i].color = Color.white;
-                }
-                else
-                {
-                    _stars[i].color = Color.black;
-                }
-            }
+                >= 1 and <= 5 => 1,
+                >= 6 and <= 15 => 2,
+                >= 16 and <= 50 => 3,
+                >= 51 and <= 80 => 4,
+                >= 81 and <= 100 => 5,
+                _ => 0
+            };
+            
+            for (int i = 0; i < _stars.Length; i++)
+                _stars[i].color = i < _starsRestaurant ? Color.white : Color.black;
         }
 
         public void SaveReputation()

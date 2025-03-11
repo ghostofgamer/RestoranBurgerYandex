@@ -82,6 +82,12 @@ public partial class GameWorldInteraction
             var draggable = player.CurrentDraggable;
             if (draggable)
             {
+                if (!tutorial.IsCompleted(TutorialType.PutBurgerOnTray))
+                {
+                    tutorial.CompleteTutorial(TutorialType.PutBurgerOnTray);
+                    _gameController.TriggerTutorial();
+                }
+                
                 TryPlaceItemToItemsHandler(itemsHandler);
                 return;
             }
@@ -90,6 +96,12 @@ public partial class GameWorldInteraction
             {
                 if (player.HavePlace(ordersTray.Draggable, out var place))
                 {
+                    if (!tutorial.IsCompleted(TutorialType.PickUpTray))
+                    {
+                        tutorial.CompleteTutorial(TutorialType.PickUpTray);
+                        _gameController.TriggerTutorial();
+                    }
+                    
                     place.StartDrag(ordersTray.Draggable, true);
                 }
             }

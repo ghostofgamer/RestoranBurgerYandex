@@ -24,6 +24,7 @@ public class BuyersController : MonoBehaviour
     private BuyerCarsSimulation buyerCars;
     private TutorialController tutorial;
     private XpController xp;
+    private GameController _gameController;
 
     private ConfigHelper<BuyersConfig> buyersConfig = new();
     private ConfigHelper<ItemsConfig> itemsConfig = new();
@@ -61,7 +62,8 @@ public class BuyersController : MonoBehaviour
         AllPrices allPrices,
         BuyerCarsSimulation buyerCars,
         TutorialController tutorial,
-        XpController xp)
+        XpController xp,
+        GameController gameController)
     {
         this.game = game;
         this.ordersGenerator = ordersGenerator;
@@ -71,7 +73,8 @@ public class BuyersController : MonoBehaviour
         this.buyerCars = buyerCars;
         this.tutorial = tutorial;
         this.xp = xp;
-
+        _gameController = gameController;
+        
         ordersManager.OnOrderCompletedEvent += OnOrderComplete;
     }
 
@@ -111,7 +114,13 @@ public class BuyersController : MonoBehaviour
 
         for (int i = 0; i < buyersToSpawnCount; i++)
         {
-            var order = ordersGenerator.GenerateOrder(out bool success);
+            var order = new OrderData();
+            bool success;
+
+            order = !tutorial.IsCompleted(TutorialType.ServeTheQuests)
+                ? ordersGenerator.GenerateOrder(out success, true)
+                : ordersGenerator.GenerateOrder(out success, false);
+
             if (success) orders.Add(order);
             else
             {
@@ -201,6 +210,12 @@ public class BuyersController : MonoBehaviour
 
     public void GoAway(Buyer b)
     {
+        if(tutorial.IsCompleted(TutorialType.ServeTheQuests)&&tutorial.IsCompleted(TutorialType.ClearTables))
+        {
+            Debug.Log("TriggerTutorClients!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            _gameController.TriggerTutorial();
+        }
+        
         b.FinishSit(b.Place.Point.transform);
         _reputation.ClientView(b.RateWaitingOrder,b.PolluteRate);
         b.SetDestination(b.Car.BuyerPoints[0], (b) =>
@@ -239,7 +254,7 @@ public class BuyersController : MonoBehaviour
     [ContextMenu("TestGenerateOrder")]
     private void TestGenerateOrder()
     {
-        var order = ordersGenerator.GenerateOrder(out var success);
+        var order = ordersGenerator.GenerateOrder(out var success,false);
 
         if (!success)
         {

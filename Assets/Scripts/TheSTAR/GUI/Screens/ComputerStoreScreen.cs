@@ -24,7 +24,8 @@ namespace TheSTAR.GUI
         [SerializeField] private ScrollRect scroller;
         [SerializeField] private ScrollRect resultScroller;
         [SerializeField] private GameObject comingSoonObject;
-
+        [SerializeField] private GameObject _manageHandTutor;
+        
         [Header("Sections")] [SerializeField] private PointerButton productsBtn_Active;
         [SerializeField] private PointerButton productsBtn_Inactive;
         [SerializeField] private PointerButton decorationsBtn_Active;
@@ -109,8 +110,8 @@ namespace TheSTAR.GUI
         /// </summary>
         private void LoadItemSlots(ComputerStoreSectionType sectionType)
         {
-            // int currentLevel = xp.CurrentLevel;
-            int currentLevel = 7;
+            int currentLevel = xp.CurrentLevel;
+            // int currentLevel = 7;
 
             ItemType[] productTypes = null;
 
@@ -161,6 +162,11 @@ namespace TheSTAR.GUI
                     if (slotIndex == 0 || slotIndex == 2||slotIndex == 1)
                         slot.SetValueTutorPanel(false,false);
                 }
+                
+                if (!tutorial.IsCompleted(TutorialType.BuyChair) && tutorial.IsCompleted(TutorialType.ClearTables))
+                    _manageHandTutor.SetActive(true);
+                else
+                    _manageHandTutor.SetActive(false);
                 // Debug.Log(itemType);
 
                 if (currentLevel >= itemData.XpData.NeededLevelForBuy) slot.SetUnlocked();

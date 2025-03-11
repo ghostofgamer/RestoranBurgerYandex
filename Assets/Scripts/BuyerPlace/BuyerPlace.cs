@@ -24,6 +24,7 @@ public class BuyerPlace : MonoBehaviour
     private int _maxPollutaionCategories = 3;
     private GameController _gameController;
     private TutorialController _tutorial;
+    
     public PathPoint Point => point;
     public Transform SittingPlace => sittingPlace;
     public List<Draggable> OrderItems => tablePlace.OrderItems;

@@ -496,6 +496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoChangeInteractableForDraggable: 1
+  currentDraggable: {fileID: 0}
 --- !u!1 &1566356096903066374
 GameObject:
   m_ObjectHideFlags: 0
@@ -3083,15 +3084,15 @@ PrefabInstance:
     - target: {fileID: 5534830687620577942, guid: 79f8eeecb04e7451e89061ad3e277ede, type: 3}
       propertyPath: '_smiles.Array.data[0]'
       value: 
-      objectReference: {fileID: 21300000, guid: ac5d383ea3588aa4999ce5306e399202, type: 3}
+      objectReference: {fileID: 21300000, guid: e18aba1870a970943bcacf04550a659a, type: 3}
     - target: {fileID: 5534830687620577942, guid: 79f8eeecb04e7451e89061ad3e277ede, type: 3}
       propertyPath: '_smiles.Array.data[1]'
       value: 
-      objectReference: {fileID: 21300000, guid: 6234dfbfd4d308741b6011b28d04ccbe, type: 3}
+      objectReference: {fileID: 21300000, guid: f2565caf0ceb73d459f7aa08f9d43efa, type: 3}
     - target: {fileID: 5534830687620577942, guid: 79f8eeecb04e7451e89061ad3e277ede, type: 3}
       propertyPath: '_smiles.Array.data[2]'
       value: 
-      objectReference: {fileID: 21300000, guid: fa19bc9eab0513f47af839eeed0eafa8, type: 3}
+      objectReference: {fileID: 21300000, guid: 9e68ab70ce66c574a9938055c7125207, type: 3}
     - target: {fileID: 5534830687620577942, guid: 79f8eeecb04e7451e89061ad3e277ede, type: 3}
       propertyPath: '_smiles.Array.data[3]'
       value: 

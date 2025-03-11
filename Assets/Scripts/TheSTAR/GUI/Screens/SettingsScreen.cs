@@ -93,9 +93,10 @@ namespace TheSTAR.GUI
 
             rateUsButton.Init(() =>
             {
-                var rateUsScreen = gui.FindScreen<RateUsScreen>();
+                Application.OpenURL("https://discord.gg/QvQSNvJZ");
+                /*var rateUsScreen = gui.FindScreen<RateUsScreen>();
                 rateUsScreen.Init(ExitFromSettings, UseMainMenuFon);
-                gui.Show(rateUsScreen);
+                gui.Show(rateUsScreen);*/
             });
 
             cheatTestTerminalBtn.Init(() => { gui.Show<TerminalScreen>(); });

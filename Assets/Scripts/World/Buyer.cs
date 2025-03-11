@@ -26,15 +26,15 @@ namespace World
         private int _polluteRate;
         private int _indexEmotion;
         private bool _isWait=false;
-        
-        public int RateWaitingOrder => _rateWaitingOrder;
-
-        public int PolluteRate => _polluteRate;
-
-        private float _duration = 165.0f;
-        private Color startColor = Color.green;
-        private Color endColor = Color.red;
         private Coroutine animationCoroutine;
+        private Color endColor = Color.red;
+        private Color startColor = Color.green;
+        private float _duration = 165.0f;
+        private bool _isWaiting;
+        private float _elapsedTime;
+        
+        public int PolluteRate => _polluteRate;
+        public int RateWaitingOrder => _rateWaitingOrder;
 
 
         [Space]
@@ -103,68 +103,58 @@ namespace World
         public void StartWait()
         {
             if (_isWait) return;
-
+          
+            _isWaiting = true;
             _isWait = true;
-            _rateWaitingOrder = -1;
-            _waitImage.gameObject.SetActive(true);
-            _waitBackGroundImage.gameObject.SetActive(true);
+            _rateWaitingOrder = 0;
+            _smileEmotion.gameObject.SetActive(true);
+            _smileEmotion.sprite = _smiles[0]; 
+            StartCoroutine(AnimateWaiting());
+            Debug.Log("StartWait 1 );");
 
             if (animationCoroutine != null)
                 StopCoroutine(animationCoroutine);
 
-            animationCoroutine = StartCoroutine(AnimateWaitingCircle());
+            animationCoroutine = StartCoroutine(AnimateWaiting());
+            Debug.Log("StartWait 3);");
+        }
+
+        private IEnumerator AnimateWaiting()
+        {
+            _elapsedTime = 0;
+            
+            while (_elapsedTime < _duration && _isWaiting)
+            {
+                _elapsedTime += Time.deltaTime;
+                float t = _elapsedTime / _duration;
+                _smileEmotion.color = Color.Lerp(startColor, endColor, t);
+                
+                if (t <= 0.4f)
+                {
+                    _smileEmotion.sprite = _smiles[0];
+                    _rateWaitingOrder = 1;
+                }
+                else if (t <= 0.7f)
+                {
+                    _rateWaitingOrder = 0;
+                    _smileEmotion.sprite = _smiles[1];
+                }
+                else
+                {
+                    _rateWaitingOrder = -1;
+                    _smileEmotion.sprite = _smiles[2];
+                }
+
+                yield return null;
+            }
         }
 
         public void StopWaitingAnimation()
         {
+            _isWaiting = false;
+
             if (animationCoroutine != null)
-            {
-                _waitImage.gameObject.SetActive(false);
-                _waitBackGroundImage.gameObject.SetActive(false);
                 StopCoroutine(animationCoroutine);
-                float fillAmount = _waitImage.fillAmount;
-
-                switch (fillAmount)
-                {
-                    case > 0.66f:
-                        _rateWaitingOrder = 1;
-                        _indexEmotion = 0;
-                        break;
-                    case > 0.33f:
-                        _rateWaitingOrder = 0;
-                        _indexEmotion = 1;
-                        break;
-                    default:
-                        _rateWaitingOrder = -1;
-                        _indexEmotion = 2;
-                        break;
-                }
-            }
-            
-            _smileEmotion.gameObject.SetActive(true);
-            _smileEmotion.sprite = _smiles[_indexEmotion];
-            Debug.Log("Rate Waiting  " + _rateWaitingOrder);
-        }
-
-        private IEnumerator AnimateWaitingCircle()
-        {
-            float startTime = Time.time;
-            while (Time.time - startTime < _duration)
-            {
-                float t = (Time.time - startTime) / _duration;
-                _waitImage.fillAmount = 1 - t;
-                _waitImage.color = Color.Lerp(startColor, endColor, t);
-                yield return null;
-            }
-
-            _waitImage.fillAmount = 0;
-
-
-            /*Place.ClearOrderItems();
-            Place.ClearBuyer();
-            buyersController.GoAway(this);*/
-
-            _waitImage.color = endColor;
         }
 
         private PathPoint goal;

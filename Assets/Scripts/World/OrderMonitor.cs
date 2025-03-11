@@ -7,6 +7,7 @@ using World;
 
 public class OrderMonitor : MonoBehaviour, ICameraFocusable
 {
+    [SerializeField] private TutorInWorldFocus _tutorFocus;
     [SerializeField]private Canvas _acceptOrderCanvas;
     [SerializeField]private Canvas _cancelOrderCanvas;
     
@@ -35,7 +36,8 @@ public class OrderMonitor : MonoBehaviour, ICameraFocusable
     private DollarValue received;
     private DollarValue change;
     private DollarValue currentGiving;
-
+    
+    public TutorInWorldFocus TutorFocus =>_tutorFocus;
     private bool receivedCash => received.dollars > 0 || received.cents > 0;
     public Transform FocusTransform => cameraFocusPos;
 
