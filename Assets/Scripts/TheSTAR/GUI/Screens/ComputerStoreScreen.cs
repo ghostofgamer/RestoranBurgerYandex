@@ -169,11 +169,8 @@ namespace TheSTAR.GUI
                         break;
 
                     default:
-                        slot.SetVisual(itemData.MainData.RusName, itemData.CostData.BuyCost, itemData.OtherData.BoxValue,
+                        slot.SetVisual(itemData.MainData.Name, itemData.CostData.BuyCost, itemData.OtherData.BoxValue,
                             itemData.MainData.IconSprite);
-                        
-                        /*slot.SetVisual(itemData.MainData.Name, itemData.CostData.BuyCost, itemData.OtherData.BoxValue,
-                            itemData.MainData.IconSprite);*/
                         break;
                 }
                 

@@ -18,7 +18,7 @@ MonoBehaviour:
       section: 2
       itemPrefab: {fileID: 1727771106824917829, guid: 83ca0346dede04ecbb5e70aa6546f510, type: 3}
       itemName: Coffee Cup
-      itemRusName: " \u041A\u043E\u0444\u0435\u0439\u043D\u0430\u044F \u0427\u0430\u0448\u043A\u0430"
+      itemRusName: "\u041A\u043E\u0444\u0435\u0439\u043D\u0430\u044F \u0427\u0430\u0448\u043A\u0430"
       itemTurkishName: "Kahve Fincan\u0131"
       iconSprite: {fileID: 21300000, guid: 964b7d3f2f7cd424f806e32fd6f1949d, type: 3}
     costData:

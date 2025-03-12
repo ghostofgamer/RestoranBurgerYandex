@@ -1,5 +1,6 @@
 using System;
 using Configs;
+using LocalizationContent;
 using TheSTAR.Utility;
 using TMPro;
 using UnityEngine;
@@ -60,6 +61,8 @@ namespace TheSTAR.GUI
 
         public void Init(ItemType itemType, DollarValue currentPrice, Action<ItemType, DollarValue> acceptAction)
         {
+            var localization = Localization.Instance.GetCurrentLanguage();
+            
             this.itemType = itemType;
             this.currentPrice = currentPrice;
             this.acceptAction = acceptAction;
@@ -76,14 +79,39 @@ namespace TheSTAR.GUI
                 cents = totalCents % 100
             };*/
             
-            Debug.Log("Recommended Price: " + itemData.CostData.SaleCostRec.dollars + "." + itemData.CostData.SaleCostRec.cents.ToString("D2") + " USD");
-            // Debug.Log("Max Recommended Price: " + _maxRecomendationPrice.dollars + "." + _maxRecomendationPrice.cents.ToString("D2") + " USD");
-            Debug.Log("MAXMAXMAX " + itemData.CostData.SellCostMaxRecommendation);
-            
             icon.sprite = itemData.MainData.IconSprite;
-            nameText.text = itemData.MainData.Name;
-            costText.text = $"Cost: {TextUtility.FormatPrice(itemData.CostData.BuyCost)}";
-            marketPriceText.text = $"Recommended: {TextUtility.FormatPrice(itemData.CostData.SaleCostRec)}";
+            // nameText.text = itemData.MainData.Name;
+            
+            switch (localization)
+            {
+                case English:
+                    costText.text = $"Cost: {TextUtility.FormatPrice(itemData.CostData.BuyCost)}";
+                    marketPriceText.text = $"Recommended: {TextUtility.FormatPrice(itemData.CostData.SaleCostRec)}";
+                    nameText.text = itemData.MainData.Name;
+                    break;
+
+                case Turkish:
+                    costText.text = $"Maliyet: {TextUtility.FormatPrice(itemData.CostData.BuyCost)}";
+                    marketPriceText.text = $"Önermek: {TextUtility.FormatPrice(itemData.CostData.SaleCostRec)}";
+                    nameText.text = itemData.MainData.TurName;
+                    break;
+
+                case Russian:
+                    costText.text = $"Расходы: {TextUtility.FormatPrice(itemData.CostData.BuyCost)}";
+                    marketPriceText.text = $"Рекомендуется: {TextUtility.FormatPrice(itemData.CostData.SaleCostRec)}";
+                    nameText.text = itemData.MainData.RusName;
+                    break;
+
+                default:
+                    costText.text = $"Cost: {TextUtility.FormatPrice(itemData.CostData.BuyCost)}";
+                    marketPriceText.text = $"Recommended: {TextUtility.FormatPrice(itemData.CostData.SaleCostRec)}";
+                    nameText.text = itemData.MainData.Name;
+                    break;
+            }
+            
+            
+            /*costText.text = $"Cost: {TextUtility.FormatPrice(itemData.CostData.BuyCost)}";
+            marketPriceText.text = $"Recommended: {TextUtility.FormatPrice(itemData.CostData.SaleCostRec)}";*/
 
             minSaleCostSimple = itemData.CostData.SaleCostMin.ToSimpleValue();
             maxSaleCostSimple = itemData.CostData.SaleCostMax.ToSimpleValue();
@@ -96,6 +124,8 @@ namespace TheSTAR.GUI
 
         private void DisplayCurrentPrice()
         {
+            var localization = Localization.Instance.GetCurrentLanguage();
+            
             if (!Application.isMobilePlatform)
             {
                 Cursor.lockState = CursorLockMode.None;
@@ -103,8 +133,16 @@ namespace TheSTAR.GUI
             }
             
             Debug.Log("Display");
-            
-            priceText.text = $"Price: {TextUtility.FormatPrice(currentPrice)}";
+
+            priceText.text = localization switch
+            {
+                English => $"Price: {TextUtility.FormatPrice(currentPrice)}",
+                Turkish => $"Fiyat: {TextUtility.FormatPrice(currentPrice)}",
+                Russian => $"Цена: {TextUtility.FormatPrice(currentPrice)}",
+                _ => $"Price: {TextUtility.FormatPrice(currentPrice)}"
+            };
+
+            // priceText.text = $"Price: {TextUtility.FormatPrice(currentPrice)}";
 
             if (currentPrice > itemData.CostData.SellCostMaxRecommendation)
             {
@@ -118,13 +156,30 @@ namespace TheSTAR.GUI
             if (currentPrice >= itemData.CostData.BuyCost)
             {
                 var profit = currentPrice - itemData.CostData.BuyCost;
-                profitText.text = $"Profit: {profit}";
+                
+                profitText.text = localization switch
+                {
+                    English => $"Profit: {profit}",
+                    Turkish => $"Kâr: {profit}",
+                    Russian => $"Выгода: {profit}",
+                    _ => $"Profit: {profit}"
+                };
+                
+                // profitText.text = $"Profit: {profit}";
                 profitText.color = greenColor;
             }
             else
             {
                 var antiProfit = itemData.CostData.BuyCost - currentPrice;
-                profitText.text = $"Profit: -{antiProfit}";
+                
+                profitText.text = localization switch
+                {
+                    English => $"Profit: {antiProfit}",
+                    Turkish => $"Kâr: {antiProfit}",
+                    Russian => $"Выгода: {antiProfit}",
+                    _ => $"Profit: {antiProfit}"
+                };
+                // profitText.text = $"Profit: -{antiProfit}";
                 profitText.color = redColor;
             }
         }

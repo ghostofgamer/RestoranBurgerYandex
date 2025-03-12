@@ -6,45 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="02332a16-073c-444b-8fc8-7e2f7e70d71c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RestoranBurgerYandex/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RestoranBurgerYandex/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Localization/LeanLocalization.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Localization/LeanLocalization.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Elements/ItemSlot.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Elements/ItemSlot.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Screens/AssemblyScreen.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Screens/AssemblyScreen.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Screens/BoxOfficeScreen.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Screens/BoxOfficeScreen.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Screens/EnterCoffeeNameScreen.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Screens/EnterCoffeeNameScreen.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Screens/EnterPriceScreen.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Screens/EnterPriceScreen.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/0_Bun.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/0_Bun.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/10_BurgerPackingPaper.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/10_BurgerPackingPaper.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/11_FriesPackingPaper.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/11_FriesPackingPaper.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/12_NuggetsPackingPaper.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/12_NuggetsPackingPaper.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/13_SodaCup.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/13_SodaCup.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Screens/RateUsScreen.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Screens/RateUsScreen.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Screens/TerminalScreen.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Screens/TerminalScreen.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/14_CoffeeCup.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/14_CoffeeCup.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/23_ColaCistern.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/23_ColaCistern.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/24_LemonCistern.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/24_LemonCistern.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/25_OrangeCistern.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/25_OrangeCistern.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/26_BarberryCistern.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/26_BarberryCistern.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/27_CoffeeBeans.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/27_CoffeeBeans.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/3_CutletRaw.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/3_CutletRaw.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/4_CheeseSolid.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/4_CheeseSolid.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/5_TomatoSolid.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/5_TomatoSolid.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/6_OnionSolid.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/6_OnionSolid.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/7_CabbageSolid.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/7_CabbageSolid.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/8_FrenchFriesFrozen.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/8_FrenchFriesFrozen.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/9_NuggetsFrozen.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/9_NuggetsFrozen.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Loader.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Loader.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Configs/ItemConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Configs/ItemConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Elements/ComputerProductUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Elements/ComputerProductUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/15_FinalFrenchFries.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/15_FinalFrenchFries.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/1_BunTop.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/1_BunTop.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/2_BunBottom.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/2_BunBottom.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Screens/ComputerStoreScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Screens/ComputerStoreScreen.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Screens/EnterPriceScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Screens/EnterPriceScreen.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build/5b260b543f6bf6d308f2ec5b9e62a5c3.wasm.unityweb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build/5b6622b78d34a843ae8e9e0d978b289b.loader.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build/7745bff1a660cc6ae948d1864fa979ac.framework.js.unityweb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build/7e8b2b5dd44c7641172b0e42bb16f432.data.unityweb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/StreamingAssets.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/StreamingAssets/UnityServicesProjectConfiguration.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/index.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,7 +147,7 @@
       <workItem from="1741505517118" duration="11395000" />
       <workItem from="1741593801023" duration="8611000" />
       <workItem from="1741689351962" duration="12119000" />
-      <workItem from="1741774659915" duration="10869000" />
+      <workItem from="1741774659915" duration="12501000" />
     </task>
     <servers />
   </component>
