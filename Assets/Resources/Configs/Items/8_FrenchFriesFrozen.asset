@@ -18,6 +18,8 @@ MonoBehaviour:
       section: 0
       itemPrefab: {fileID: 9151625591014020104, guid: 9fc177761732e439888e1f538e38014b, type: 3}
       itemName: French Fries Frozen
+      itemRusName: "\u0424\u0440\u0438 \u0417\u0430\u043C\u043E\u0440\u043E\u0436\u0435\u043D\u043D\u044B\u0439"
+      itemTurkishName: "Dondurulmu\u015F K\u0131zartmas\u0131"
       iconSprite: {fileID: 21300000, guid: 1dd183ebd8c384dc1bc9e14694a8e494, type: 3}
     costData:
       buyCost:
@@ -39,6 +41,5 @@ MonoBehaviour:
     otherData:
       boxValue: 6
       portionsValue: 1
-      playerDraggerOffsetY: 0
     recipe:
       pecipeItems: 

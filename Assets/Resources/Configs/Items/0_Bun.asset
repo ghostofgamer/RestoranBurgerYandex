@@ -18,6 +18,8 @@ MonoBehaviour:
       section: 0
       itemPrefab: {fileID: 5423086208154007408, guid: f46ce4d7528ca4dcd850552ce31107c1, type: 3}
       itemName: Bun
+      itemRusName: "\u0411\u0443\u043B\u043E\u0447\u043A\u0430"
+      itemTurkishName: Topuz
       iconSprite: {fileID: 21300000, guid: 96e49e236f1fd4826a09bcb427c93919, type: 3}
     costData:
       buyCost:
@@ -39,6 +41,5 @@ MonoBehaviour:
     otherData:
       boxValue: 8
       portionsValue: 1
-      playerDraggerOffsetY: 0
     recipe:
       pecipeItems: 

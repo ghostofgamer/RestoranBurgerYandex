@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Configs;
+using LocalizationContent;
 using TheSTAR.Data;
 using TheSTAR.Sound;
 using TheSTAR.Utility;
@@ -12,6 +13,10 @@ namespace TheSTAR.GUI
 {
     public class ComputerStoreScreen : GuiScreen
     {
+        private const string English = "en";
+        private const string Russian = "ru";
+        private const string Turkish = "tr";
+        
         [SerializeField] private PointerButton closeButton;
         [SerializeField] private PointerButton clearButton;
         [SerializeField] private PointerButton buyButton;
@@ -143,8 +148,37 @@ namespace TheSTAR.GUI
                 var itemType = productTypes[slotIndex];
                 slot.Init(sounds, itemType, OnGetClick, scroller,tutorial);
                 var itemData = itemsConfig.Get.Item(itemType);
-                slot.SetVisual(itemData.MainData.Name, itemData.CostData.BuyCost, itemData.OtherData.BoxValue,
-                    itemData.MainData.IconSprite);
+                
+                var localization = Localization.Instance.GetCurrentLanguage();
+
+                switch (localization)
+                {
+                    case English:
+                        slot.SetVisual(itemData.MainData.Name, itemData.CostData.BuyCost, itemData.OtherData.BoxValue,
+                            itemData.MainData.IconSprite);
+                        break;
+
+                    case Turkish:
+                        slot.SetVisual(itemData.MainData.TurName, itemData.CostData.BuyCost, itemData.OtherData.BoxValue,
+                            itemData.MainData.IconSprite);
+                        break;
+
+                    case Russian:
+                        slot.SetVisual(itemData.MainData.RusName, itemData.CostData.BuyCost, itemData.OtherData.BoxValue,
+                            itemData.MainData.IconSprite);
+                        break;
+
+                    default:
+                        slot.SetVisual(itemData.MainData.RusName, itemData.CostData.BuyCost, itemData.OtherData.BoxValue,
+                            itemData.MainData.IconSprite);
+                        
+                        /*slot.SetVisual(itemData.MainData.Name, itemData.CostData.BuyCost, itemData.OtherData.BoxValue,
+                            itemData.MainData.IconSprite);*/
+                        break;
+                }
+                
+                /*slot.SetVisual(itemData.MainData.Name, itemData.CostData.BuyCost, itemData.OtherData.BoxValue,
+                    itemData.MainData.IconSprite);*/
 
                 if (itemType == ItemType.FrenchFriesFrozen || itemType == ItemType.FriesPackingPaper)
                     slot.SetValueSoonPanel(true);

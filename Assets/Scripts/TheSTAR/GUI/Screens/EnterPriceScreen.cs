@@ -10,6 +10,10 @@ namespace TheSTAR.GUI
 {
     public class EnterPriceScreen : GuiScreen
     {
+        private const string English = "en";
+        private const string Russian = "ru";
+        private const string Turkish = "tr";
+        
         [SerializeField] private PointerButton acceptButton;
         [SerializeField] private Image icon;
         [SerializeField] private TextMeshProUGUI nameText;

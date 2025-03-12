@@ -1,4 +1,5 @@
 using System;
+using LocalizationContent;
 using TheSTAR.Utility;
 using TheSTAR.GUI;
 using TMPro;
@@ -8,6 +9,10 @@ using TheSTAR.Sound;
 
 public class ComputerProductUI : MonoBehaviour
 {
+    private const string English = "en";
+    private const string Russian = "ru";
+    private const string Turkish = "tr";
+    
     [SerializeField] private GameObject _soonPanel;
     [SerializeField] private GameObject _closeTutorPanel;
     [SerializeField] private GameObject _hand;
@@ -88,7 +93,18 @@ public class ComputerProductUI : MonoBehaviour
     {
         buyItemContainer.SetActive(false);
         neededLevelText.gameObject.SetActive(true);
-        neededLevelText.text = $"Level {neededLevel + 1} is required";
+        
+        var localization = Localization.Instance.GetCurrentLanguage();
+        
+        neededLevelText.text = localization switch
+        {
+            English => $"Level {neededLevel + 1} is required",
+            Turkish => $"Seviye {neededLevel + 1} gereklidir",
+            Russian => $"УРОВЕНЬ {neededLevel + 1} требуется",
+            _ => $"Level {neededLevel + 1} is required"
+        };
+        
+        // neededLevelText.text = $"Level {neededLevel + 1} is required";
     }
 
     public void SetUnlocked()

@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &39745691 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3170941208322985209, guid: 0437b1ef180c0bd47be427fb8d4ea6be, type: 3}
+  m_PrefabInstance: {fileID: 7783566998702806781}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &609456574
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,6 +765,61 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2014132113
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2014132114}
+  - component: {fileID: 2014132115}
+  m_Layer: 0
+  m_Name: ENTER THE PRICE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2014132114
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014132113}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 39745691}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2014132115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014132113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Turkish
+    Text: "\rF\u0130YATI G\u0130R\u0130N"
+    Object: {fileID: 0}
+  - Language: English
+    Text: ENTER THE PRICE
+    Object: {fileID: 0}
+  - Language: Russian
+    Text: "\u0412\u0412\u0415\u0414\u0418\u0422\u0415 \u0426\u0415\u041D\u0423"
+    Object: {fileID: 0}
 --- !u!1001 &7783566998702806781
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -814,7 +874,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3170941208322985209, guid: 0437b1ef180c0bd47be427fb8d4ea6be, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2014132114}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0437b1ef180c0bd47be427fb8d4ea6be, type: 3}
 --- !u!1660057539 &9223372036854775807

@@ -18,6 +18,8 @@ MonoBehaviour:
       section: 2
       itemPrefab: {fileID: 8129409621681092869, guid: 553d0b3f8956b40979e0b1f1e3c7bd5a, type: 3}
       itemName: Soda Cup
+      itemRusName: "\u0421\u0442\u0430\u043A\u0430\u043D \u0421\u043E\u0434\u044B"
+      itemTurkishName: "Soda Kupas\u0131"
       iconSprite: {fileID: 21300000, guid: 15027a36fa50f488995b0f835c2cbf1d, type: 3}
     costData:
       buyCost:
@@ -39,6 +41,5 @@ MonoBehaviour:
     otherData:
       boxValue: 8
       portionsValue: 1
-      playerDraggerOffsetY: 0
     recipe:
       pecipeItems: 

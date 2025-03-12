@@ -18,6 +18,9 @@ MonoBehaviour:
       section: 0
       itemPrefab: {fileID: 2296738983630215699, guid: 127b25e9cc6fe4a11851a3ce4b621d3e, type: 3}
       itemName: Nuggets Frozen
+      itemRusName: "\u041C\u043E\u0440\u043E\u0436\u0435\u043D\u043D\u044B\u0435
+        \u041D\u0430\u0433\u0433\u0435\u0442\u0441\u044B"
+      itemTurkishName: "Dondurulmu\u015F Nuggets"
       iconSprite: {fileID: 21300000, guid: 36c3c47b4a6684be28c1612db679c779, type: 3}
     costData:
       buyCost:
@@ -39,6 +42,5 @@ MonoBehaviour:
     otherData:
       boxValue: 6
       portionsValue: 1
-      playerDraggerOffsetY: 0
     recipe:
       pecipeItems: 

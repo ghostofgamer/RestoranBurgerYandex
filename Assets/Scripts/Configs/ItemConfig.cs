@@ -31,12 +31,16 @@ public class ItemMainData
     [SerializeField] private ItemSectionType section;
     [SerializeField] private Item itemPrefab;
     [SerializeField] private string itemName;
+    [SerializeField] private string itemRusName;
+    [SerializeField] private string itemTurkishName;
     [SerializeField] private Sprite iconSprite;
 
     public ItemType ItemType => itemType;
     public ItemSectionType SectionType => section;
     public Item ItemPrefab => itemPrefab;
     public string Name => itemName;
+    public string RusName => itemRusName;
+    public string TurName => itemTurkishName;
     public Sprite IconSprite => iconSprite;
 }
 

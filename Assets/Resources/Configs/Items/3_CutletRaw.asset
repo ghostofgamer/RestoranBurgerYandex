@@ -18,6 +18,8 @@ MonoBehaviour:
       section: 0
       itemPrefab: {fileID: 6297824730473248455, guid: b6c3fe0dc3a244d2db3daf471d7e1edc, type: 3}
       itemName: Cutlet
+      itemRusName: "\u041A\u043E\u0442\u043B\u0435\u0442\u0430"
+      itemTurkishName: Pirzola
       iconSprite: {fileID: 21300000, guid: 8ac130646ed8b43018034f92a75b06c9, type: 3}
     costData:
       buyCost:
@@ -39,6 +41,5 @@ MonoBehaviour:
     otherData:
       boxValue: 8
       portionsValue: 1
-      playerDraggerOffsetY: 0
     recipe:
       pecipeItems: 

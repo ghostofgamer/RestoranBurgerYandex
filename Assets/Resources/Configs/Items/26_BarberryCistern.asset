@@ -18,6 +18,9 @@ MonoBehaviour:
       section: 6
       itemPrefab: {fileID: 7872870181842699799, guid: 5b5f7f61494b241a8ac6ce72173093bc, type: 3}
       itemName: Barberry Soda
+      itemRusName: "\u0411\u0430\u0440\u0431\u0430\u0440\u0438\u0441\u043E\u0432\u0430\u044F
+        \u0441\u043E\u0434\u0430"
+      itemTurkishName: "K\u0131zam\u0131k Sodas\u0131"
       iconSprite: {fileID: 21300000, guid: 394647412eaeb4970afe9cbd48f70c3b, type: 3}
     costData:
       buyCost:
