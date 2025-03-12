@@ -4,11 +4,16 @@ using Zenject;
 using TheSTAR.Data;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using LocalizationContent;
 
 namespace TheSTAR.GUI
 {
     public class ComputerManageScreen : GuiScreen
     {
+        private const string English = "en";
+        private const string Russian = "ru";
+        private const string Turkish = "tr";
+        
         [SerializeField] private PointerButton closeButton;
         [SerializeField] private PointerButton storeButton;
 
@@ -137,6 +142,7 @@ namespace TheSTAR.GUI
             slotsByGroups = new();
             foreach (var placeType in buyerPlaceTypesQueue)
             {
+                var placesConfKey = placeType;
                 var placeData = gameConfig.Get.BuyerPlaceCostData.Get(placeType);
                 var length = placeData.Length;
                 slotsByGroups.Add(placeType, new BuyerPlaceSlot[length]);
@@ -144,8 +150,75 @@ namespace TheSTAR.GUI
                 for (int i = 0; i < length; i++)
                 {
                     var slot = Instantiate(buyerPlaceSlotPrefab, buyerPlaceSlotsParent);
-                    slot.Init(i, placeType, placeData[i].DisplayName, gameConfig.Get.BuyerPlaceIcons.Get(placeType),
-                        placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect, placeData[i].PlacesCount);
+                    
+                    var localization =   Localization.Instance.GetCurrentLanguage();
+
+                    switch (localization)
+                    {
+                        case English:
+                            slot.Init(i, placeType, placeData[i].DisplayName, gameConfig.Get.BuyerPlaceIcons.Get(placeType),
+                                placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect, placeData[i].PlacesCount);
+                            break;
+                        
+                        case Turkish:
+                            if(placesConfKey == BuyerPlaceType.SingleChair)
+                                slot.Init(i, placeType, "Sandalye", gameConfig.Get.BuyerPlaceIcons.Get(placeType),
+                                    placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect, placeData[i].PlacesCount);
+                            
+                            else if (placesConfKey == BuyerPlaceType.DobbleChair)
+                                slot.Init(i, placeType, "Iki sandalye", gameConfig.Get.BuyerPlaceIcons.Get(placeType),
+                                    placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect, placeData[i].PlacesCount);
+                            
+                            else if(placesConfKey == BuyerPlaceType.SofaChair)
+                                slot.Init(i, placeType, "Divan ve Sandalye", gameConfig.Get.BuyerPlaceIcons.Get(placeType),
+                                    placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect, placeData[i].PlacesCount);
+                            
+                            else if(placesConfKey == BuyerPlaceType.Sofa)
+                                slot.Init(i, placeType, "Divan", gameConfig.Get.BuyerPlaceIcons.Get(placeType),
+                                    placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect, placeData[i].PlacesCount);
+                            break;
+                        
+                        case Russian:
+                            if(placesConfKey == BuyerPlaceType.SingleChair)
+                                slot.Init(i, placeType, "Стул "+(i+1), gameConfig.Get.BuyerPlaceIcons.Get(placeType),
+                                    placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect, placeData[i].PlacesCount);
+                            
+                            else if (placesConfKey == BuyerPlaceType.DobbleChair)
+                                slot.Init(i, placeType, "Два стула "+(i+1), gameConfig.Get.BuyerPlaceIcons.Get(placeType),
+                                    placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect, placeData[i].PlacesCount);
+                            
+                            else if(placesConfKey == BuyerPlaceType.SofaChair)
+                                slot.Init(i, placeType, "Софа и Стул "+(i+1), gameConfig.Get.BuyerPlaceIcons.Get(placeType),
+                                    placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect, placeData[i].PlacesCount);
+                            
+                            else if(placesConfKey == BuyerPlaceType.Sofa)
+                                slot.Init(i, placeType, "Софа "+(i+1), gameConfig.Get.BuyerPlaceIcons.Get(placeType),
+                                    placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect, placeData[i].PlacesCount);
+                            break;
+                        
+                        default:
+                            if(placesConfKey == BuyerPlaceType.SingleChair)
+                                slot.Init(i, placeType, "Стул "+(i+1), gameConfig.Get.BuyerPlaceIcons.Get(placeType),
+                                    placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect, placeData[i].PlacesCount);
+                            
+                            else if (placesConfKey == BuyerPlaceType.DobbleChair)
+                                slot.Init(i, placeType, "Два стула "+(i+1), gameConfig.Get.BuyerPlaceIcons.Get(placeType),
+                                    placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect, placeData[i].PlacesCount);
+                            
+                            else if(placesConfKey == BuyerPlaceType.SofaChair)
+                                slot.Init(i, placeType, "Софа и Стул "+(i+1), gameConfig.Get.BuyerPlaceIcons.Get(placeType),
+                                    placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect, placeData[i].PlacesCount);
+                            
+                            else if(placesConfKey == BuyerPlaceType.Sofa)
+                                slot.Init(i, placeType, "Софа "+(i+1), gameConfig.Get.BuyerPlaceIcons.Get(placeType),
+                                    placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect, placeData[i].PlacesCount);
+                            /*slot.Init(i, placeType, placeData[i].DisplayName, gameConfig.Get.BuyerPlaceIcons.Get(placeType),
+                                placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect, placeData[i].PlacesCount);*/
+                            break;
+                    }
+                    
+                    /*slot.Init(i, placeType, placeData[i].DisplayName, gameConfig.Get.BuyerPlaceIcons.Get(placeType),
+                        placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect, placeData[i].PlacesCount);*/
                     slotsByGroups[placeType][i] = slot;
                 }
             }

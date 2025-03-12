@@ -1879,7 +1879,7 @@ RectTransform:
   m_Father: {fileID: 5847376240720978290}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: -2.5, y: 0}
   m_SizeDelta: {x: 5, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1937,7 +1937,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3389144543176459916
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1978,10 +1978,10 @@ MonoBehaviour:
   _xpFly: {fileID: 6688407505397883012}
   _mobileButtonsContainer: {fileID: 7663024615498516943}
   _pcButtonsContainer: {fileID: 998362361237550642}
+  levelFill: {fileID: 6706968880671515610}
+  levelNumberText: {fileID: 5479675337350060839}
   shopButton: {fileID: 805662957657622348}
   settingsButton: {fileID: 7292774982148973734}
-  levelNumberText: {fileID: 5479675337350060839}
-  levelFill: {fileID: 6706968880671515610}
 --- !u!1 &3944116899228159790
 GameObject:
   m_ObjectHideFlags: 0
