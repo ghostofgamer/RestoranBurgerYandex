@@ -1,4 +1,5 @@
 using System;
+using LocalizationContent;
 using TheSTAR.Utility;
 using TheSTAR.GUI;
 using TMPro;
@@ -7,6 +8,10 @@ using UnityEngine.UI;
 
 public class ApparatSlot : MonoBehaviour
 {
+    private const string English = "en";
+    private const string Russian = "ru";
+    private const string Turkish = "tr";
+    
     [SerializeField] private GameObject _soonPanel;
     [SerializeField] private Image iconImg;
     [SerializeField] private PointerButton buyButton;
@@ -62,7 +67,18 @@ public class ApparatSlot : MonoBehaviour
     {
         availableContainer.SetActive(false);
         neededLevelText.gameObject.SetActive(true);
-        neededLevelText.text = $"Level {neededLevel + 1} is required";
+        
+        var localization = Localization.Instance.GetCurrentLanguage();
+
+        neededLevelText.text = localization switch
+        {
+            English => $"Level {neededLevel + 1} is required",
+            Turkish => $"Seviye {neededLevel + 1} gereklidir",
+            Russian => $"УРОВЕНЬ {neededLevel + 1} требуется",
+            _ => $"Level {neededLevel + 1} is required"
+        };
+        
+        // neededLevelText.text = $"Level {neededLevel + 1} is required";
     }
 
     public void SetUnlocked()

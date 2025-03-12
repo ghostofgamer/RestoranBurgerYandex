@@ -13,7 +13,7 @@ namespace TheSTAR.GUI
         private const string English = "en";
         private const string Russian = "ru";
         private const string Turkish = "tr";
-        
+
         [SerializeField] private PointerButton closeButton;
         [SerializeField] private PointerButton storeButton;
 
@@ -150,73 +150,84 @@ namespace TheSTAR.GUI
                 for (int i = 0; i < length; i++)
                 {
                     var slot = Instantiate(buyerPlaceSlotPrefab, buyerPlaceSlotsParent);
-                    
-                    var localization =   Localization.Instance.GetCurrentLanguage();
+
+                    var localization = Localization.Instance.GetCurrentLanguage();
 
                     switch (localization)
                     {
                         case English:
-                            slot.Init(i, placeType, placeData[i].DisplayName, gameConfig.Get.BuyerPlaceIcons.Get(placeType),
+                            slot.Init(i, placeType, placeData[i].DisplayName,
+                                gameConfig.Get.BuyerPlaceIcons.Get(placeType),
                                 placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect, placeData[i].PlacesCount);
                             break;
-                        
+
                         case Turkish:
-                            if(placesConfKey == BuyerPlaceType.SingleChair)
-                                slot.Init(i, placeType, "Sandalye", gameConfig.Get.BuyerPlaceIcons.Get(placeType),
-                                    placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect, placeData[i].PlacesCount);
-                            
-                            else if (placesConfKey == BuyerPlaceType.DobbleChair)
-                                slot.Init(i, placeType, "Iki sandalye", gameConfig.Get.BuyerPlaceIcons.Get(placeType),
-                                    placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect, placeData[i].PlacesCount);
-                            
-                            else if(placesConfKey == BuyerPlaceType.SofaChair)
-                                slot.Init(i, placeType, "Divan ve Sandalye", gameConfig.Get.BuyerPlaceIcons.Get(placeType),
-                                    placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect, placeData[i].PlacesCount);
-                            
-                            else if(placesConfKey == BuyerPlaceType.Sofa)
-                                slot.Init(i, placeType, "Divan", gameConfig.Get.BuyerPlaceIcons.Get(placeType),
-                                    placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect, placeData[i].PlacesCount);
+                            switch (placesConfKey)
+                            {
+                                case BuyerPlaceType.SingleChair:
+                                    slot.Init(i, placeType, "Sandalye", gameConfig.Get.BuyerPlaceIcons.Get(placeType),
+                                        placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect,
+                                        placeData[i].PlacesCount);
+                                    break;
+                                case BuyerPlaceType.DobbleChair:
+                                    slot.Init(i, placeType, "Iki sandalye",
+                                        gameConfig.Get.BuyerPlaceIcons.Get(placeType),
+                                        placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect,
+                                        placeData[i].PlacesCount);
+                                    break;
+                                case BuyerPlaceType.SofaChair:
+                                    slot.Init(i, placeType, "Divan ve Sandalye",
+                                        gameConfig.Get.BuyerPlaceIcons.Get(placeType),
+                                        placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect,
+                                        placeData[i].PlacesCount);
+                                    break;
+                                case BuyerPlaceType.Sofa:
+                                    slot.Init(i, placeType, "Divan", gameConfig.Get.BuyerPlaceIcons.Get(placeType),
+                                        placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect,
+                                        placeData[i].PlacesCount);
+                                    break;
+                            }
+
                             break;
-                        
+
                         case Russian:
-                            if(placesConfKey == BuyerPlaceType.SingleChair)
-                                slot.Init(i, placeType, "Стул "+(i+1), gameConfig.Get.BuyerPlaceIcons.Get(placeType),
-                                    placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect, placeData[i].PlacesCount);
-                            
-                            else if (placesConfKey == BuyerPlaceType.DobbleChair)
-                                slot.Init(i, placeType, "Два стула "+(i+1), gameConfig.Get.BuyerPlaceIcons.Get(placeType),
-                                    placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect, placeData[i].PlacesCount);
-                            
-                            else if(placesConfKey == BuyerPlaceType.SofaChair)
-                                slot.Init(i, placeType, "Софа и Стул "+(i+1), gameConfig.Get.BuyerPlaceIcons.Get(placeType),
-                                    placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect, placeData[i].PlacesCount);
-                            
-                            else if(placesConfKey == BuyerPlaceType.Sofa)
-                                slot.Init(i, placeType, "Софа "+(i+1), gameConfig.Get.BuyerPlaceIcons.Get(placeType),
-                                    placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect, placeData[i].PlacesCount);
+                            switch (placesConfKey)
+                            {
+                                case BuyerPlaceType.SingleChair:
+                                    slot.Init(i, placeType, "Стул " + (i + 1),
+                                        gameConfig.Get.BuyerPlaceIcons.Get(placeType),
+                                        placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect,
+                                        placeData[i].PlacesCount);
+                                    break;
+                                case BuyerPlaceType.DobbleChair:
+                                    slot.Init(i, placeType, "Два стула " + (i + 1),
+                                        gameConfig.Get.BuyerPlaceIcons.Get(placeType),
+                                        placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect,
+                                        placeData[i].PlacesCount);
+                                    break;
+                                case BuyerPlaceType.SofaChair:
+                                    slot.Init(i, placeType, "Софа и Стул " + (i + 1),
+                                        gameConfig.Get.BuyerPlaceIcons.Get(placeType),
+                                        placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect,
+                                        placeData[i].PlacesCount);
+                                    break;
+                                case BuyerPlaceType.Sofa:
+                                    slot.Init(i, placeType, "Софа " + (i + 1),
+                                        gameConfig.Get.BuyerPlaceIcons.Get(placeType),
+                                        placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect,
+                                        placeData[i].PlacesCount);
+                                    break;
+                            }
+
                             break;
-                        
+
                         default:
-                            if(placesConfKey == BuyerPlaceType.SingleChair)
-                                slot.Init(i, placeType, "Стул "+(i+1), gameConfig.Get.BuyerPlaceIcons.Get(placeType),
-                                    placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect, placeData[i].PlacesCount);
-                            
-                            else if (placesConfKey == BuyerPlaceType.DobbleChair)
-                                slot.Init(i, placeType, "Два стула "+(i+1), gameConfig.Get.BuyerPlaceIcons.Get(placeType),
-                                    placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect, placeData[i].PlacesCount);
-                            
-                            else if(placesConfKey == BuyerPlaceType.SofaChair)
-                                slot.Init(i, placeType, "Софа и Стул "+(i+1), gameConfig.Get.BuyerPlaceIcons.Get(placeType),
-                                    placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect, placeData[i].PlacesCount);
-                            
-                            else if(placesConfKey == BuyerPlaceType.Sofa)
-                                slot.Init(i, placeType, "Софа "+(i+1), gameConfig.Get.BuyerPlaceIcons.Get(placeType),
-                                    placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect, placeData[i].PlacesCount);
-                            /*slot.Init(i, placeType, placeData[i].DisplayName, gameConfig.Get.BuyerPlaceIcons.Get(placeType),
-                                placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect, placeData[i].PlacesCount);*/
+                            slot.Init(i, placeType, placeData[i].DisplayName,
+                                gameConfig.Get.BuyerPlaceIcons.Get(placeType),
+                                placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect, placeData[i].PlacesCount);
                             break;
                     }
-                    
+
                     /*slot.Init(i, placeType, placeData[i].DisplayName, gameConfig.Get.BuyerPlaceIcons.Get(placeType),
                         placeData[i].Cost, OnBuySlotClick, buyerPlaceScrollRect, placeData[i].PlacesCount);*/
                     slotsByGroups[placeType][i] = slot;
@@ -229,7 +240,29 @@ namespace TheSTAR.GUI
             {
                 var expandData = gameConfig.Get.ExpandZonesData[i];
                 var slot = Instantiate(zoneSlotPrefab, zoneSlotsParent);
-                slot.Init(i, expandData.DisplayName, expandData.Cost, OnBuyExpandZoneClick, zoneScrollRect);
+
+                var localization = Localization.Instance.GetCurrentLanguage();
+
+                switch (localization)
+                {
+                    case English:
+                        slot.Init(i, expandData.DisplayName, expandData.Cost, OnBuyExpandZoneClick, zoneScrollRect);
+                        break;
+
+                    case Turkish:
+                        slot.Init(i, "Alan " + (i + 1), expandData.Cost, OnBuyExpandZoneClick, zoneScrollRect);
+                        break;
+
+                    case Russian:
+                        slot.Init(i, "Зона " + (i + 1), expandData.Cost, OnBuyExpandZoneClick, zoneScrollRect);
+                        break;
+
+                    default:
+                        slot.Init(i, expandData.DisplayName, expandData.Cost, OnBuyExpandZoneClick, zoneScrollRect);
+                        break;
+                }
+
+                // slot.Init(i, expandData.DisplayName, expandData.Cost, OnBuyExpandZoneClick, zoneScrollRect);
                 zoneSlots.Add(slot);
             }
 
@@ -238,37 +271,111 @@ namespace TheSTAR.GUI
 
             // coffee
             var coffeeSlot = Instantiate(apparatSlotPrefab, apparatSlotsParent);
-            coffeeSlot.Init(
-                0,
-                gameConfig.Get.CoffeeMachineData.DisplayName,
-                gameConfig.Get.CoffeeMachineData.Icon,
-                gameConfig.Get.CoffeeMachineData.Cost,
-                OnBuyApparatClick,
-                buyerPlaceScrollRect);
+
+            var localizations = Localization.Instance.GetCurrentLanguage();
+
+            switch (localizations)
+            {
+                case English:
+                    coffeeSlot.Init(0, gameConfig.Get.CoffeeMachineData.DisplayName,
+                        gameConfig.Get.CoffeeMachineData.Icon, gameConfig.Get.CoffeeMachineData.Cost,
+                        OnBuyApparatClick, buyerPlaceScrollRect);
+                    break;
+            
+                case Turkish:
+                    coffeeSlot.Init(0,  "Kahve Makinesi",
+                        gameConfig.Get.CoffeeMachineData.Icon, gameConfig.Get.CoffeeMachineData.Cost,
+                        OnBuyApparatClick, buyerPlaceScrollRect);
+                    break;
+
+                case Russian:
+                    coffeeSlot.Init(0, "Кофе Машина", gameConfig.Get.CoffeeMachineData.Icon,
+                        gameConfig.Get.CoffeeMachineData.Cost, OnBuyApparatClick, buyerPlaceScrollRect);
+                    break;
+
+                default:
+                    coffeeSlot.Init(0, gameConfig.Get.CoffeeMachineData.DisplayName,
+                        gameConfig.Get.CoffeeMachineData.Icon, gameConfig.Get.CoffeeMachineData.Cost,
+                        OnBuyApparatClick, buyerPlaceScrollRect);
+                    break;
+            }
+
             apparatSlots.Add(coffeeSlot);
+            /*coffeeSlot.Init(0, gameConfig.Get.CoffeeMachineData.DisplayName,
+                gameConfig.Get.CoffeeMachineData.Icon, gameConfig.Get.CoffeeMachineData.Cost,
+                OnBuyApparatClick, buyerPlaceScrollRect); apparatSlots.Add(coffeeSlot);*/
 
             // deep fryer
             var deepFryerSlot = Instantiate(apparatSlotPrefab, apparatSlotsParent);
             deepFryerSlot.SetValueSoonPanel(true);
 
-            deepFryerSlot.Init(
-                1,
-                gameConfig.Get.DeepFryerMachineData.DisplayName,
-                gameConfig.Get.DeepFryerMachineData.Icon,
-                gameConfig.Get.DeepFryerMachineData.Cost,
-                OnBuyApparatClick,
-                buyerPlaceScrollRect);
+            switch (localizations)
+            {
+                case English:
+                    deepFryerSlot.Init(1, gameConfig.Get.DeepFryerMachineData.DisplayName,
+                        gameConfig.Get.DeepFryerMachineData.Icon, gameConfig.Get.DeepFryerMachineData.Cost,
+                        OnBuyApparatClick, buyerPlaceScrollRect);
+                    break;
+
+                case Turkish:
+                    deepFryerSlot.Init(1, "Fritöz",
+                        gameConfig.Get.DeepFryerMachineData.Icon, gameConfig.Get.DeepFryerMachineData.Cost,
+                        OnBuyApparatClick, buyerPlaceScrollRect);
+                    break;
+
+                case Russian:
+                    deepFryerSlot.Init(1, "Фритюрница",
+                        gameConfig.Get.DeepFryerMachineData.Icon, gameConfig.Get.DeepFryerMachineData.Cost,
+                        OnBuyApparatClick, buyerPlaceScrollRect);
+                    break;
+
+                default:
+                    deepFryerSlot.Init(1, gameConfig.Get.DeepFryerMachineData.DisplayName,
+                        gameConfig.Get.DeepFryerMachineData.Icon, gameConfig.Get.DeepFryerMachineData.Cost,
+                        OnBuyApparatClick, buyerPlaceScrollRect);
+                    break;
+            }
+            
+            /*deepFryerSlot.Init(1, gameConfig.Get.DeepFryerMachineData.DisplayName,
+                gameConfig.Get.DeepFryerMachineData.Icon, gameConfig.Get.DeepFryerMachineData.Cost,
+                OnBuyApparatClick, buyerPlaceScrollRect);*/
+            
             apparatSlots.Add(deepFryerSlot);
 
             // soda
             var sodaSlot = Instantiate(apparatSlotPrefab, apparatSlotsParent);
-            sodaSlot.Init(
-                2,
-                gameConfig.Get.SodaMachineData.DisplayName,
-                gameConfig.Get.SodaMachineData.Icon,
-                gameConfig.Get.SodaMachineData.Cost,
-                OnBuyApparatClick,
-                buyerPlaceScrollRect);
+            
+            switch (localizations)
+            {
+                case English:
+                    sodaSlot.Init(2, gameConfig.Get.SodaMachineData.DisplayName,
+                        gameConfig.Get.SodaMachineData.Icon, gameConfig.Get.SodaMachineData.Cost,
+                        OnBuyApparatClick, buyerPlaceScrollRect);
+                    break;
+
+                case Turkish:
+                    sodaSlot.Init(2, "Soda Makinesi",
+                        gameConfig.Get.SodaMachineData.Icon, gameConfig.Get.SodaMachineData.Cost,
+                        OnBuyApparatClick, buyerPlaceScrollRect);
+                    break;
+
+                case Russian:
+                    sodaSlot.Init(2, "Лимонадный Аппарат",
+                        gameConfig.Get.SodaMachineData.Icon, gameConfig.Get.SodaMachineData.Cost,
+                        OnBuyApparatClick, buyerPlaceScrollRect);
+                    break;
+
+                default:
+                    sodaSlot.Init(2, gameConfig.Get.SodaMachineData.DisplayName,
+                        gameConfig.Get.SodaMachineData.Icon, gameConfig.Get.SodaMachineData.Cost,
+                        OnBuyApparatClick, buyerPlaceScrollRect);
+                    break;
+            }
+            
+            /*sodaSlot.Init(2, gameConfig.Get.SodaMachineData.DisplayName,
+                gameConfig.Get.SodaMachineData.Icon, gameConfig.Get.SodaMachineData.Cost,
+                OnBuyApparatClick, buyerPlaceScrollRect);*/
+            
             apparatSlots.Add(sodaSlot);
         }
 

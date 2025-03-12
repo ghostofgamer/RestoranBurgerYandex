@@ -2,11 +2,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using LocalizationContent;
 using TheSTAR.GUI;
 using TheSTAR.Utility;
 
 public class ZoneSlot : MonoBehaviour
 {
+    private const string English = "en";
+    private const string Russian = "ru";
+    private const string Turkish = "tr";
+    
     [SerializeField] private PointerButton buyButton;
     [SerializeField] private TextMeshProUGUI costText;
     [SerializeField] private TextMeshProUGUI nameText;
@@ -55,7 +60,18 @@ public class ZoneSlot : MonoBehaviour
     {
         availableByLevelContainer.SetActive(false);
         neededLevelText.gameObject.SetActive(true);
-        neededLevelText.text = $"Level {neededLevelIndex + 1} is required";
+        
+        var localization = Localization.Instance.GetCurrentLanguage();
+
+        neededLevelText.text = localization switch
+        {
+            English => $"Level {neededLevelIndex + 1} is required",
+            Turkish => $"Seviye {neededLevelIndex + 1} gereklidir",
+            Russian => $"УРОВЕНЬ {neededLevelIndex + 1} требуется",
+            _ => $"Level {neededLevelIndex + 1} is required"
+        };
+        
+        // neededLevelText.text = $"Level {neededLevelIndex + 1} is required";
     }
 
     public void SetUnlockedByLevel()
@@ -68,7 +84,18 @@ public class ZoneSlot : MonoBehaviour
     {
         availableByExpandContainer.SetActive(false);
         neededExpandText.gameObject.SetActive(true);
-        neededExpandText.text = $"Zone {neededExpandCount} is required";
+        
+        var localization = Localization.Instance.GetCurrentLanguage();
+
+        neededLevelText.text = localization switch
+        {
+            English => $"Zone {neededExpandCount} is required",
+            Turkish => $"Alan {neededExpandCount} gereklidir",
+            Russian => $"Зона {neededExpandCount} требуется",
+            _ => $"Zone {neededExpandCount} is required"
+        };
+        
+        // neededExpandText.text = $"Zone {neededExpandCount} is required";
     }
 
     public void SetUnlockedByExpand()

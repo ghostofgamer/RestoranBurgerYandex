@@ -1,4 +1,5 @@
 using System;
+using LocalizationContent;
 using TheSTAR.Utility;
 using TheSTAR.GUI;
 using TMPro;
@@ -7,6 +8,10 @@ using UnityEngine.UI;
 
 public class BuyerPlaceSlot : MonoBehaviour
 {
+    private const string English = "en";
+    private const string Russian = "ru";
+    private const string Turkish = "tr";
+
     [SerializeField] private Image iconImg;
     [SerializeField] private PointerButton buyButton;
     [SerializeField] private TextMeshProUGUI costText;
@@ -14,15 +19,13 @@ public class BuyerPlaceSlot : MonoBehaviour
     [SerializeField] private GameObject buyGroup;
     [SerializeField] private GameObject ownedGroup;
     [SerializeField] private GameObject _hand;
-    
-    [Space]
-    [SerializeField] private GameObject availableByExpandContainer;
+
+    [Space] [SerializeField] private GameObject availableByExpandContainer;
     [SerializeField] private GameObject availableByLevelContainer;
     [SerializeField] private TextMeshProUGUI neededLevelText;
     [SerializeField] private TextMeshProUGUI neededExpandText;
 
-    [Space]
-    [SerializeField] private TextMeshProUGUI placesText;
+    [Space] [SerializeField] private TextMeshProUGUI placesText;
 
     private int index;
     private BuyerPlaceType buyerPlaceType;
@@ -32,12 +35,12 @@ public class BuyerPlaceSlot : MonoBehaviour
     public BuyerPlaceType BuyerPlaceType => buyerPlaceType;
 
     public void Init(
-        int index, 
-        BuyerPlaceType buyerPlaceType, 
-        string nameText, 
-        Sprite icon, 
-        DollarValue cost, 
-        Action<BuyerPlaceType, int> onBuyClickAction, 
+        int index,
+        BuyerPlaceType buyerPlaceType,
+        string nameText,
+        Sprite icon,
+        DollarValue cost,
+        Action<BuyerPlaceType, int> onBuyClickAction,
         ScrollRect scrollRect,
         int placesCount)
     {
@@ -58,7 +61,7 @@ public class BuyerPlaceSlot : MonoBehaviour
         buyGroup.SetActive(!owned);
         ownedGroup.SetActive(owned);
     }
-    
+
     public void SetActiveHandValue(bool value)
     {
         _hand.SetActive(value);
@@ -73,7 +76,16 @@ public class BuyerPlaceSlot : MonoBehaviour
     {
         availableByLevelContainer.SetActive(false);
         neededLevelText.gameObject.SetActive(true);
-        neededLevelText.text = $"Level {neededLevelIndex + 1} is required";
+
+        var localization = Localization.Instance.GetCurrentLanguage();
+
+        neededLevelText.text = localization switch
+        {
+            English => $"Level {neededLevelIndex + 1} is required",
+            Turkish => $"Seviye {neededLevelIndex + 1} gereklidir",
+            Russian => $"УРОВЕНЬ {neededLevelIndex + 1} требуется",
+            _ => $"Level {neededLevelIndex + 1} is required"
+        };
     }
 
     public void SetUnlockedByLevel()
@@ -86,7 +98,18 @@ public class BuyerPlaceSlot : MonoBehaviour
     {
         availableByExpandContainer.SetActive(false);
         neededExpandText.gameObject.SetActive(true);
-        neededExpandText.text = $"Zone {neededExpandCount} is required";
+        
+        var localization = Localization.Instance.GetCurrentLanguage();
+
+        neededLevelText.text = localization switch
+        {
+            English => $"Zone {neededExpandCount} is required",
+            Turkish => $"Alan {neededExpandCount} gereklidir",
+            Russian => $"Зона {neededExpandCount} требуется",
+            _ => $"Zone {neededExpandCount} is required"
+        };
+        
+        // neededExpandText.text = $"Zone {neededExpandCount} is required";
     }
 
     public void SetUnlockedByExpand()
