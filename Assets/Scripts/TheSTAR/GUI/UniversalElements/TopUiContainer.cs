@@ -1,4 +1,5 @@
 using System;
+using LocalizationContent;
 using ReputationContent;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +11,10 @@ namespace TheSTAR.GUI
 {
     public class TopUiContainer : GuiUniversalElement
     {
+        private const string English = "en";
+        private const string Russian = "ru";
+        private const string Turkish = "tr";
+        
         [SerializeField] private TextMeshProUGUI softCounter;
         [SerializeField] private Reputation _reputation;
         [SerializeField] private RateFly _profitFly;
@@ -17,15 +22,17 @@ namespace TheSTAR.GUI
         [SerializeField] private RateFly _xpFly;
         [SerializeField] private GameObject _mobileButtonsContainer;
         [SerializeField] private GameObject _pcButtonsContainer;
-        private DollarValue _lastProfit = new DollarValue();
-        private DollarValue _lastTips = new DollarValue();
-
+        [SerializeField] private Image levelFill;
+        [Space] [SerializeField] private TextMeshProUGUI levelNumberText;
+        
         [Header("Buttons")] [SerializeField] private PointerButton shopButton;
         [SerializeField] private PointerButton settingsButton;
+        
 
-        [Space] [SerializeField] private TextMeshProUGUI levelNumberText;
-        [SerializeField] private Image levelFill;
 
+
+        private DollarValue _lastProfit = new DollarValue();
+        private DollarValue _lastTips = new DollarValue();
         private GuiController gui;
 
         public Reputation Reputation => _reputation;
@@ -140,7 +147,17 @@ namespace TheSTAR.GUI
 
         private void OnChangeXp(int level, int currentXp, int neededXp)
         {
-            levelNumberText.text = $"LEVEL {level + 1}";
+            var localization =   Localization.Instance.GetCurrentLanguage();
+
+            levelNumberText.text = localization switch
+            {
+                English => $"LEVEL {level + 1}",
+                Turkish => $"SEVİYE {level + 1}",
+                Russian => $"УРОВЕНЬ {level + 1}",
+                _ => $"LEVEL {level + 1}"
+            };
+
+            // levelNumberText.text = $"LEVEL {level + 1}";
             levelFill.fillAmount = (float)currentXp / (float)neededXp;
         }
 

@@ -3,15 +3,20 @@ using TMPro;
 using UnityEngine;
 using TheSTAR.Utility;
 using System;
+using LocalizationContent;
 
 public class DeliveryInfoUi : MonoBehaviour
 {
+    private const string English = "en";
+    private const string Russian = "ru";
+    private const string Turkish = "tr";
+    
     [SerializeField] private TextMeshProUGUI topText;
     [SerializeField] private PointerButton skipForAdBtn;
     [SerializeField] private PointerButton skipForFreeBtn;
     [SerializeField] private GameObject _PressGText;
 
-    private const string nearestDeliveryText = "DELIVERY VIA:";
+    private string nearestDeliveryText = "DELIVERY VIA:";
 
     private Action onClickSkipForAd;
     private Action onClickSkipForFree;
@@ -47,7 +52,17 @@ public class DeliveryInfoUi : MonoBehaviour
 
     public void SetInfo(GameTimeSpan time)
     {
-        topText.text = $"{nearestDeliveryText} {TextUtility.TimeToText(time)}";
+      var localization =   Localization.Instance.GetCurrentLanguage();
+
+      nearestDeliveryText = localization switch
+      {
+          English => "DELIVERY VIA:",
+          Turkish => "TESLİMAT ŞEKLİ:",
+          Russian => "ДОСТАВКА ЧЕРЕЗ:",
+          _ => "DELIVERY VIA:"
+      };
+
+      topText.text = $"{nearestDeliveryText} {TextUtility.TimeToText(time)}";
     }
 
     public void SetForFree(bool forFree)

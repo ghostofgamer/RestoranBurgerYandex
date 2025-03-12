@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &39745691 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3170941208322985209, guid: 0437b1ef180c0bd47be427fb8d4ea6be, type: 3}
+  m_PrefabInstance: {fileID: 7783566998702806781}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &609456574
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,6 +645,61 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1413700130}
   m_CullTransparentMesh: 1
+--- !u!1 &1538514596
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1538514597}
+  - component: {fileID: 1538514598}
+  m_Layer: 0
+  m_Name: 'Press: V'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1538514597
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538514596}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 39745691}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1538514598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538514596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Turkish
+    Text: 'Pres: V'
+    Object: {fileID: 0}
+  - Language: English
+    Text: 'Press: V'
+    Object: {fileID: 0}
+  - Language: Russian
+    Text: "\u041D\u0430\u0436\u043C\u0438\u0442\u0435: V"
+    Object: {fileID: 0}
 --- !u!1001 &1760824716
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -768,19 +828,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 944054327316543979, guid: 0437b1ef180c0bd47be427fb8d4ea6be, type: 3}
-      propertyPath: entries.Array.data[0].Text
-      value: "Hareket  <color=#d7fd49>WASD</color> etmek i\xE7in wasd kullan"
-      objectReference: {fileID: 0}
-    - target: {fileID: 944054327316543979, guid: 0437b1ef180c0bd47be427fb8d4ea6be, type: 3}
-      propertyPath: entries.Array.data[1].Text
-      value: Use <color=#d7fd49>WASD</color> to move
-      objectReference: {fileID: 0}
-    - target: {fileID: 944054327316543979, guid: 0437b1ef180c0bd47be427fb8d4ea6be, type: 3}
-      propertyPath: entries.Array.data[2].Text
-      value: "\u0418\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u044C
-        <color=#d7fd49>WASD</color>, \u0447\u0442\u043E\u0431\u044B \u0434\u0432\u0438\u0433\u0430\u0442\u044C\u0441\u044F"
-      objectReference: {fileID: 0}
     - target: {fileID: 3170941208322985209, guid: 0437b1ef180c0bd47be427fb8d4ea6be, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -821,48 +868,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3689377116447577913, guid: 0437b1ef180c0bd47be427fb8d4ea6be, type: 3}
-      propertyPath: entries.Array.data[0].Text
-      value: "Hareket etmek i\xE7in <color=#d7fd49>  joystick'i </color> kullan"
-      objectReference: {fileID: 0}
-    - target: {fileID: 3689377116447577913, guid: 0437b1ef180c0bd47be427fb8d4ea6be, type: 3}
-      propertyPath: entries.Array.data[1].Text
-      value: Use <color=#d7fd49> the joystick </color>to move
-      objectReference: {fileID: 0}
-    - target: {fileID: 3689377116447577913, guid: 0437b1ef180c0bd47be427fb8d4ea6be, type: 3}
+    - target: {fileID: 5418418584834155476, guid: 0437b1ef180c0bd47be427fb8d4ea6be, type: 3}
       propertyPath: entries.Array.data[2].Text
-      value: "\u0418\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0439\u0442\u0435
-        <color=#d7fd49> \u0434\u0436\u043E\u0439\u0441\u0442\u0438\u043A </color>\u0434\u043B\u044F
-        \u0434\u0432\u0438\u0436\u0435\u043D\u0438\u044F"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6413637722981184927, guid: 0437b1ef180c0bd47be427fb8d4ea6be, type: 3}
-      propertyPath: entries.Array.data[0].Text
-      value: "\u0130ncelemek <color=#d7fd49>i\xE7in </color>fareyi kullan\u0131n"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6413637722981184927, guid: 0437b1ef180c0bd47be427fb8d4ea6be, type: 3}
-      propertyPath: entries.Array.data[1].Text
-      value: Use <color=#d7fd49>mouse </color>to look around
-      objectReference: {fileID: 0}
-    - target: {fileID: 6413637722981184927, guid: 0437b1ef180c0bd47be427fb8d4ea6be, type: 3}
-      propertyPath: entries.Array.data[2].Text
-      value: "\u0418\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0439\u0442\u0435
-        <color=#d7fd49> \u043C\u044B\u0448\u044C</color>, \u0447\u0442\u043E\u0431\u044B
-        \u043E\u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6420417278523612967, guid: 0437b1ef180c0bd47be427fb8d4ea6be, type: 3}
-      propertyPath: entries.Array.data[0].Text
-      value: "Etrafa <color=#d7fd49> bakmak i\xE7in </color>do\u011Fru ba\u015Fparmak
-        kullan\u0131n"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6420417278523612967, guid: 0437b1ef180c0bd47be427fb8d4ea6be, type: 3}
-      propertyPath: entries.Array.data[1].Text
-      value: Use <color=#d7fd49> right thumb</color> to look around
-      objectReference: {fileID: 0}
-    - target: {fileID: 6420417278523612967, guid: 0437b1ef180c0bd47be427fb8d4ea6be, type: 3}
-      propertyPath: entries.Array.data[2].Text
-      value: "\u0418\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0439 <color=#d7fd49>
-        \u043F\u0440\u0430\u0432\u044B\u0439 \u043F\u0430\u043B\u0435\u0446</color>,
-        \u0447\u0442\u043E\u0431\u044B \u043E\u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C\u0441\u044F"
+      value: "\u0416\u043C\u0438: G"
       objectReference: {fileID: 0}
     - target: {fileID: 8100099045399749953, guid: 0437b1ef180c0bd47be427fb8d4ea6be, type: 3}
       propertyPath: m_Name
@@ -870,7 +878,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3170941208322985209, guid: 0437b1ef180c0bd47be427fb8d4ea6be, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1538514597}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0437b1ef180c0bd47be427fb8d4ea6be, type: 3}
 --- !u!1660057539 &9223372036854775807
