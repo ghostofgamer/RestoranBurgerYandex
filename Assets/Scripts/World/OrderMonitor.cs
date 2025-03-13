@@ -1,5 +1,6 @@
 using UnityEngine;
 using Configs;
+using LocalizationContent;
 using TheSTAR.Utility;
 using TMPro;
 using Zenject;
@@ -7,10 +8,13 @@ using World;
 
 public class OrderMonitor : MonoBehaviour, ICameraFocusable
 {
+    private const string English = "en";
+    private const string Russian = "ru";
+    private const string Turkish = "tr";
+    
     [SerializeField] private TutorInWorldFocus _tutorFocus;
     [SerializeField]private Canvas _acceptOrderCanvas;
     [SerializeField]private Canvas _cancelOrderCanvas;
-    
     [SerializeField] private GameObject emptyOrderTitle;
     [SerializeField] private OrderMonitorElement slot;
     [SerializeField] private GameObject orderScreen;
@@ -114,8 +118,29 @@ public class OrderMonitor : MonoBehaviour, ICameraFocusable
         var itemData = itemsConfig.Get.Item(orderData.Items[0].ItemType);
         
         Debug.Log("SetOrder " + orderData.Items[0].ItemType);
+        var localization =   Localization.Instance.GetCurrentLanguage();
         
-        slot.SetVisual(itemData.MainData.IconSprite, itemData.mainData.Name);
+        switch (localization)
+        {
+            case English:
+                slot.SetVisual(itemData.MainData.IconSprite, itemData.mainData.Name);
+                break;
+
+            case Turkish:
+                slot.SetVisual(itemData.MainData.IconSprite, itemData.mainData.TurName);
+                break;
+
+            case Russian:
+                slot.SetVisual(itemData.MainData.IconSprite, itemData.mainData.RusName);
+                break;
+
+            default:
+                slot.SetVisual(itemData.MainData.IconSprite, itemData.mainData.Name);
+                break;
+        }
+        
+        
+        // slot.SetVisual(itemData.MainData.IconSprite, itemData.mainData.Name);
 
         SetReceived(new());
         SetGiving(new());
