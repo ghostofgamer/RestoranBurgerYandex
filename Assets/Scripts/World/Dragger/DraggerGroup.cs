@@ -102,6 +102,34 @@ public class DraggerGroup : MonoBehaviour
         availablePlace = null;
         return false;
     }
+    
+    public bool HavePlaceCoffee(ItemType forItemType, out Dragger availablePlace)
+    {
+        foreach (var dragger in draggers)
+        {
+            if (dragger.IsEmpty)
+            {
+                
+                Debug.Log("dragger.IsEmpty " + dragger.gameObject.name);
+                availablePlace = dragger;
+                return true;
+            }
+            /*else
+            {
+                Debug.Log("dragger. NOT  IsEmpty " + dragger.gameObject.name) ;
+                Debug.Log("+ draggers.Length " + draggers.Length) ;
+                availablePlace = null;
+                return false;
+                /*var embeddableItem = dragger.CurrentDraggable.GetComponent<EmbeddableItem>();
+                if (embeddableItem == null) continue;
+                if (embeddableItem.Item.ItemType != forItemType) continue;
+                if (embeddableItem.CanAddItem(out availablePlace)) return true;#1#
+            }*/
+        }
+
+        availablePlace = null;
+        return false;
+    }
 
     public int GetAllEmptyPlaces(out List<Dragger> allAvailablePlaces)
     {

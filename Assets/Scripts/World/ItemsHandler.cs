@@ -58,9 +58,47 @@ public class ItemsHandler : MonoBehaviour
     public bool HavePlace(ItemType forItemType, out Dragger availablePlace)
     {
         bool result;
+
+        if (useSplitter)
+        {
+            Debug.Log("use Splitter");
+            result = splitter.HavePlace(forItemType, out availablePlace);
+            
+        }
+        else
+        {
+            Debug.Log(" DONT use Splitter");
+            result = group.HavePlace(forItemType, out availablePlace);
+        } 
         
-        if (useSplitter) result = splitter.HavePlace(forItemType, out availablePlace);
-        else result = group.HavePlace(forItemType, out availablePlace);
+        return result;
+    }
+    
+    public bool HavePlaceCoffeeCup(ItemType forItemType, out Dragger availablePlace)
+    {
+        bool result;
+
+        if (useSplitter)
+        {
+            Debug.Log("use Splitter");
+            result = splitter.HavePlace(forItemType, out availablePlace);
+            
+        }
+        else
+        {
+            Debug.Log(" DONT use Splitter " ) ;
+            
+            if (forItemType == ItemType.CoffeeCup)
+            {
+                result = group.HavePlaceCoffee(forItemType, out availablePlace);
+            }
+            else
+            {
+                
+            result = group.HavePlace(forItemType, out availablePlace);
+            }
+        } 
+        
         return result;
     }
 

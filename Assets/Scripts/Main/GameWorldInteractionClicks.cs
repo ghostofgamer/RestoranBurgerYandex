@@ -9,7 +9,7 @@ using TheSTAR.Sound;
 public partial class GameWorldInteraction
 {
     public event Action NotTable;
-    
+
     public void OnClickComputer(Computer computer)
     {
         sounds.Play(SoundType.ButtonClickWet);
@@ -19,18 +19,18 @@ public partial class GameWorldInteraction
     public void OnClickCoffeeMachine(CoffeeMachine coffeeMachine)
     {
         var currentDraggable = player.CurrentDraggable;
-        
+
         if (currentDraggable)
         {
             // пробуем заполнить
             var currentPlayerItem = currentDraggable.GetComponent<Item>();
             if (currentPlayerItem == null) return;
             Debug.Log("currentPlayerItem " + currentPlayerItem.ItemType);
-            
+
             if (coffeeMachine.Filler.CanFill(currentPlayerItem.ItemType))
             {
                 Debug.Log("coffee_bean_bag_1 " + currentPlayerItem.ItemType);
-                
+
                 sounds.Play(SoundType.coffee_bean_bag_1);
                 coffeeMachine.Filler.Fill(currentPlayerItem);
 
@@ -50,7 +50,7 @@ public partial class GameWorldInteraction
             else if (currentPlayerItem.ItemType == ItemType.CoffeeCup)
             {
                 Debug.Log("CoffeeCup " + currentPlayerItem.ItemType);
-                
+
                 // пробуем получить кофе
                 if (!coffeeMachine.Filler.CanUse) return;
 
@@ -84,9 +84,11 @@ public partial class GameWorldInteraction
     public void OnItemsHandlerClick(ItemsHandler itemsHandler)
     {
         var ordersTray = itemsHandler.GetComponent<OrderTray>();
+
         if (ordersTray)
         {
             var draggable = player.CurrentDraggable;
+
             if (draggable)
             {
                 if (!tutorial.IsCompleted(TutorialType.PutBurgerOnTray))
@@ -94,7 +96,7 @@ public partial class GameWorldInteraction
                     tutorial.CompleteTutorial(TutorialType.PutBurgerOnTray);
                     _gameController.TriggerTutorial();
                 }
-                
+
                 TryPlaceItemToItemsHandler(itemsHandler);
                 return;
             }
@@ -108,7 +110,7 @@ public partial class GameWorldInteraction
                         tutorial.CompleteTutorial(TutorialType.PickUpTray);
                         _gameController.TriggerTutorial();
                     }
-                    
+
                     place.StartDrag(ordersTray.Draggable, true);
                 }
             }
@@ -117,7 +119,10 @@ public partial class GameWorldInteraction
                 game.OnWrongOrderOnTray();
             }
         }
-        else TryPlaceItemToItemsHandler(itemsHandler);
+        else
+        {
+            TryPlaceItemToItemsHandler(itemsHandler);
+        }
     }
 
 
@@ -125,6 +130,19 @@ public partial class GameWorldInteraction
     {
         Debug.Log("1 " + draggable.gameObject.name);
         var playerDraggable = player.CurrentDraggable;
+
+        if (player.CurrentDraggable != null && draggable.GetComponent<Item>().ItemType == ItemType.CoffeeCup)
+        {
+            Debug.Log("Занято в руке");
+            return;
+        }
+
+        if (player.CurrentDraggable == null && draggable.GetComponent<Item>().ItemType == ItemType.CoffeeCup)
+        {
+            if (draggable.GetComponent<EmbeddableItem>().Dragger.CurrentDraggable != null)
+                return;
+        }
+        
         if (playerDraggable && !player.HavePlace(draggable, out _))
         {
             Debug.Log("3");
@@ -172,15 +190,20 @@ public partial class GameWorldInteraction
                     return;
                 }
             }
+
             Debug.Log("place.StartDrag(draggable);");
             place.StartDrag(draggable);
         }
+
         Debug.Log("15");
+
         bool TryPlaceCupToCup()
         {
             return false;
         }
+
         Debug.Log("16");
+
         bool TryPackBurger()
         {
             Debug.Log("31");
@@ -214,8 +237,9 @@ public partial class GameWorldInteraction
                     }
                 }
             }
+
             Debug.Log("33");
-            
+
             return packCompleted;
         }
 
@@ -344,22 +368,21 @@ public partial class GameWorldInteraction
                 game.World.FastFood.FinalBurgersGroup.HavePlace(ItemType.BurgerPackingPaper_Closed,
                     out var placeForFinalBurger))
             {
-               
                 //Debug.Log("Пытаемся упаковать бургер");
                 var finalBurger = game.World.FastFood.AssemblingBoard.TryGetFinalItem();
-                
+
                 if (finalBurger)
                 {
                     // finalBurger.gameObject.SetActive(false);
-                    
+
                     var burger = slicedContainer.InterBurger(finalBurger);
                     burger.transform.position = finalBurger.transform.position;
                     burger.transform.rotation = finalBurger.transform.rotation;
                     placeForFinalBurger.StartDrag(burger.GetComponent<Item>().Draggable);
-                    
-                    
+
+
                     // placeForFinalBurger.StartDrag(finalBurger.Draggable);
-                    
+
                     Debug.Log("УПАКОВКА!!! " + finalBurger.ItemType);
                     var paper = slicedContainer.AutoGetItem(true);
                     paper.Draggable.CurrentDragger.EndDrag();
@@ -369,7 +392,7 @@ public partial class GameWorldInteraction
                     newPaper.GetComponent<PackingPaperItem>().Dragger.StartDrag(finalBurger.Draggable);
                     // placeForFinalBurger.StartDrag(newPaper.Draggable);
                     newPaper.Draggable.gameObject.SetActive(false);
-                    
+
                     if (!tutorial.IsCompleted(TutorialType.AssemblyBurger))
                     {
                         tutorial.CompleteTutorial(TutorialType.AssemblyBurger);
@@ -381,9 +404,9 @@ public partial class GameWorldInteraction
                 return;
             }
 
-          Debug.Log("НУУУ!");
+            Debug.Log("НУУУ!");
             if (!game.World.FastFood.AssemblingBoard.HavePlace()) return;
-           
+
             var item = slicedContainer.AutoGetItem(game.World.FastFood.AssemblingBoard.Deep > 0);
             if (item == null) return;
 
@@ -398,13 +421,11 @@ public partial class GameWorldInteraction
             var item = playerDraggable.GetComponent<Item>();
             if (item)
             {
-             
                 if (item.ItemType == ItemType.CutletWell)
                 {
                     if (!tutorial.IsCompleted(TutorialType.TakeToAssemblyTable) &&
                         tutorial.IsCompleted(TutorialType.TakeCutlet))
                     {
-                       
                         tutorial.CompleteTutorial(TutorialType.TakeToAssemblyTable);
                         game.TriggerTutorial();
                     }

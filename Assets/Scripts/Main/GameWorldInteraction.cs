@@ -13,7 +13,7 @@ using TheSTAR.Sound;
 public partial class GameWorldInteraction
 {
     private readonly ConfigHelper<ItemsConfig> itemsConfig = new();
-    
+
     private GameController game;
     private DataController data;
     private GuiController gui;
@@ -32,28 +32,40 @@ public partial class GameWorldInteraction
 
     public int CurrentInteractionLayerMask => currentLayerMask;
     private event Action OnAnyChangePlayerDraggerEvent;
-    
+
     // с какими физическими слоями игрок может взаимодействовать в определённых условиях в игре
-    private readonly Dictionary<PlayerInteractionScenario, string[]> layersForInteractionScenarios = new ()
+    private readonly Dictionary<PlayerInteractionScenario, string[]> layersForInteractionScenarios = new()
     {
-        {PlayerInteractionScenario.EmptyHands, new string[] {"Default", "Item", "Box", "Machine", "Buyer", "AssemblyTable"}},
-        {PlayerInteractionScenario.ClosedBoxInHands, new string[] {"Default", "Bin"}},
-        {PlayerInteractionScenario.OpenBoxInHands, new string[] {"Default", "ItemsContainer", "Bin"}},
-        {PlayerInteractionScenario.EmptyBoxInHands, new string[] {"Default", "Bin"}},
-        {PlayerInteractionScenario.DefaultItemInHands, new string[] {"Default", "ItemsContainer", "Machine", "Bin", "Buyer"}},
-        {PlayerInteractionScenario.EmptySodaCupDefaultItemInHands, new string[] {"SodaFiller", "Default", "ItemsContainer", "Bin", "Buyer"}},
-        {PlayerInteractionScenario.OrderTrayInHands, new string[] {"Default", "BuyerTablePlace"}},
-        {PlayerInteractionScenario.ContainerWithAvailablePlacesInHands, new string[] {"Default", "ItemsContainer", "Machine", "Bin", "Buyer", "Item"}},
+        {
+            PlayerInteractionScenario.EmptyHands,
+            new string[] { "Default", "Item", "Box", "Machine", "Buyer", "AssemblyTable" }
+        },
+        { PlayerInteractionScenario.ClosedBoxInHands, new string[] { "Default", "Bin" } },
+        { PlayerInteractionScenario.OpenBoxInHands, new string[] { "Default", "ItemsContainer", "Bin" } },
+        { PlayerInteractionScenario.EmptyBoxInHands, new string[] { "Default", "Bin" } },
+        {
+            PlayerInteractionScenario.DefaultItemInHands,
+            new string[] { "Default", "ItemsContainer", "Machine", "Bin", "Buyer" }
+        },
+        {
+            PlayerInteractionScenario.EmptySodaCupDefaultItemInHands,
+            new string[] { "SodaFiller", "Default", "ItemsContainer", "Bin", "Buyer" }
+        },
+        { PlayerInteractionScenario.OrderTrayInHands, new string[] { "Default", "BuyerTablePlace" } },
+        {
+            PlayerInteractionScenario.ContainerWithAvailablePlacesInHands,
+            new string[] { "Default", "ItemsContainer", "Machine", "Bin", "Buyer", "Item" }
+        },
     };
 
     [Inject]
     private void Construct(
         GameController game,
         DataController data,
-        GuiController gui, 
-        Player player, 
-        CameraController camera, 
-        OrdersManager ordersManager, 
+        GuiController gui,
+        Player player,
+        CameraController camera,
+        OrdersManager ordersManager,
         ItemsController items,
         AllPrices allPrices,
         CurrencyController currency,
@@ -77,14 +89,14 @@ public partial class GameWorldInteraction
         this.analytics = analytics;
         this.sounds = sounds;
         _gameController = gameController;
-        
+        // items.CoffeeChanged+=
         Init();
-    }    
+    }
 
     private void Init()
     {
         this.gui.InitGameWorldInteraction(this);
-        
+
         Debug.Log("Interaction init...");
 
         var gameScreen = gui.FindScreen<GameScreen>();
@@ -152,7 +164,7 @@ public partial class GameWorldInteraction
             var currentFocus = camera.RayVision.CurrentFocus;
             if (!currentFocus) return;
         };
-        
+
         gameScreen.OnPlaceClickEvent += () =>
         {
             var currentFocus = camera.RayVision.CurrentFocus;
@@ -163,15 +175,12 @@ public partial class GameWorldInteraction
             TryPlaceItemToItemsHandler(shelf);
         };
 
-        gameScreen.OnThrowClickEvent += () =>
-        {
-            TryThrowCurrentDraggable();
-        };
+        gameScreen.OnThrowClickEvent += () => { TryThrowCurrentDraggable(); };
 
         var lookAround = gui.FindUniversalElement<LookAroundContainer>();
 
         lookAround.StartLookAroundEvent += gameScreen.OnStartLookAround;
-        
+
         lookAround.ClickEvent += (PointerEventData pointer) =>
         {
             bool forceClick = false;
@@ -190,10 +199,10 @@ public partial class GameWorldInteraction
             {
                 // Check if the hit object is the one you want
                 if (hit.collider == null) return;
-                
+
                 var touchInteractive = hit.collider.gameObject.GetComponent<TouchInteractive>();
                 if (touchInteractive == null) return;
-                
+
                 if (forceClick) touchInteractive.OnClickForce();
                 else touchInteractive.OnClick();
             }
@@ -201,15 +210,12 @@ public partial class GameWorldInteraction
 
         lookAround.LookAroundEvent += player.RotateCam;
 
-        OnAnyChangePlayerDraggerEvent += () =>
-        {
-            gameScreen.UpdateInteractionButtons();
-        };
-    
+        OnAnyChangePlayerDraggerEvent += () => { gameScreen.UpdateInteractionButtons(); };
+
         camera.RayVision.OnChangeCurrentFocusEvent += gameScreen.SetPlayerFocus;
         player.OnPlayerStartDragEvent += OnStartPlayerDrag;
         player.OnPlayerEndDragEvent += OnEndPlayerDrag;
-    
+
         SetInteractionScenario(PlayerInteractionScenario.EmptyHands);
 
         game.OnChangeAssemblyEvent += OnChagneAssembly;
@@ -226,20 +232,33 @@ public partial class GameWorldInteraction
         deepFryer.TryPlace(deepFryerItem);
     }
 
-    private void TryPlaceItemToItemsHandler(ItemsHandler itemsHandler)
+    public void TryPlaceItemToItemsHandler(ItemsHandler itemsHandler)
     {
         //if (!itemsHandler.HavePlace()) return;
-        
+
         var draggable = player.CurrentDraggable;
         if (!draggable) return;
-
+        
         // пытаемся положить продукт из рук игрока, если игрок держит продукт
         var item = draggable.GetComponent<Item>();
         if (item)
-        {
-            if (!itemsHandler.HavePlace(item.ItemType, out var availablePlace)) return;
+        { 
+            Dragger availablePlace;
+            
+            /*if (item.ItemType == ItemType.CoffeeCup)
+            {
+                if (!itemsHandler.HavePlaceCoffeeCup(item.ItemType, out availablePlace)) return;
+            }
+            else
+            {
+                if (!itemsHandler.HavePlace(item.ItemType, out availablePlace)) return;
+            }*/
+            
+            
+            if (!itemsHandler.HavePlace(item.ItemType, out availablePlace)) return;
 
             var productSection = itemsConfig.Get.Item(item.ItemType).MainData.SectionType;
+
             if (itemsHandler.CanPlaceBySectionType(productSection))
             {
                 availablePlace.StartDrag(item.Draggable);
@@ -259,8 +278,26 @@ public partial class GameWorldInteraction
 
             var productFromBox = box.FindFirstItem(out var boxProductDragger).GetComponent<Item>();
             var itemType = productFromBox.ItemType;
-            if (!itemsHandler.HavePlace(productFromBox.ItemType, out var availableplace)) return;
+            Debug.Log("HavePlace 1");
+            Dragger availableplace;
+            
+            if (productFromBox.ItemType == ItemType.CoffeeCup)
+            {
+                if (!itemsHandler.HavePlaceCoffeeCup(productFromBox.ItemType, out availableplace))
+                    return;
+            }
+            else
+            {
+                if (!itemsHandler.HavePlace(productFromBox.ItemType, out availableplace))
+                    return;
+            }
+
+
+            Debug.Log("HavePlace 3");
+
             var productSection = itemsConfig.Get.Item(productFromBox.ItemType).MainData.SectionType;
+
+
             if (itemsHandler.CanPlaceBySectionType(productSection))
             {
                 boxProductDragger.EndDrag();
@@ -275,12 +312,14 @@ public partial class GameWorldInteraction
                 //    tutorial.CompleteCurrentTutorial();
                 //    game.TriggerTutorial();
                 //}
-                if (box.IsEmpty && itemType == ItemType.CutletRaw && !tutorial.IsCompleted(TutorialType.PlaceCutletToTray))
+                if (box.IsEmpty && itemType == ItemType.CutletRaw &&
+                    !tutorial.IsCompleted(TutorialType.PlaceCutletToTray))
                 {
                     tutorial.CompleteTutorial(TutorialType.PlaceCutletToTray);
                     game.TriggerTutorial();
                     return;
                 }
+
                 return;
             }
         }
@@ -324,13 +363,15 @@ public partial class GameWorldInteraction
         var item = d.GetComponent<Item>();
         if (item != null)
         {
-            if (item.ItemType == ItemType.SodaCup) SetInteractionScenario(PlayerInteractionScenario.EmptySodaCupDefaultItemInHands);
+            if (item.ItemType == ItemType.SodaCup)
+                SetInteractionScenario(PlayerInteractionScenario.EmptySodaCupDefaultItemInHands);
             else //if (item.ItemType == ItemType.CutletRaw || item.ItemType == ItemType.CutletWell || item.ItemType == ItemType.CutletBurnt) 
             {
-                if (player.HavePlace(d, out _)) SetInteractionScenario(PlayerInteractionScenario.ContainerWithAvailablePlacesInHands);
+                if (player.HavePlace(d, out _))
+                    SetInteractionScenario(PlayerInteractionScenario.ContainerWithAvailablePlacesInHands);
                 else SetInteractionScenario(PlayerInteractionScenario.DefaultItemInHands);
             }
-            
+
             return;
         }
 
@@ -374,7 +415,7 @@ public partial class GameWorldInteraction
     }
 
     private void SetInteractionScenario(PlayerInteractionScenario scenario)
-    {        
+    {
         currentLayerMask = LayerMask.GetMask(layersForInteractionScenarios[scenario]);
         camera.RayVision.SetCurrentLayerMask(currentLayerMask);
     }
@@ -385,7 +426,8 @@ public partial class GameWorldInteraction
 
         if (success) sounds.Play(SoundType.Gotovka);
 
-        if (success && item.ItemType == ItemType.BurgerPackingPaper && !tutorial.IsCompleted(TutorialType.PlacePackingBoxToShelf))
+        if (success && item.ItemType == ItemType.BurgerPackingPaper &&
+            !tutorial.IsCompleted(TutorialType.PlacePackingBoxToShelf))
         {
             tutorial.CompleteTutorial(TutorialType.PlacePackingBoxToShelf);
             game.TriggerTutorial();
@@ -396,7 +438,7 @@ public partial class GameWorldInteraction
     {
         totalCost = new();
         xpReward = 0;
-        
+
         foreach (var orderItem in orderData.Items)
         {
             totalCost += allPrices.GetPrice(orderItem.ItemType) * orderItem.Value;
@@ -404,18 +446,18 @@ public partial class GameWorldInteraction
         }
     }
 
-    private int[] haveDollarsVariants = new int[] {1, 5, 10, 20, 50};
+    private int[] haveDollarsVariants = new int[] { 1, 5, 10, 20, 50 };
 
     public void CalculateHaveCash(DollarValue needHaveValue, out DollarValue have)
     {
         int haveDollars = 0;
         int haveCents = 0;
-        
+
         while (haveDollars < needHaveValue.dollars) haveDollars += ArrayUtility.GetRandomValue(haveDollarsVariants);
 
         if (needHaveValue.cents > 0 && haveDollars == needHaveValue.dollars) haveDollars++;
 
-        have = new (haveDollars, haveCents);
+        have = new(haveDollars, haveCents);
     }
 
     private TouchInteractive lastWorldAssemblyHint;
@@ -476,7 +518,9 @@ public partial class GameWorldInteraction
 
         if (totalCompleted)
         {
-            bool packed = finalBurger.Draggable.CurrentDragger && finalBurger.Draggable.CurrentDragger.transform.parent.GetComponent<PackingPaperItem>() != null;
+            bool packed = finalBurger.Draggable.CurrentDragger &&
+                          finalBurger.Draggable.CurrentDragger.transform.parent.GetComponent<PackingPaperItem>() !=
+                          null;
 
             if (packed) return;
             else ShowAssemblyWorldHintForNextItem(ItemType.BurgerPackingPaper);
@@ -565,17 +609,17 @@ public partial class GameWorldInteraction
 
         if (tutorial.IsCompleted(TutorialType.AssemblyBurger))
         {
-           tutorial.CompleteTutorial(TutorialType.AssemblyBurger); 
-           game.TriggerTutorial();
+            tutorial.CompleteTutorial(TutorialType.AssemblyBurger);
+            game.TriggerTutorial();
         }
-        
+
         success = false;
         if (player.CurrentDraggable) return;
         if (game.InAssemblyFocus) return;
 
         gui.Show<AssemblyScreen>();
         camera.TempFocus(game.World.FastFood.AssemblingBoard, true);
-        
+
         sounds.Play(SoundType.ButtonClickWet);
 
         success = true;

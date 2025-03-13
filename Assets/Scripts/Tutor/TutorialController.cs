@@ -178,7 +178,7 @@ public class TutorialController : MonoBehaviour
         // Debug.Log("CURRENT TUTORIAL " + _currentTutorial);
     }
 
-    private void FixedUpdate()
+    /*private void FixedUpdate()
     {
         if (CurrentTutorial.HasValue)
         {
@@ -188,7 +188,7 @@ public class TutorialController : MonoBehaviour
         {
             Debug.Log("No current tutorial set.");
         }
-    }
+    }*/
 
     [Inject]
     private void Constuct(DataController data, AnalyticsManager analytics)

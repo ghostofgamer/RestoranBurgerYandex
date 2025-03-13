@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoChangeInteractableForDraggable: 0
+  currentDraggable: {fileID: 0}
   miniPlateForCakes: {fileID: 2283849588347681892}
 --- !u!1 &370258044318419982
 GameObject:
@@ -231,6 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoChangeInteractableForDraggable: 0
+  currentDraggable: {fileID: 0}
 --- !u!1 &712246946171834513
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,6 +278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoChangeInteractableForDraggable: 0
+  currentDraggable: {fileID: 0}
 --- !u!1 &923044542759921385
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,7 +306,7 @@ Transform:
   m_GameObject: {fileID: 923044542759921385}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.075, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -336,6 +339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoChangeInteractableForDraggable: 0
+  currentDraggable: {fileID: 0}
 --- !u!1 &1313025970215815973
 GameObject:
   m_ObjectHideFlags: 0
@@ -381,6 +385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoChangeInteractableForDraggable: 0
+  currentDraggable: {fileID: 0}
 --- !u!1 &1586427037680943143
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,6 +485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoChangeInteractableForDraggable: 0
+  currentDraggable: {fileID: 0}
 --- !u!1 &1735234390674918537
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,6 +531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoChangeInteractableForDraggable: 0
+  currentDraggable: {fileID: 0}
 --- !u!1 &1954097619677745680
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,6 +577,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoChangeInteractableForDraggable: 0
+  currentDraggable: {fileID: 0}
 --- !u!1 &2070823629443702537
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,7 +656,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _body: {fileID: 895422150349035300}
-  _sensivity: 300
 --- !u!1 &2283849588347681892
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,6 +851,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoChangeInteractableForDraggable: 0
+  currentDraggable: {fileID: 0}
 --- !u!1 &3843577903573649294
 GameObject:
   m_ObjectHideFlags: 0
@@ -889,6 +897,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoChangeInteractableForDraggable: 0
+  currentDraggable: {fileID: 0}
 --- !u!1 &3965576009999210523
 GameObject:
   m_ObjectHideFlags: 0
@@ -934,6 +943,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoChangeInteractableForDraggable: 0
+  currentDraggable: {fileID: 0}
 --- !u!1 &4337082660523373696
 GameObject:
   m_ObjectHideFlags: 0
@@ -979,6 +989,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoChangeInteractableForDraggable: 0
+  currentDraggable: {fileID: 0}
   miniPlateForCakes: {fileID: 8969278952143995166}
 --- !u!1 &4353744974226443489
 GameObject:
@@ -1247,6 +1258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoChangeInteractableForDraggable: 0
+  currentDraggable: {fileID: 0}
 --- !u!1 &6589625941912559091
 GameObject:
   m_ObjectHideFlags: 0
@@ -1346,6 +1358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoChangeInteractableForDraggable: 0
+  currentDraggable: {fileID: 0}
   miniPlateForCakes: {fileID: 114816856633956585}
 --- !u!1 &8511752506643633177
 GameObject:

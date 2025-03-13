@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Configs;
 using TheSTAR.Data;
@@ -15,6 +16,8 @@ public class ItemsController : MonoBehaviour
 
     private DataController data;
     private DiContainer diContainer;
+
+    public event Action<Item> CoffeeChanged;
     
     [Inject]
     private void Construct(DataController data, DiContainer diContainer)
@@ -154,7 +157,14 @@ public class ItemsController : MonoBehaviour
         var dragger = from.Draggable.CurrentDragger;
         if (dragger) dragger.EndDrag();
 
-        Destroy(from.gameObject);
+        if (from.ItemType == ItemType.CoffeeCup)
+        {
+            CoffeeChanged?.Invoke(from);
+        }
+        else
+        {
+           Destroy(from.gameObject);  
+        }
 
         var newItem = CreateItem(to, pos, rotation);
         if (dragger) dragger.StartDrag(newItem.Draggable);

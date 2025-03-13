@@ -28,7 +28,7 @@ public class Dragger : MonoBehaviour
         {
             if (CurrentDraggable == null)
                 return true;
-           
+
             var draggableItem = currentDraggable.GetComponent<Item>();
             if (draggableItem == null)
                 return false;
@@ -43,12 +43,17 @@ public class Dragger : MonoBehaviour
     public virtual void StartDrag(Draggable draggable, bool useAnim = true)
     {
         Debug.Log("StartDrag " + draggable.gameObject.name);
+        Debug.Log("draggable.CurrentDragger " + draggable.CurrentDragger);
+
         if (draggable.CurrentDragger)
         {
+            if (draggable.GetComponent<Item>().ItemType == ItemType.CoffeeCup)
+                Debug.Log("КОФЕЙНАЯ ЧАШКА ТУТ ");
+
             Debug.Log("draggable.CurrentDragger " + draggable.CurrentDragger.gameObject.name);
             draggable.CurrentDragger.EndDrag();
         }
-        
+
         draggable.transform.parent = transform;
         Debug.Log(" draggable.transform.parent " + transform);
 
@@ -77,7 +82,7 @@ public class Dragger : MonoBehaviour
     {
         currentDraggable = draggable;
     }
-    
+
     public void OnStartDrag(Draggable draggable)
     {
         OnStartDragEvent?.Invoke(this, draggable);

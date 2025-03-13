@@ -89,12 +89,12 @@ public class AnalyticsManager
 
     public void Log(RepeatingEventType section, string eventText)
     {
-        AppMetricLog(section.ToString(), eventText);
+        // AppMetricLog(section.ToString(), eventText);
     }
 
     public void Log(SingleEventType section, string eventText)
     {
-        AppMetricLog(section.ToString(), eventText);
+        // AppMetricLog(section.ToString(), eventText);
     }
 
     private void AppMetricLog(string sectionString, string eventString)
@@ -110,7 +110,7 @@ public class AnalyticsManager
 
     private void ReportEvent(string sectionString, Dictionary<string, object> data)
     {
-        AppMetrica.Instance.ReportEvent(sectionString, data);
+        // AppMetrica.Instance.ReportEvent(sectionString, data);
     }
 
     private void OnAnalyticSent(string debugMessage)

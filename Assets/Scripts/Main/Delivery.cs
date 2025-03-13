@@ -139,6 +139,9 @@ public class Delivery : MonoBehaviour
             var itemData = itemsConfig.Get.Item(element.Key);
             totalCost += itemData.CostData.BuyCost * (itemData.OtherData.BoxValue * element.Value);
             totalXpReward += itemData.XpData.BuyXpReward * element.Value;
+            Debug.Log("element.Key " + element.Key);
+            Debug.Log("itemData.OtherData.BoxValue " + itemData.OtherData.BoxValue);
+            Debug.Log("element.Value " + element.Value);
         }
 
         currency.ReduceCurrency(CurrencyType.Soft, totalCost, () =>
