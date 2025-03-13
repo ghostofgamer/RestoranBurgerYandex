@@ -81,7 +81,7 @@ public class GameController : MonoBehaviour
         this.items = items;
         this.ordersManager = ordersManager;
         
-        ads.InitAds();
+        // ads.InitAds();
 
         ordersManager.OnOrderChangeEvent += (activeOrderData) =>
         {

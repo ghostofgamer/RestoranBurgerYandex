@@ -28,11 +28,13 @@ public class CoffeeMachine : MonoBehaviour
     {                
         touchInteractive.OnClickEvent += () =>
         {
+            Debug.Log("COFFFEEEEEE");
             gameWorldInteraction.OnClickCoffeeMachine(this);
         };
 
         filler.OnChangeFillPercentEvent += (percent) =>
         {
+            Debug.Log("FILLER");
             coffeeFillTran.localScale = new Vector3(1, percent, 1);  
         };
     }

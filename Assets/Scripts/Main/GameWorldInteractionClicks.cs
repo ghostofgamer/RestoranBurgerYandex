@@ -19,13 +19,18 @@ public partial class GameWorldInteraction
     public void OnClickCoffeeMachine(CoffeeMachine coffeeMachine)
     {
         var currentDraggable = player.CurrentDraggable;
+        
         if (currentDraggable)
         {
             // пробуем заполнить
             var currentPlayerItem = currentDraggable.GetComponent<Item>();
             if (currentPlayerItem == null) return;
+            Debug.Log("currentPlayerItem " + currentPlayerItem.ItemType);
+            
             if (coffeeMachine.Filler.CanFill(currentPlayerItem.ItemType))
             {
+                Debug.Log("coffee_bean_bag_1 " + currentPlayerItem.ItemType);
+                
                 sounds.Play(SoundType.coffee_bean_bag_1);
                 coffeeMachine.Filler.Fill(currentPlayerItem);
 
@@ -44,6 +49,8 @@ public partial class GameWorldInteraction
             }
             else if (currentPlayerItem.ItemType == ItemType.CoffeeCup)
             {
+                Debug.Log("CoffeeCup " + currentPlayerItem.ItemType);
+                
                 // пробуем получить кофе
                 if (!coffeeMachine.Filler.CanUse) return;
 

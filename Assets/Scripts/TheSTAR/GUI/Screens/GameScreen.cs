@@ -369,7 +369,7 @@ namespace TheSTAR.GUI
 
             TriggerTutorial();
 
-            ads.TriggerInterstitial("game screen");
+            // ads.TriggerInterstitial("game screen");
         }
 
         protected override void OnHide()

@@ -86,8 +86,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   col: {fileID: 6204595668714432450}
+  currentDragger: {fileID: 0}
   touchInteractive: {fileID: 7539038731080483655}
   rigidBody: {fileID: 3316406913570576554}
+  _isLoadVersion: 0
 --- !u!54 &3316406913570576554
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -182,6 +184,7 @@ MonoBehaviour:
   itemType: 14
   tutorFocus: {fileID: 5682593530794205341}
   playerDragPos: {fileID: 867825858450389114}
+  touchInteractive: {fileID: 0}
 --- !u!114 &3379719192009007460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,6 +200,7 @@ MonoBehaviour:
   item: {fileID: 1727771106824917829}
   dragger: {fileID: 8293925711800999759}
   touchInteractive: {fileID: 7539038731080483655}
+  maxItemsInStackCount: 8
 --- !u!1 &4453733201972607759
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,3 +380,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoChangeInteractableForDraggable: 0
+  currentDraggable: {fileID: 0}

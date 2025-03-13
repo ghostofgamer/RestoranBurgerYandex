@@ -6,7 +6,7 @@ using Zenject;
 
 public class AdsManager
 {
-    private readonly ResourceHelper<AdsConfig> adsConfig = new ("Configs/AdsConfig");
+    /*private readonly ResourceHelper<AdsConfig> adsConfig = new ("Configs/AdsConfig");
     private DataController data;
     private AnalyticsManager analytics;
     private InterstitialAd interstitialAd;
@@ -320,5 +320,5 @@ public enum AdLoadStatus
     /// <summary>
     /// Реклама загружена, её можно либо придержать либо показать моментально
     /// </summary>
-    Loaded
+    Loaded*/
 }
