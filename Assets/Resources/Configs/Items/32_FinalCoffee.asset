@@ -18,6 +18,8 @@ MonoBehaviour:
       section: 4
       itemPrefab: {fileID: 3901617309827462163, guid: 78e92d915d6234bfbaaff2bc2169299c, type: 3}
       itemName: Coffee
+      itemRusName: "\u041A\u043E\u0444\u0435"
+      itemTurkishName: ' Kahve'
       iconSprite: {fileID: 21300000, guid: 103a78fc359144e8d8ea9de8a2a28757, type: 3}
     costData:
       buyCost:

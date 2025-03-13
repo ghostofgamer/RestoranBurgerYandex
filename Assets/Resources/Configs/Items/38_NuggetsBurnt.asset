@@ -18,6 +18,8 @@ MonoBehaviour:
       section: 3
       itemPrefab: {fileID: 1272540544173061263, guid: 5c6bfabf4aa994b16a94388118c0e0a8, type: 3}
       itemName: Burnt Nuggets
+      itemRusName: "\u0413\u043E\u0440\u0435\u043B\u044B\u0439 \u041D\u0430\u0433\u0433\u0435\u0442\u0441"
+      itemTurkishName: "Yanm\u0131\u015F k\xFCl\xE7eler"
       iconSprite: {fileID: 0}
     costData:
       buyCost:

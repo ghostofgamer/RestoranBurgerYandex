@@ -18,6 +18,8 @@ MonoBehaviour:
       section: 0
       itemPrefab: {fileID: 3657125656061756379, guid: c8d3adfac91254cb999106d25d635390, type: 3}
       itemName: Onion
+      itemRusName: "\u041B\u0443\u043A"
+      itemTurkishName: "So\u011Fan"
       iconSprite: {fileID: 21300000, guid: 937ef8dd3c3fd42c28cab7382a891892, type: 3}
     costData:
       buyCost:
@@ -39,4 +41,5 @@ MonoBehaviour:
     otherData:
       boxValue: 1
       portionsValue: 1
-      playerDraggerOffsetY: 0
+    recipe:
+      pecipeItems: 

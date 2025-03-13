@@ -18,6 +18,8 @@ MonoBehaviour:
       section: 0
       itemPrefab: {fileID: 5760180049735113006, guid: 80cda909c700f4eb1ba23498411ffe9a, type: 3}
       itemName: Ketchup
+      itemRusName: "\u041A\u0435\u0442\u0447\u0443\u043F"
+      itemTurkishName: " Ket\xE7ap"
       iconSprite: {fileID: 21300000, guid: 5d7471cc635e841fd84ac0e1ac60cdbb, type: 3}
     costData:
       buyCost:

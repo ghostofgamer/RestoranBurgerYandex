@@ -4,9 +4,14 @@ using TheSTAR.Utility;
 using TheSTAR.Data;
 using Zenject;
 using System;
+using LocalizationContent;
 
 public class TutorialController : MonoBehaviour
 {
+    private const string English = "en";
+    private const string Russian = "ru";
+    private const string Turkish = "tr";
+    
     [SerializeField] private TutorCursor cursor;
     [SerializeField] private TutorPoint tutorPointPrefab;
     [SerializeField] private Transform pointsContainer;
@@ -39,7 +44,7 @@ public class TutorialController : MonoBehaviour
     public event Action OnBreakTutorialEvent;
     public event Action OnCompleteTutorialEvent;
 
-      public readonly Dictionary<TutorialType, TutorialData> tutorialDatas = new()
+    public readonly Dictionary<TutorialType, TutorialData> tutorialDatas = new()
     {
         { TutorialType.LookAround, new() },
         { TutorialType.Move, new() },
@@ -75,6 +80,82 @@ public class TutorialController : MonoBehaviour
         { TutorialType.UpdateMenu_starburger, new("Your menu has been updated, change the price tag!") },
         { TutorialType.UpdateMenu_soda, new("Your menu has been updated, change the price tag!") },
         { TutorialType.UpdateMenu_mega, new("Your menu has been updated, change the price tag!") },
+    };
+    
+     public readonly Dictionary<TutorialType, TutorialData> tutorialDatasRussia = new()
+    {
+        { TutorialType.LookAround, new() },
+        { TutorialType.Move, new() },
+        { TutorialType.LiftingBox, new("Подними коробку с булками") },
+        { TutorialType.ClearTrash, new("Выбрось в мусорку коробку из под булочек ") },
+        { TutorialType.FirstDelivery, new("Закажи продукты: {0}") },
+        { TutorialType.GetFirstDelivery, new("Подними коробку с булочками ") },
+        { TutorialType.CutBun, new("Положите булочки для бургера в контейнер") },
+        { TutorialType.PlacePackingBoxToShelf, new("Откройте коробку и поставьте коробки на полку.") },
+        { TutorialType.PlaceCutletToTray, new("Положите котлеты для бургера на поднос.") },
+        { TutorialType.GetFourCutletsInHands, new("На противне можно разместить до 4 котлет!") },
+        { TutorialType.PlaceCutletToGrill, new("Положите котлету на гриль.") },
+        { TutorialType.FryCutlet, new("Обжарить котлету для бургера") },
+        { TutorialType.TakeCutlet, new("Возьмите котлету для бургера.") },
+        { TutorialType.TakeToAssemblyTable, new("Отнести котлеты на сборочный стол") },
+        { TutorialType.AssemblyBurger, new("Сделайте первый бургер") },
+        { TutorialType.SetPrice, new("Отлично! Вы научились делать бургеры! Давайте установим цену!") },
+        { TutorialType.SetFastFoodName, new("Давайте дадим название ресторану!") },
+        { TutorialType.OpenFastFood, new("Пришло время открыть ресторан быстрого питания!") },
+        { TutorialType.ExpectBuyers, new("Ожидайте клиентов после открытия ресторана!") },
+        { TutorialType.AcceptOrder, new("Примите заказ!") },
+        { TutorialType.PutBurgerOnTray, new("Положите бургер на поднос.") },
+        { TutorialType.PickUpTray, new("Возьмите поднос") },
+        { TutorialType.ServeTheQuests, new("Обслужить гостей: {0}") },
+        { TutorialType.ClearTables, new("Почисти стол") },
+        { TutorialType.BuyChair, new("Купи стул") },
+        { TutorialType.BuySection, new("Купи секцию 1") },
+
+        // todo выполнять это когда назначили цены
+        { TutorialType.UpdateMenu_Cheeseburger, new("Ваше меню обновлено, измените ценник!") },
+        { TutorialType.UpdateMenu_burgerM, new("Ваше меню обновлено, измените ценник!") },
+        { TutorialType.UpdateMenu_frenchFries, new("Ваше меню обновлено, измените ценник!") },
+        { TutorialType.UpdateMenu_starburger, new("Ваше меню обновлено, измените ценник!") },
+        { TutorialType.UpdateMenu_soda, new("Ваше меню обновлено, измените ценник!") },
+        { TutorialType.UpdateMenu_mega, new("Ваше меню обновлено, измените ценник!") },
+    };
+     
+      public readonly Dictionary<TutorialType, TutorialData> tutorialDatasTurkish = new()
+    {
+        { TutorialType.LookAround, new() },
+        { TutorialType.Move, new() },
+        { TutorialType.LiftingBox, new("Pick Up Box Burger'lar") },
+        { TutorialType.ClearTrash, new("Çöpe atın BURGER EKMEĞİ İLE KUTU ") },
+        { TutorialType.FirstDelivery, new("Ürünleri sipariş edin: {0}") },
+        { TutorialType.GetFirstDelivery, new("BİR KUTU HAMBURGER EKMEĞİ AL.") },
+        { TutorialType.CutBun, new("Burger ekmeğini tepsiye yerleştirin") },
+        { TutorialType.PlacePackingBoxToShelf, new("Kutuyu açın ve Burger Kutularını rafa yerleştirin") },
+        { TutorialType.PlaceCutletToTray, new("Burger köftesini tepsiye yerleştirin.") },
+        { TutorialType.GetFourCutletsInHands, new("Tepsiye 4 adete kadar pirzola koyabilirsiniz!") },
+        { TutorialType.PlaceCutletToGrill, new("Burger köftesini ızgaraya yerleştirin") },
+        { TutorialType.FryCutlet, new("Burger köftesini kızartın") },
+        { TutorialType.TakeCutlet, new("Burger köftesini al") },
+        { TutorialType.TakeToAssemblyTable, new("Pirzolaları Montaj Masasına Götür") },
+        { TutorialType.AssemblyBurger, new("İlk s burger'ı yapın") },
+        { TutorialType.SetPrice, new("Harika! Burger yapmayı öğrendin! Hadi fiyatı belirleyelim!") },
+        { TutorialType.SetFastFoodName, new("Hadi restorana isim verelim!") },
+        { TutorialType.OpenFastFood, new("Hızlı yemek restoranı açmanın zamanı geldi!") },
+        { TutorialType.ExpectBuyers, new("Restoran açıldıktan sonra müşterilerinizi bekleyin!") },
+        { TutorialType.AcceptOrder, new("Siparişi Kabul Et!") },
+        { TutorialType.PutBurgerOnTray, new("Burgeri tepsiye koyun") },
+        { TutorialType.PickUpTray, new("Tepsiyi al") },
+        { TutorialType.ServeTheQuests, new("Misafirlere servis yapın: {0}") },
+        { TutorialType.ClearTables, new("Tabloyu temizle") },
+        { TutorialType.BuyChair, new("Bir sandalye satın al") },
+        { TutorialType.BuySection, new("Bir seçim satın alın 1") },
+
+        // todo выполнять это когда назначили цены
+        { TutorialType.UpdateMenu_Cheeseburger, new("Menünüz güncellendi, fiyat etiketini değiştirin!") },
+        { TutorialType.UpdateMenu_burgerM, new("Menünüz güncellendi, fiyat etiketini değiştirin!") },
+        { TutorialType.UpdateMenu_frenchFries, new("Menünüz güncellendi, fiyat etiketini değiştirin!") },
+        { TutorialType.UpdateMenu_starburger, new("Menünüz güncellendi, fiyat etiketini değiştirin!") },
+        { TutorialType.UpdateMenu_soda, new("Menünüz güncellendi, fiyat etiketini değiştirin!") },
+        { TutorialType.UpdateMenu_mega, new("Menünüz güncellendi, fiyat etiketini değiştirin!") },
     };
 
     public bool UseTutorials => true; // data.gameData.tutorialData.useTutorials;
@@ -246,7 +327,29 @@ public class TutorialController : MonoBehaviour
         successful = true;
 
         Debug.Log("ТУТОР ТАЙПЕ " + tutorialType);
-        OnStartTutorialEvent?.Invoke(tutorialType, tutorialDatas[tutorialType]);
+        
+        var localization =   Localization.Instance.GetCurrentLanguage();
+        
+        switch (localization)
+        {
+            case English:
+                OnStartTutorialEvent?.Invoke(tutorialType, tutorialDatas[tutorialType]);
+                break;
+
+            case Turkish:
+                OnStartTutorialEvent?.Invoke(tutorialType, tutorialDatasTurkish[tutorialType]);
+                break;
+
+            case Russian:
+                OnStartTutorialEvent?.Invoke(tutorialType, tutorialDatasRussia[tutorialType]);
+                break;
+
+            default:
+                OnStartTutorialEvent?.Invoke(tutorialType, tutorialDatas[tutorialType]);
+                break;
+        }
+        
+        // OnStartTutorialEvent?.Invoke(tutorialType, tutorialDatas[tutorialType]);
     }
 
     #endregion Show
@@ -293,23 +396,23 @@ public class TutorialController : MonoBehaviour
             Debug.Log("ELSE IF TUTORIAL COMPELTE " + tutorialType);
             data.gameData.tutorialData.CompleteTutorial(tutorialType);
         }*/
-        else if(IsCompleted(TutorialType.SetFastFoodName)&&!IsCompleted(TutorialType.ServeTheQuests))
+        else if (IsCompleted(TutorialType.SetFastFoodName) && !IsCompleted(TutorialType.ServeTheQuests))
         {
             Debug.Log("ELSE IF TUTORIAL COMPELTE " + tutorialType);
             data.gameData.tutorialData.CompleteTutorial(tutorialType);
         }
-        else if(IsCompleted(TutorialType.ServeTheQuests)&&!IsCompleted(TutorialType.ClearTables))
+        else if (IsCompleted(TutorialType.ServeTheQuests) && !IsCompleted(TutorialType.ClearTables))
         {
             data.gameData.tutorialData.CompleteTutorial(tutorialType);
             data.Save(DataSectionType.Tutorial);
         }
-        else if(IsCompleted(TutorialType.ExpectBuyers)&&IsCompleted(TutorialType.ClearTables))
+        else if (IsCompleted(TutorialType.ExpectBuyers) && IsCompleted(TutorialType.ClearTables))
         {
             Debug.Log("ELSE IF CLEAR TABLE TUTORIAL COMPELTE " + tutorialType);
             data.gameData.tutorialData.CompleteTutorial(tutorialType);
             data.Save(DataSectionType.Tutorial);
         }
-        
+
         /*data.gameData.tutorialData.CompleteTutorial(tutorialType);
         data.Save(DataSectionType.Tutorial);*/
         HideTutor();
@@ -339,9 +442,8 @@ public class TutorialController : MonoBehaviour
         _currentTutorial = null;
         _autoUpdatePos = false;
         gameObject.SetActive(false);
-        
-        
-        
+
+
         cursor.gameObject.SetActive(false);
 
         Debug.Log("Hide Tutor");
@@ -478,7 +580,7 @@ public class TutorialController : MonoBehaviour
                             Screen.height - cursor.GetComponent<RectTransform>().rect.height / 2);
                         focusScreenPos.z = 0;*/ // Ensure the Z position is 0 for UI elements
 
-                        
+
                         focusScreenPos.x = Mathf.Clamp(focusScreenPos.x,
                             createdPoints[i].GetComponent<RectTransform>().rect.width / 2,
                             Screen.width - createdPoints[i].GetComponent<RectTransform>().rect.width / 2);
@@ -486,12 +588,8 @@ public class TutorialController : MonoBehaviour
                             createdPoints[i].GetComponent<RectTransform>().rect.height / 2,
                             Screen.height - createdPoints[i].GetComponent<RectTransform>().rect.height / 2);
                         focusScreenPos.z = 0;
-                        
-                        
-                        
-                        
-                        
-                        
+
+
                         createdPoints[i].transform.position = focusScreenPos;
                         // Debug.Log("IF");
                         // cursor.gameObject.SetActive(true);
@@ -511,8 +609,8 @@ public class TutorialController : MonoBehaviour
                             cursor.GetComponent<RectTransform>().rect.height / 2,
                             Screen.height - cursor.GetComponent<RectTransform>().rect.height / 2);
                         focusScreenPos.z = 0;*/
-                        
-                        
+
+
                         focusScreenPos.x = Mathf.Clamp(edgeX,
                             createdPoints[i].GetComponent<RectTransform>().rect.width / 2,
                             Screen.width - createdPoints[i].GetComponent<RectTransform>().rect.width / 2);
@@ -520,10 +618,8 @@ public class TutorialController : MonoBehaviour
                             createdPoints[i].GetComponent<RectTransform>().rect.height / 2,
                             Screen.height - createdPoints[i].GetComponent<RectTransform>().rect.height / 2);
                         focusScreenPos.z = 0;
-                        
-                        
-                        
-                        
+
+
                         createdPoints[i].transform.position = focusScreenPos;
                         /*Debug.Log("ELSE");
                         cursor.gameObject.SetActive(false);*/

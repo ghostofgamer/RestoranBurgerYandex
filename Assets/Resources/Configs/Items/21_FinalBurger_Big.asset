@@ -18,6 +18,8 @@ MonoBehaviour:
       section: 3
       itemPrefab: {fileID: 5960851771514777377, guid: a2ee7b1a131c84de2a4744f33648e405, type: 3}
       itemName: Burger Big
+      itemRusName: "\u0411\u043E\u043B\u044C\u0448\u043E\u0439 \u0411\u0443\u0440\u0433\u0435\u0440"
+      itemTurkishName: "Burger B\xFCy\xFCk"
       iconSprite: {fileID: 21300000, guid: bda35eca2d1634cb38f50a1f32fc9164, type: 3}
     costData:
       buyCost:

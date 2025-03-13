@@ -18,6 +18,8 @@ MonoBehaviour:
       section: 0
       itemPrefab: {fileID: 1542931796289627331, guid: 8327b19b7e48d474b9b834ed7f420b08, type: 3}
       itemName: Tomato
+      itemRusName: "\u0422\u043E\u043C\u0430\u0442"
+      itemTurkishName: Domates
       iconSprite: {fileID: 21300000, guid: b1ad2d7b40266404fb1ecf6559a48992, type: 3}
     costData:
       buyCost:
@@ -39,4 +41,5 @@ MonoBehaviour:
     otherData:
       boxValue: 1
       portionsValue: 1
-      playerDraggerOffsetY: 0
+    recipe:
+      pecipeItems: 

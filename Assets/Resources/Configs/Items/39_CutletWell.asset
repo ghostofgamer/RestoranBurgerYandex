@@ -18,6 +18,8 @@ MonoBehaviour:
       section: 0
       itemPrefab: {fileID: 6297824730473248455, guid: 97dda90e67eeb42878ba632d079f8787, type: 3}
       itemName: Cutlet Well
+      itemRusName: "\u0413\u043E\u0442\u043E\u0432\u0430\u044F \u041A\u043E\u0442\u043B\u0435\u0442\u0430"
+      itemTurkishName: "K\xF6fte Kuyusu"
       iconSprite: {fileID: 21300000, guid: c3a94693b795d40eca107437a12e565f, type: 3}
     costData:
       buyCost:
@@ -39,6 +41,5 @@ MonoBehaviour:
     otherData:
       boxValue: 1
       portionsValue: 1
-      playerDraggerOffsetY: 0
     recipe:
       pecipeItems: 

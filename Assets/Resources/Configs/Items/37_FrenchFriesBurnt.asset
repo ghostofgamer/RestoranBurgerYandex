@@ -18,6 +18,8 @@ MonoBehaviour:
       section: 3
       itemPrefab: {fileID: 5738994430216152202, guid: 642ff1b50f3d247459b708bffcf81560, type: 3}
       itemName: Burnt Fries
+      itemRusName: "\u0413\u043E\u0440\u0435\u043B\u044B\u0439 \u0424\u0440\u0438"
+      itemTurkishName: "Yanm\u0131\u015F K\u0131zartmas"
       iconSprite: {fileID: 0}
     costData:
       buyCost:
@@ -39,4 +41,5 @@ MonoBehaviour:
     otherData:
       boxValue: 1
       portionsValue: 1
-      playerDraggerOffsetY: 0
+    recipe:
+      pecipeItems: 

@@ -55,6 +55,61 @@ MonoBehaviour:
   - Language: Turkish
     Text: "De\u011Fi\u015Fiklik yapmak"
     Object: {fileID: 0}
+--- !u!1 &601890302999235861
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5670012580116293762}
+  - component: {fileID: 6310505403276470776}
+  m_Layer: 0
+  m_Name: Closed
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5670012580116293762
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601890302999235861}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8317677656766336027}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6310505403276470776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601890302999235861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Turkish
+    Text: KAPALI
+    Object: {fileID: 0}
+  - Language: English
+    Text: CLOSED
+    Object: {fileID: 0}
+  - Language: Russian
+    Text: "\u0417\u0410\u041A\u0420\u042B\u0422\u041E"
+    Object: {fileID: 0}
 --- !u!1 &640271734768543325
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,6 +746,11 @@ Transform:
   - {fileID: 7942613942624469311}
   - {fileID: 6886078103401192358}
   - {fileID: 4260671959759250648}
+  - {fileID: 906160930006946623}
+  - {fileID: 5670012580116293762}
+  - {fileID: 4329135187811366423}
+  - {fileID: 4834850110446011150}
+  - {fileID: 4374894633817148957}
   m_Father: {fileID: 3170941208322985209}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2773422299826713505
@@ -1778,6 +1838,61 @@ MonoBehaviour:
   - Language: Russian
     Text: "- \u0417\u0430\u043A\u0440\u044B\u0442\u044C"
     Object: {fileID: 0}
+--- !u!1 &5594679924028893342
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4374894633817148957}
+  - component: {fileID: 7924457774820447717}
+  m_Layer: 0
+  m_Name: TASK
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4374894633817148957
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5594679924028893342}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8317677656766336027}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7924457774820447717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5594679924028893342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Turkish
+    Text: "G\xD6REV"
+    Object: {fileID: 0}
+  - Language: English
+    Text: TASK
+    Object: {fileID: 0}
+  - Language: Russian
+    Text: "\u0417\u0410\u0414\u0410\u0427\u0410"
+    Object: {fileID: 0}
 --- !u!1 &5767765791997602573
 GameObject:
   m_ObjectHideFlags: 0
@@ -1969,6 +2084,61 @@ Transform:
   - {fileID: 4578505956199665140}
   m_Father: {fileID: 3170941208322985209}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6051175656612351509
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 906160930006946623}
+  - component: {fileID: 1575822577995856001}
+  m_Layer: 0
+  m_Name: ENTER THE PRICE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &906160930006946623
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6051175656612351509}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8317677656766336027}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1575822577995856001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6051175656612351509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Turkish
+    Text: "\rF\u0130YATI G\u0130R\u0130N"
+    Object: {fileID: 0}
+  - Language: English
+    Text: ENTER THE PRICE
+    Object: {fileID: 0}
+  - Language: Russian
+    Text: "\u0412\u0412\u0415\u0414\u0418\u0422\u0415 \u0426\u0415\u041D\u0423"
+    Object: {fileID: 0}
 --- !u!1 &6137506152132260250
 GameObject:
   m_ObjectHideFlags: 0
@@ -2302,6 +2472,61 @@ MonoBehaviour:
   - Language: Turkish
     Text: YER
     Object: {fileID: 0}
+--- !u!1 &7104201019161199111
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4329135187811366423}
+  - component: {fileID: 7306710741892387428}
+  m_Layer: 0
+  m_Name: OPENED
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4329135187811366423
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7104201019161199111}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8317677656766336027}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7306710741892387428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7104201019161199111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Turkish
+    Text: "A\xC7IK"
+    Object: {fileID: 0}
+  - Language: English
+    Text: OPENED
+    Object: {fileID: 0}
+  - Language: Russian
+    Text: "\u041E\u0422\u041A\u0420\u042B\u0422\u041E"
+    Object: {fileID: 0}
 --- !u!1 &7125278299071707226
 GameObject:
   m_ObjectHideFlags: 0
@@ -2356,6 +2581,61 @@ MonoBehaviour:
     Object: {fileID: 0}
   - Language: Russian
     Text: "\u0418\u0413\u0420\u0410\u0422\u042C"
+    Object: {fileID: 0}
+--- !u!1 &7283107340092312213
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4834850110446011150}
+  - component: {fileID: 6690462185124567108}
+  m_Layer: 0
+  m_Name: FAST FOOD
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4834850110446011150
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7283107340092312213}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8317677656766336027}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6690462185124567108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7283107340092312213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: English
+    Text: FAST FOOD
+    Object: {fileID: 0}
+  - Language: Russian
+    Text: "\u0411\u042B\u0421\u0422\u0420\u041E\u0415 \u041F\u0418\u0422\u0410\u041D\u0418\u0415"
+    Object: {fileID: 0}
+  - Language: Turkish
+    Text: FAST FOOD
     Object: {fileID: 0}
 --- !u!1 &7369150644716389433
 GameObject:

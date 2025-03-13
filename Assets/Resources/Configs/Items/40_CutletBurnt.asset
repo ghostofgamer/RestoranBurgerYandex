@@ -18,6 +18,8 @@ MonoBehaviour:
       section: 0
       itemPrefab: {fileID: 6297824730473248455, guid: 840fbd30f9b394ee8bbd28febd0d064a, type: 3}
       itemName: Burnt Cutlet
+      itemRusName: "\u0413\u043E\u0440\u0435\u043B\u0430\u044F \u041A\u043E\u0442\u043B\u0435\u0442\u0430"
+      itemTurkishName: "Yanm\u0131\u015F Pirzola"
       iconSprite: {fileID: 0}
     costData:
       buyCost:
@@ -39,4 +41,5 @@ MonoBehaviour:
     otherData:
       boxValue: 1
       portionsValue: 1
-      playerDraggerOffsetY: 0
+    recipe:
+      pecipeItems: 

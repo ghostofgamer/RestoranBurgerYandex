@@ -18,6 +18,8 @@ MonoBehaviour:
       section: 3
       itemPrefab: {fileID: 6670844800926408673, guid: 70a3856deb6af4717bccfd64c985679e, type: 3}
       itemName: Burger Medium
+      itemRusName: "\u0421\u0440\u0435\u0434\u043D\u0438\u0439 \u0411\u0443\u0440\u0433\u0435\u0440"
+      itemTurkishName: Burger Orta
       iconSprite: {fileID: 21300000, guid: 42cacc73e8fb542289e6f241c154432a, type: 3}
     costData:
       buyCost:

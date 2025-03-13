@@ -6,16 +6,37 @@
   <component name="ChangeListManager">
     <list default="true" id="02332a16-073c-444b-8fc8-7e2f7e70d71c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RestoranBurgerYandex/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RestoranBurgerYandex/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Screens/EnterPriceScreen.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Screens/EnterPriceScreen.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Screens/RateUsScreen.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Screens/RateUsScreen.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Screens/TerminalScreen.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Screens/TerminalScreen.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/14_CoffeeCup.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/14_CoffeeCup.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/15_FinalFrenchFries.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/15_FinalFrenchFries.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/1_BunTop.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/1_BunTop.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/2_BunBottom.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/2_BunBottom.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Screens/ComputerStoreScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Screens/ComputerStoreScreen.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Screens/EnterPriceScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Screens/EnterPriceScreen.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Localization/LeanLocalization.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Localization/LeanLocalization.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Screens/GameScreen.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Screens/GameScreen.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/World/Location/World.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/World/Location/World.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/16_FinalNuggets.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/16_FinalNuggets.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/17_FinalBurgerSmall.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/17_FinalBurgerSmall.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/18_FinalBurger_Cheeseburger.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/18_FinalBurger_Cheeseburger.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/19_FinalBurger_Medium.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/19_FinalBurger_Medium.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/20_FinalBurger_Star.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/20_FinalBurger_Star.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/21_FinalBurger_Big.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/21_FinalBurger_Big.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/22_FinalBurger_Mega.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/22_FinalBurger_Mega.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/28_FinalCola.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/28_FinalCola.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/29_FinalLemon.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/29_FinalLemon.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/30_FinalOrange.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/30_FinalOrange.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/31_FinalBarberry.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/31_FinalBarberry.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/32_FinalCoffee.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/32_FinalCoffee.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/33_CheesePiece.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/33_CheesePiece.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/34_TomatoPiece.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/34_TomatoPiece.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/35_OnionPiece.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/35_OnionPiece.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/36_CabbagePiece.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/36_CabbagePiece.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/37_FrenchFriesBurnt.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/37_FrenchFriesBurnt.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/38_NuggetsBurnt.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/38_NuggetsBurnt.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/39_CutletWell.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/39_CutletWell.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/40_CutletBurnt.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/40_CutletBurnt.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/41_burger_packingpaper_closed.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/41_burger_packingpaper_closed.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/42_ketchup.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/42_ketchup.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configs/Items/43_Mustard.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configs/Items/43_Mustard.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Loader.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Loader.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tutor/TutorialController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Tutor/TutorialController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +168,8 @@
       <workItem from="1741505517118" duration="11395000" />
       <workItem from="1741593801023" duration="8611000" />
       <workItem from="1741689351962" duration="12119000" />
-      <workItem from="1741774659915" duration="12501000" />
+      <workItem from="1741774659915" duration="13010000" />
+      <workItem from="1741851882559" duration="2173000" />
     </task>
     <servers />
   </component>
