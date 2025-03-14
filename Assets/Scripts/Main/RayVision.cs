@@ -37,7 +37,6 @@ public class RayVision : MonoBehaviour
             if (touchInteractive)
             {
                 if (currentFocus != null) currentFocus.EndFocus();
-
                 touchInteractive.StartFocus();
                 currentFocus = touchInteractive;
                 currentFocusCollider = hit.collider;

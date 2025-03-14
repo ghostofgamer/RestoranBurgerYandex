@@ -6,16 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="02332a16-073c-444b-8fc8-7e2f7e70d71c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RestoranBurgerYandex/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RestoranBurgerYandex/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/UniversalElements/TopUiContainer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/UniversalElements/TopUiContainer.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main/GameController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/World/Items/For_loc_fastfood/assets/hw-2-el-chips-props/textures/T_SODA_MACHINE_BaseColor.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/World/Items/For_loc_fastfood/assets/hw-2-el-chips-props/textures/T_SODA_MACHINE_BaseColor.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/World/Items/_New/sodaCup.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/World/Items/_New/sodaCup.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/World/Location/World.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/World/Location/World.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main/CameraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main/CameraController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main/GameWorldInteractionClicks.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main/GameWorldInteractionClicks.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main/RayVision.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main/RayVision.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Screens/ComputerStoreScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/Screens/ComputerStoreScreen.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/UniversalElements/TopUiContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TheSTAR/GUI/UniversalElements/TopUiContainer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/FlyValue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/FlyValue.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/World/AssemblingBoard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/World/AssemblingBoard.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/World/Computer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/World/Computer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,7 +154,7 @@
       <workItem from="1741689351962" duration="12119000" />
       <workItem from="1741774659915" duration="13010000" />
       <workItem from="1741851882559" duration="21116000" />
-      <workItem from="1741938657310" duration="6799000" />
+      <workItem from="1741938657310" duration="10294000" />
     </task>
     <servers />
   </component>
@@ -170,24 +170,5 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/World/ItemsHandler.cs</url>
-          <line>109</line>
-          <properties documentPath="D:\Repository\RestoranBurgerYandex\Assets\Scripts\World\ItemsHandler.cs" containingFunctionPresentation="Method 'CanPlaceBySectionType'">
-            <startOffsets>
-              <option value="3054" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3055" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

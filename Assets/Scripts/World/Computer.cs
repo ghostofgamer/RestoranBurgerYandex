@@ -4,11 +4,12 @@ using UnityEngine;
 using TheSTAR.GUI;
 using Zenject;
 
-public class Computer : MonoBehaviour
+public class Computer : MonoBehaviour, ICameraFocusable
 {
     [SerializeField] private TouchInteractive touchInteractive;
     [SerializeField] private TutorInWorldFocus tutorFocus;
-
+    [SerializeField] private Transform cameraFocusPos;
+    
     public TutorInWorldFocus TutorFocus => tutorFocus;
 
     private GameWorldInteraction worldInteraction;
@@ -31,4 +32,6 @@ public class Computer : MonoBehaviour
             worldInteraction.OnClickComputer(this);
         };
     }
+
+    public Transform FocusTransform => cameraFocusPos;
 }

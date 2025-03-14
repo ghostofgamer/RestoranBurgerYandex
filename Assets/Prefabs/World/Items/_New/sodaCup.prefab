@@ -82,8 +82,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   col: {fileID: 4214677984247174635}
+  currentDragger: {fileID: 0}
   touchInteractive: {fileID: 6627721192281787045}
   rigidBody: {fileID: 4426550564994643033}
+  _isLoadVersion: 0
 --- !u!114 &8129409621681092869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,6 +246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoChangeInteractableForDraggable: 0
+  currentDraggable: {fileID: 0}
 --- !u!1 &7495397309592474001
 GameObject:
   m_ObjectHideFlags: 0

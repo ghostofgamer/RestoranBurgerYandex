@@ -30,6 +30,7 @@ public class CameraController : MonoBehaviour
     /// </summary>
     public void SetMainFocus(ICameraFocusable focus)
     {
+        Debug.Log("SetMainFocus");
         mainFocus = focus;
         main.transform.parent = focus.FocusTransform;
         main.transform.localEulerAngles = Vector3.zero;
@@ -41,6 +42,7 @@ public class CameraController : MonoBehaviour
     /// </summary>
     public void TempFocus(ICameraFocusable focus, bool cloneRotation)
     {
+        Debug.Log("TempFocus");
         moveDraggableTweener?.Kill();
         rotateDraggableTweener?.Kill();
 

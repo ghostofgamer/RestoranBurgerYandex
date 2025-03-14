@@ -78,6 +78,7 @@ namespace TheSTAR.GUI
             {
                 if (!Application.isMobilePlatform)
                 {
+                    Camera.main.GetComponent<CameraController>().TempFocus(null, false);
                     Cursor.lockState = CursorLockMode.Locked;
                     Cursor.visible = false;
                 }

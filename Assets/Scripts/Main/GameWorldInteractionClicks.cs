@@ -12,6 +12,9 @@ public partial class GameWorldInteraction
 
     public void OnClickComputer(Computer computer)
     {
+        if (!Application.isMobilePlatform)
+            camera.TempFocus(computer, true);
+        
         sounds.Play(SoundType.ButtonClickWet);
         gui.Show<ComputerStoreScreen>();
     }
@@ -147,7 +150,8 @@ public partial class GameWorldInteraction
         {
             var itemComponent = draggable.GetComponent<Item>();
 
-            if (itemComponent != null && itemComponent.ItemType == ItemType.CoffeeCup)
+            if (itemComponent != null && itemComponent.ItemType == ItemType.CoffeeCup||
+                itemComponent != null&&itemComponent.ItemType == ItemType.SodaCup)
             {
                 Debug.Log("Занято в руке");
                 return;
@@ -162,6 +166,16 @@ public partial class GameWorldInteraction
             {
                 if (draggable.GetComponent<EmbeddableItem>().Dragger.CurrentDraggable != null)
                 {
+                    Debug.Log("COFFEEEEEEEEEEEEEEEE");
+                    return;
+                }
+            }
+            
+            if (itemComponent != null&&itemComponent.ItemType == ItemType.SodaCup)
+            {
+                if (draggable.GetComponent<EmbeddableItem>().Dragger.CurrentDraggable != null)
+                {
+                    Debug.Log("SADAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
                     return;
                 }
             }
