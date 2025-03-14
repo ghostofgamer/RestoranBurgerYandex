@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using TheSTAR.Utility;
+using UI;
 using Zenject;
 
 namespace TheSTAR.GUI
@@ -17,19 +18,16 @@ namespace TheSTAR.GUI
         
         [SerializeField] private TextMeshProUGUI softCounter;
         [SerializeField] private Reputation _reputation;
-        [SerializeField] private RateFly _profitFly;
-        [SerializeField] private RateFly _tipsFly;
-        [SerializeField] private RateFly _xpFly;
         [SerializeField] private GameObject _mobileButtonsContainer;
         [SerializeField] private GameObject _pcButtonsContainer;
         [SerializeField] private Image levelFill;
         [Space] [SerializeField] private TextMeshProUGUI levelNumberText;
+        [SerializeField] private FlyValue _flyValueXP;
+        [SerializeField] private FlyValue _flyValueProfit;
+        [SerializeField] private FlyValue _flyValueTips;
         
         [Header("Buttons")] [SerializeField] private PointerButton shopButton;
         [SerializeField] private PointerButton settingsButton;
-        
-
-
 
         private DollarValue _lastProfit = new DollarValue();
         private DollarValue _lastTips = new DollarValue();
@@ -98,7 +96,8 @@ namespace TheSTAR.GUI
 
         private void ShowXP(int value)
         {
-            _xpFly.Show(value);
+            // _xpFly.Show(value);
+            _flyValueXP.Show(value);
         }
 
         private void SetLastProfit(DollarValue profit)
@@ -113,13 +112,60 @@ namespace TheSTAR.GUI
 
         private void ShowProfit(DollarValue profit)
         {
-            _profitFly.Show(profit, "profit");
+            // _profitFly.Show(profit, "profit");
+            var localization =   Localization.Instance.GetCurrentLanguage();
+
+            switch (localization)
+            {
+                case English:
+                    _flyValueProfit.Show(profit, "profit");
+                    break;
+                
+                case Turkish:
+                    _flyValueProfit.Show(profit, "kâr");
+                    break;
+                
+                case Russian:
+                    _flyValueProfit.Show(profit, "прибыль");
+                    break;
+                
+                   default:
+                    _flyValueProfit.Show(profit, "прибыль");
+                    // _flyValueProfit.Show(profit, "profit");
+                    break;
+            }
+            
+            // _flyValueProfit.Show(profit, "profit");
             _lastProfit = new DollarValue();
         }
 
         private void ShowTipsProfit(DollarValue tips)
         {
-            _tipsFly.Show(tips, "tips");
+            // _tipsFly.Show(tips, "tips");
+            
+            var localization =   Localization.Instance.GetCurrentLanguage();
+
+            switch (localization)
+            {
+                case English:
+                    _flyValueTips.Show(tips, "tips");
+                    break;
+                
+                case Turkish:
+                    _flyValueTips.Show(tips, "ipuçları");
+                    break;
+                
+                case Russian:
+                    _flyValueTips.Show(tips, "чаевые");
+                    break;
+                
+                default:
+                    _flyValueTips.Show(tips, "чаевые");
+                    // _flyValueTips.Show(tips, "tips");
+                    break;
+            }
+            
+            // _flyValueTips.Show(tips, "tips");
             _lastTips = new DollarValue();
         }
 

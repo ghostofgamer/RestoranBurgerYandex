@@ -6,17 +6,31 @@ namespace UI
     public class FlyValue : MonoBehaviour
     {
         [SerializeField] private TMP_Text _text;
-        [SerializeField] private float _flyDuration = 1.0f;
-        [SerializeField] private float _flyHeight = 3.0f;
-        [SerializeField] private Transform startPosition;
         
-        private Vector3 _startPosition;
-        private Coroutine _flyCoroutine;
         private Color _color;
         
-        public void Show()
+        public void Show(int value)
         {
+            if (value == 0) return;
             
+            gameObject.SetActive(false);
+            gameObject.SetActive(true);
+            _color = value < 0 ? Color.red : Color.green;
+            _text.color = _color;
+            
+            if (value > 0)
+                _text.text = "+" + value.ToString();
+            else
+                _text.text = value.ToString();
+            
+        }
+        
+        public void Show(DollarValue dollarValue, string text = " ")
+        {
+            gameObject.SetActive(false);
+            gameObject.SetActive(true);
+            _text.color = Color.green;
+            _text.text = "+" + dollarValue.ToString() +" "+ text;
         }
     }
 }

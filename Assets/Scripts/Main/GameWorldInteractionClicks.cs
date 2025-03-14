@@ -131,18 +131,42 @@ public partial class GameWorldInteraction
         Debug.Log("1 " + draggable.gameObject.name);
         var playerDraggable = player.CurrentDraggable;
 
-        if (player.CurrentDraggable != null && draggable.GetComponent<Item>().ItemType == ItemType.CoffeeCup)
+        /*if (player.CurrentDraggable != null && draggable.GetComponent<Item>().ItemType == ItemType.CoffeeCup)
         {
             Debug.Log("Занято в руке");
             return;
-        }
+        }*/
 
-        if (player.CurrentDraggable == null && draggable.GetComponent<Item>().ItemType == ItemType.CoffeeCup)
+        /*if (player.CurrentDraggable == null && draggable.GetComponent<Item>().ItemType == ItemType.CoffeeCup)
         {
             if (draggable.GetComponent<EmbeddableItem>().Dragger.CurrentDraggable != null)
                 return;
+        }*/
+
+        if (player.CurrentDraggable != null)
+        {
+            var itemComponent = draggable.GetComponent<Item>();
+
+            if (itemComponent != null && itemComponent.ItemType == ItemType.CoffeeCup)
+            {
+                Debug.Log("Занято в руке");
+                return;
+            }
         }
-        
+
+        if (player.CurrentDraggable == null)
+        {
+            var itemComponent = draggable.GetComponent<Item>();
+
+            if (itemComponent != null && itemComponent.ItemType == ItemType.CoffeeCup)
+            {
+                if (draggable.GetComponent<EmbeddableItem>().Dragger.CurrentDraggable != null)
+                {
+                    return;
+                }
+            }
+        }
+
         if (playerDraggable && !player.HavePlace(draggable, out _))
         {
             Debug.Log("3");
@@ -363,16 +387,25 @@ public partial class GameWorldInteraction
             TryAssemblyFocus(out var success);
             if (success) return;
 
-            if (!slicedContainer.IsEmpty &&
-                slicedContainer.CurrentCutType == CutType.PackingPaper &&
+            Debug.Log("HavePlaceHavePlaceHavePlace 1 " + slicedContainer.gameObject.name);
+
+            if (!game.World.FastFood.FinalBurgersGroup.HavePlace(ItemType.BurgerPackingPaper_Closed,
+                    out var placeForFinalBurgerqqq) && slicedContainer.CurrentCutType == CutType.PackingPaper)
+            {
+                return;
+            }
+
+            if (!slicedContainer.IsEmpty && slicedContainer.CurrentCutType == CutType.PackingPaper &&
                 game.World.FastFood.FinalBurgersGroup.HavePlace(ItemType.BurgerPackingPaper_Closed,
                     out var placeForFinalBurger))
             {
+                Debug.Log("HavePlaceHavePlaceHavePlace 3 ");
                 //Debug.Log("Пытаемся упаковать бургер");
                 var finalBurger = game.World.FastFood.AssemblingBoard.TryGetFinalItem();
 
                 if (finalBurger)
                 {
+                    Debug.Log("HavePlaceHavePlaceHavePlace 5 ");
                     // finalBurger.gameObject.SetActive(false);
 
                     var burger = slicedContainer.InterBurger(finalBurger);
@@ -403,10 +436,13 @@ public partial class GameWorldInteraction
                 //else Debug.Log("Не удаётся упаковать");
                 return;
             }
+            /*else if (game.World.FastFood.FinalBurgersGroup.HavePlace(ItemType.BurgerPackingPaper_Closed,
+                    out var placeForFinalBurgersssss));
+            return;*/
 
             Debug.Log("НУУУ!");
             if (!game.World.FastFood.AssemblingBoard.HavePlace()) return;
-
+            Debug.Log("НУУУКААА!");
             var item = slicedContainer.AutoGetItem(game.World.FastFood.AssemblingBoard.Deep > 0);
             if (item == null) return;
 
@@ -731,11 +767,14 @@ public partial class GameWorldInteraction
     public void OnAssemblyTableClick(AssemlbyTable table)
     {
         var playerDraggable = player.CurrentDraggable;
+        Debug.Log("HavePlaceHavePlaceHavePlace 1 ");
         if (playerDraggable && playerDraggable.TryGetComponent<Item>(out var item) &&
             item.ItemType == ItemType.BurgerPackingPaper_Closed)
         {
+            Debug.Log("HavePlaceHavePlaceHavePlace 3 ");
             if (game.World.FastFood.FinalBurgersGroup.HavePlace(item.ItemType, out var place))
             {
+                Debug.Log("HavePlaceHavePlaceHavePlace 5 ");
                 place.StartDrag(item.Draggable);
                 return;
             }

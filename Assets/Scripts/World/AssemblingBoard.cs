@@ -38,10 +38,7 @@ public class AssemblingBoard : MonoBehaviour, ICameraFocusable
 
     private void Init()
     {
-        touchInteractive.OnClickEvent += () =>
-        {
-            gameWorldInteraction.OnAssemblingBoardClick(this);
-        };
+        touchInteractive.OnClickEvent += () => { gameWorldInteraction.OnAssemblingBoardClick(this); };
     }
 
     public bool HavePlace()
@@ -53,16 +50,20 @@ public class AssemblingBoard : MonoBehaviour, ICameraFocusable
     public void Place(AssemblyItem burgerIngredient)
     {
         var lastDragger = GetLastEmptyDragger(out int deep, out var lastBurgerIngredient);
+
+        if (lastDragger == null) return;
+
         if (deep >= MaxAssemblingDeepLimit) return;
+        
         lastDragger.StartDrag(burgerIngredient.Item.Draggable);
         lastDragger.OnEndDragEvent += OnGetOutFromAssembly;
-        if (lastBurgerIngredient) lastBurgerIngredient.Item.Draggable.ForceDeactivateCol();
+        
+        if (lastBurgerIngredient) 
+            lastBurgerIngredient.Item.Draggable.ForceDeactivateCol();
 
         currentAssembly.Add(burgerIngredient.Item.ItemType);
         OnChangeAssemblyEvent?.Invoke(currentAssembly);
-
         burgerIngredient.OnAddToAssembly();
-
         TryFinalize();
     }
 
@@ -84,11 +85,32 @@ public class AssemblingBoard : MonoBehaviour, ICameraFocusable
     {
         if (dragger.IsEmpty)
         {
+            Debug.Log("dragger.IsEmpty " + dragger.gameObject.name);
             deep = 0;
             lastBurgerIngredient = null;
             return dragger;
         }
-        else return dragger.CurrentDraggable.GetComponent<AssemblyItem>().GetLastEmptyDragger(1, out deep, out lastBurgerIngredient);
+        else
+        {
+            /*AssemblyItem assemblyItem = dragger.CurrentDraggable.GetComponent<AssemblyItem>();
+            if (assemblyItem != null)
+            {
+                return assemblyItem.GetLastEmptyDragger(1, out deep, out lastBurgerIngredient);
+            }
+            else
+            {
+                // Обработка случая, когда assemblyItem равен null
+                // Устанавливаем значения по умолчанию для deep и lastBurgerIngredient
+                deep = 0;
+                lastBurgerIngredient = null;
+                return null; // или любое другое значение по умолчанию
+            }*/
+
+
+            Debug.Log("ELSE dragger" + dragger.gameObject.name);
+            Debug.Log("dragger.CurrentDraggable " + dragger.CurrentDraggable.name);
+            return dragger.CurrentDraggable.GetComponent<AssemblyItem>().GetLastEmptyDragger(1, out deep, out lastBurgerIngredient);
+        }
     }
 
     private void OnGetOutFromAssembly(Dragger dragger, Draggable draggable)
@@ -114,7 +136,7 @@ public class AssemblingBoard : MonoBehaviour, ICameraFocusable
         foreach (var finalItem in finalItems)
         {
             var recipe = items.GetItemData(finalItem).Recipe;
-            
+
             if (CheckAssemblyForRecipe(recipe.RecipeItems))
             {
                 Debug.Log("Finalize to " + finalItem);

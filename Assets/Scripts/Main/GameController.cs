@@ -218,7 +218,7 @@ public class GameController : MonoBehaviour
         gui.GameScreen.InitPlayer(createdPlayer);
         Debug.Log("Load world completed");
 
-        currency.AddCurrency(CurrencyType.Soft, new(10000, 0), true);
+        // currency.AddCurrency(CurrencyType.Soft, new(10000, 0), true);
         currency.InitReputation(gui.TopUiContainer.Reputation);
     }
 

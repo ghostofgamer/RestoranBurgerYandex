@@ -241,8 +241,35 @@ namespace TheSTAR.GUI
                 var itemType = element.Key;
                 var itemData = itemsConfig.Get.Item(itemType);
                 slot.Init(sounds, itemType, OnChangeItemsCountFromResultList, resultScroller);
-                slot.SetVisual(itemData.MainData.Name,
+                
+                var localization = Localization.Instance.GetCurrentLanguage();
+                
+                switch (localization)
+                {
+                    case English:
+                        slot.SetVisual(itemData.MainData.Name,
+                            itemData.CostData.BuyCost * (element.Value * itemData.OtherData.BoxValue), element.Value);
+                        break;
+
+                    case Turkish:
+                        slot.SetVisual(itemData.MainData.TurName,
+                            itemData.CostData.BuyCost * (element.Value * itemData.OtherData.BoxValue), element.Value);
+                        break;
+
+                    case Russian:
+                        slot.SetVisual(itemData.MainData.RusName,
+                            itemData.CostData.BuyCost * (element.Value * itemData.OtherData.BoxValue), element.Value);
+                        break;
+
+                    default:
+                        slot.SetVisual(itemData.MainData.Name,
+                            itemData.CostData.BuyCost * (element.Value * itemData.OtherData.BoxValue), element.Value);
+                        break;
+                }
+                
+                /*slot.SetVisual(itemData.MainData.Name,
                     itemData.CostData.BuyCost * (element.Value * itemData.OtherData.BoxValue), element.Value);
+                    */
 
                 cartItemIndex++;
             }

@@ -1,6 +1,7 @@
 using System.IO;
 using TheSTAR.GUI;
 using TMPro;
+using UI;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -15,7 +16,7 @@ namespace ReputationContent
         [SerializeField] private int _maxReputation = 100;
         [SerializeField] private Slider _reputationSlider;
         [SerializeField] private Image[] _stars;
-        [SerializeField] private RateFly _rateFly;
+        [SerializeField] private FlyValue _rateFly;
 
         private int _currentReputation;
         private FastFood _fastFood;
